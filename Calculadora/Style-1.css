@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('fonts/MyCustomFont.woff2') format('woff2'),
+         url('fonts/MyCustomFont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.div1 {
+    font-family: 'Comic Sans MS';
+    background-color: #982829;
+    border-radius: 30px;
+    height: 50px;
+    width: 90%;
+    margin: 20px 10px 10px 50px;
+}
+.logoTop {
+    height: 90%;
+    width: 70px;
+    margin-left: 13px;
+    margin-top: 3px;
+}
