@@ -6,3 +6,4 @@ Kevin Johann
 Miguel Soneti
 Victor Monteiro
 Raissa Mineiro
+Yagho Chinaglia
