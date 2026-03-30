@@ -2,6 +2,7 @@
 
  
 Luiz Fernando
+Kevin Johann
 Miguel Soneti
 Victor Monteiro
 Raissa Mineiro
