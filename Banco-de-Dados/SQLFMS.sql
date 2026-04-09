@@ -85,3 +85,7 @@ CREATE TABLE Leitores (
     tipo_leitura VARCHAR(45),
     FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
 );
+
+
+
+
