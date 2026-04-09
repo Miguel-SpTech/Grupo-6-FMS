@@ -1,6 +1,4 @@
-CREATE DATABASE FMS;
-
-use FMS;
+use grupo6;
 
 CREATE TABLE Empresa (
     idEmpresa INT AUTO_INCREMENT PRIMARY KEY,

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleCadastro.css">
+</head>
+<body>
+    <input type="text" placeholder="email" id="inp_email" oninput="verificarEmail()"><br>
+    <div id="div_emailVerification"></div>
+    <input type="text" placeholder="senha" id="inp_password" oninput="verificarPsswrd()">
+    <div id="div_passwordVerification">
+        <span>a senha precisa ter no mínimo:</span><br>
+        <span id="span_psswrdCaracteres">6 caracteres</span><br>
+        <span id="span_psswrdNumber">1 número</span><br>
+        <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
+        <span id="span_psswrdLower">1 letra MINUSCULA</span>
+    </div>
+    <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="div_cadastro"></div>
+</body>
+</html>
+<script>
+    let emails_cadastrados = [];
+    let passwords_cadastrados = [];
+    function verificarEmail() {
+        var email_input = inp_email.value;
+        let email = email_input.toLowerCase();
+        inp_email.value = email;
+        let local_arroba = email.indexOf("@");
+        let local_ponto_com = email.indexOf(".com");
+        let end_ponto_com = email.endsWith(".com");
+        let end_ponto_com_br = email.endsWith(".com.br");
+        let localVerification = local_arroba < local_ponto_com;
+        var end_verification_email = end_ponto_com == true || end_ponto_com_br == true && localVerification;
+
+        if (end_verification_email) {
+            div_emailVerification.innerHTML = `<span class="text1 verificacaoTrue">E-mail valido!</span>`
+        } else {
+            div_emailVerification.innerHTML = `<span class="text1 verificacaoFalse">E-mail Invalido.</span>`
+        }
+    }
+    function verificarPsswrd() {
+        var password = inp_password.value
+        let regex_tem_numero = new RegExp("[0-9]"); 
+        let regex_tem_letra = new RegExp("[A-Z;]");
+        let regex_tem_letra2 = new RegExp("[a-z]");
+        var end_verification_psswrd = false;
+        let passwordLength = password.length;
+
+        if (regex_tem_numero.test(password)){
+            span_psswrdNumber.innerHTML = `<span class = "verificacaoTrue">1 Número</span>`
+            end_verification_psswrd = true;
+        } else {
+            span_psswrdNumber.innerHTML = `<span class = "verificacaoFalse">1 Número</span>`
+            end_verification_psswrd = false;
+        }
+        if (regex_tem_letra2.test(password)) {
+            span_psswrdLower.innerHTML = `<span class = "verificacaoTrue">1 letra MINUSCULA</span>`
+            end_verification_psswrd = true;
+        } else {
+            span_psswrdLower.innerHTML = `<span class = "verificacaoFalse">1 letra MINUSCULA</span>`
+            end_verification_psswrd = false;
+        }
+        if (regex_tem_letra.test(password)) {
+            span_psswrdUpper.innerHTML = `<span class = "verificacaoTrue">1 letra MAIUSCULA</span>`
+            end_verification_psswrd = true;
+        } else {
+            span_psswrdUpper.innerHTML = `<span class = "verificacaoFalse">1 letra MAIUSCULA</span>`
+            end_verification_psswrd = false;
+        }
+        if (passwordLength >= 8) {
+            span_psswrdCaracteres.innerHTML = `<span class = "verificacaoTrue">6 caracteres</span>`
+            end_verification_psswrd = true;
+        } else {
+            span_psswrdCaracteres.innerHTML = `<span class = "verificacaoFalse">6 caracteres</span>`
+            end_verification_psswrd = false;
+        }
+    }
+    function cadastrar() {
+        var length_emails_cadastrados = emails_cadastrados.length;
+        let not_cadastrado = false;
+        let verificationEmail = end_verification_email;
+        let verificationPsswrd = end_verification_psswrd
+        for (let i = 0; i < length_emails_cadastrados; i++) {
+
+        }
+            if (true){
+                if (verificationEmail) {
+                    if (verificarPsswrd) {
+                        div_cadastro.innerHTML = `<span class = "verificacaoTrue">Cadastro realizado com sucesso</span>`;
+                        emails_cadastrados.push(email);
+                        passwords_cadastrados.push(password);
+                    }
+                } else {
+                    div_cadastro.innerHTML = `<span class="verificacaoFalse">E-mail ou Senha invalidos. Insira-os novamente.</span>`
+                }}
+        console.log(emails_cadastrados);
+        console.log(passwords_cadastrados);
+    }
+</script>
