@@ -216,3 +216,9 @@ body{
     width: 800px; /* ajuste o tamanho */
     position:absolute;
 }
+
+.div1 {
+    width: 100%;
+    height: 300px;
+    
+}
