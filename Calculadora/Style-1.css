@@ -67,7 +67,7 @@
     background-color: #f2dfce;
 }
 
-.quemsomos {
+#quemsomos {
     display: flex;
     align-items: center;
     justify-content: center;
