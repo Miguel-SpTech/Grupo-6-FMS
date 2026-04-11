@@ -4,12 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styleCadastro.css">
+    <link rel="stylesheet" href="stylecadastro.css">
 </head>
 <body>
-    <input type="text" placeholder="email" id="inp_email" oninput="verificarEmail()"><br>
+
+
+    <div class="navbar">
+    <img class="logoTop" src="logoWhiteWOfms.png" alt="">
+
+    <ul class="menu">
+        <li><a href="Calculdadora/Site-estático.html">Início</a></li>
+        <li><a href="#">Sobre nós</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Simulação</a></li>
+    </ul>
+<a href="cadastro.html">
+    <button type="button" id="login" onclick="Login()">Login</button>
+    </a>
+</div>
+<div class="container">
+     <div class="login">
+        <div class="header">
+            <h2>Login</h2>
+            </div>
+    <input type="text" placeholder="email:" id="inp_email" oninput="verificarEmail()"><br>
     <div id="div_emailVerification"></div>
-    <input type="text" placeholder="senha" id="inp_password" oninput="verificarPsswrd()">
+    <input type="text" placeholder="senha:" id="inp_password" oninput="verificarPsswrd()">
     <div id="div_passwordVerification">
         <span>a senha precisa ter no mínimo:</span><br>
         <span id="span_psswrdCaracteres">6 caracteres</span><br>
@@ -17,8 +37,13 @@
         <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
         <span id="span_psswrdLower">1 letra MINUSCULA</span>
     </div>
+  
+   
     <br>
-    <button onclick="cadastrar()">Cadastrar</button>
+    <button type="button" id="btnentrar" onclick="cadastrar()">Entrar</button>
+      </div>
+      
+     </div>
     <div id="div_cadastro"></div>
 </body>
 </html>

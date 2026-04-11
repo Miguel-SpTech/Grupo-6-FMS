@@ -1,3 +1,7 @@
+
+
+
+
 .verificacaoTrue {
     color: #15fc40;
 }
@@ -6,4 +10,115 @@
 }
 .text1 {
     font-size: 15px;
+    
+}
+body{
+       margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("Login.png");
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+}
+
+
+
+.navbar {
+    background-color: #982829;
+    width: 80%;
+    margin: 20px auto; 
+    height: 70px; 
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+.header{
+    color:black;
+    font-weight: bold;
+
+}
+
+
+.login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 350px;
+    background: #ffff;
+     align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    
+}
+.login input{
+    margin-top:0px;
+    border-radius: 30px;
+    width: 250px;
+    height:30px;
+    border: 2px solid black;
+    
+}
+.login input::placeholder {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
+.login span{
+  color: black;
+     gap:30px;
+}
+
+.logoTop {
+    height: 50px;
+    width: 90px;
+    margin-left: 13px;
+    margin-top: 3px;
+}
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 160px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#login {
+    background-color: #E4B97E;
+    color: #982829;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 60px;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    width: 130px;
+    height:55px;
+    font-size: 20px;
+}
+#btnentrar{
+     background-color: #620808;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 60px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 250px;
+    height:50px;
+    font-size: 20px;
 }
