@@ -39,7 +39,6 @@ body{
     padding: 0 40px;
 }
 .header{
-    color:black;
     font-weight: bold;
 
 }
@@ -65,12 +64,10 @@ body{
     
 }
 .login input::placeholder {
-    color: black;
     font-weight: bold;
     font-size: 15px;
 }
 .login span{
-  color: black;
      gap:30px;
 }
 
@@ -91,15 +88,14 @@ body{
 }
 
 .menu a {
-    color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 15px;
+    color: white;
 }
 
 #login {
     background-color: #E4B97E;
-    color: #982829;
     border: none;
     padding: 8px 18px;
     border-radius: 60px;
@@ -112,7 +108,6 @@ body{
 }
 #btnentrar{
      background-color: #620808;
-    color: white;
     border: none;
     padding: 8px 18px;
     border-radius: 60px;

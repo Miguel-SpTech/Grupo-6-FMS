@@ -25,7 +25,7 @@
 <div class="container">
      <div class="login">
         <div class="header">
-            <h2>Login</h2>
+            <h2>Cadastro</h2>
             </div>
     <input type="text" placeholder="email:" id="inp_email" oninput="verificarEmail()"><br>
     <div id="div_emailVerification"></div>
@@ -40,7 +40,7 @@
   
    
     <br>
-    <button type="button" id="btnentrar" onclick="cadastrar()">Entrar</button>
+    <button type="button" id="btnentrar" onclick="cadastrar()">Cadastrar</button>
       </div>
       
      </div>
@@ -51,26 +51,26 @@
     let emails_cadastrados = [];
     let passwords_cadastrados = [];
     function verificarEmail() {
-        var email_input = inp_email.value;
-        let email = email_input.toLowerCase();
+        var email = inp_email.value.toLowerCase();
         inp_email.value = email;
         let local_arroba = email.indexOf("@");
         let local_ponto_com = email.indexOf(".com");
         let end_ponto_com = email.endsWith(".com");
         let end_ponto_com_br = email.endsWith(".com.br");
         let localVerification = local_arroba < local_ponto_com;
-        var end_verification_email = end_ponto_com == true || end_ponto_com_br == true && localVerification;
+        var end_verification_email = end_ponto_com || end_ponto_com_br && localVerification;
 
         if (end_verification_email) {
             div_emailVerification.innerHTML = `<span class="text1 verificacaoTrue">E-mail valido!</span>`
         } else {
             div_emailVerification.innerHTML = `<span class="text1 verificacaoFalse">E-mail Invalido.</span>`
         }
+        return end_verification_email;
     }
     function verificarPsswrd() {
-        var password = inp_password.value
+        let password = inp_password.value
         let regex_tem_numero = new RegExp("[0-9]"); 
-        let regex_tem_letra = new RegExp("[A-Z;]");
+        let regex_tem_letra = new RegExp("[A-Z]");
         let regex_tem_letra2 = new RegExp("[a-z]");
         var end_verification_psswrd = false;
         let passwordLength = password.length;
@@ -96,32 +96,41 @@
             span_psswrdUpper.innerHTML = `<span class = "verificacaoFalse">1 letra MAIUSCULA</span>`
             end_verification_psswrd = false;
         }
-        if (passwordLength >= 8) {
+        if (passwordLength >= 6) {
             span_psswrdCaracteres.innerHTML = `<span class = "verificacaoTrue">6 caracteres</span>`
             end_verification_psswrd = true;
         } else {
             span_psswrdCaracteres.innerHTML = `<span class = "verificacaoFalse">6 caracteres</span>`
             end_verification_psswrd = false;
         }
+        return end_verification_psswrd;
     }
     function cadastrar() {
-        var length_emails_cadastrados = emails_cadastrados.length;
-        let not_cadastrado = false;
-        let verificationEmail = end_verification_email;
-        let verificationPsswrd = end_verification_psswrd
-        alert("Já existe um usuario co esse e-mail")
-        for (let i = 0; i == 0; i++) {
-
+        var email = inp_email.value.toLowerCase();
+        let password = inp_password.value
+        let not_cadastrado = true;
+        for (let i = 0; i < emails_cadastrados.length; i++) {
+            for (let j = 0 ; j < emails_cadastrados.length ; j++) {
+                if (j > emails_cadastrados.length){
+                    break
+                }
+                if (emails_cadastrados[i] != emails_cadastrados[j]) {
+                    not_cadastrado = true;
+                } else {
+                    not_cadastrado = false;
+                    alert("E-mail já cadastrado!")
+                }
+            }
         }
-            if (true){
-                if (verificationEmail) {
-                    if (verificarPsswrd) {
+            if (not_cadastrado){
+                if (verificarEmail()) {
+                    if (verificarPsswrd()) {
                         div_cadastro.innerHTML = `<span class = "verificacaoTrue">Cadastro realizado com sucesso</span>`;
                         emails_cadastrados.push(email);
                         passwords_cadastrados.push(password);
                     }
                 } else {
-                    div_cadastro.innerHTML = `<span class="verificacaoFalse">E-mail ou Senha invalidos. Insira-os novamente.</span>`
+                    div_cadastro.innerHTML += `<span class="verificacaoFalse">E-mail ou Senha invalidos. Insira-os novamente.</span>`
                 }}
         console.log(emails_cadastrados);
         console.log(passwords_cadastrados);
