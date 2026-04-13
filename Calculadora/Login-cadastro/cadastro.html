@@ -109,31 +109,37 @@
         var email = inp_email.value.toLowerCase();
         let password = inp_password.value
         let not_cadastrado = true;
-        for (let i = 0; i < emails_cadastrados.length; i++) {
-            for (let j = 0 ; j < emails_cadastrados.length ; j++) {
-                if (j > emails_cadastrados.length){
-                    break
-                }
-                if (emails_cadastrados[i] != emails_cadastrados[j]) {
-                    not_cadastrado = true;
-                } else {
-                    not_cadastrado = false;
-                    alert("E-mail já cadastrado!")
-                }
-            }
-        }
+        
             if (not_cadastrado){
-                if (verificarEmail()) {
-                    if (verificarPsswrd()) {
-                        div_cadastro.innerHTML = `<span class = "verificacaoTrue">Cadastro realizado com sucesso</span>`;
+                if (verificarEmail() && verificarPsswrd()) {
                         emails_cadastrados.push(email);
                         passwords_cadastrados.push(password);
-                    }
+                        
+                    
                 } else {
-                    div_cadastro.innerHTML += `<span class="verificacaoFalse">E-mail ou Senha invalidos. Insira-os novamente.</span>`
+                    alert("E-mail ou Senha invalidos. Insira-os novamente.");
                 }}
+            for (let i = 0; i < emails_cadastrados.length; i++) {
+                for (let j = i + 1 ; j < emails_cadastrados.length ; j++) {
+                    if (emails_cadastrados[i] == emails_cadastrados[j]) {
+                        not_cadastrado = false;
+                        alert("E-mail já cadastrado!");
+                    } else {
+                        not_cadastrado = true;
+                    }
+                }
+                if (!not_cadastrado) {
+                    div_emailVerification.innerHTML = `<span class="text1 verificacaoFalse">E-mail já cadastrado</span>`;
+                    emails_cadastrados.pop();
+                    passwords_cadastrados.pop();
+                break
+                } else {
+                    alert("E-mail cadastrado com sucesso!");
+                }
+                }
         console.log(emails_cadastrados);
         console.log(passwords_cadastrados);
         
+    
     }
 </script>
