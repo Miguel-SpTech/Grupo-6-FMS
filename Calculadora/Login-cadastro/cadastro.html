@@ -18,7 +18,7 @@
         <li><a href="#">FAQ</a></li>
         <li><a href="#">Simulação</a></li>
     </ul>
-<a href="cadastro.html">
+<a href="login.html">
     <button type="button" id="login" onclick="Login()">Login</button>
     </a>
 </div>
@@ -37,8 +37,6 @@
         <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
         <span id="span_psswrdLower">1 letra MINUSCULA</span>
     </div>
-  
-   
     <br>
     <button type="button" id="btnentrar" onclick="cadastrar()">Cadastrar</button>
       </div>
@@ -114,6 +112,7 @@
                 if (verificarEmail() && verificarPsswrd()) {
                         emails_cadastrados.push(email);
                         passwords_cadastrados.push(password);
+                        localStorage.setItem(email, password)
                         
                     
                 } else {
@@ -135,6 +134,8 @@
                 break
                 } else {
                     alert("E-mail cadastrado com sucesso!");
+
+                    setTimeout(window.location.href="file:///C:/Users/migam/OneDrive/Documentos/Grupo6/Grupo-6-FMS/Calculadora/Login-cadastro/login.html",4000)
                 }
                 }
         console.log(emails_cadastrados);
