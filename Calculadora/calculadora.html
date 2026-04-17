@@ -70,7 +70,7 @@
         
         // Cálculo básico de rotatividade
         const clientes = faturamento / ticket;
-        const rotatividade = clientes / mesas;
+        const rotatividade = (clientes / mesas).toFixed(0);
         
         console.log({faturamento, ticket, mesas, rotatividade});
         // Aqui você pode adicionar lógica para gerar o gráfico
