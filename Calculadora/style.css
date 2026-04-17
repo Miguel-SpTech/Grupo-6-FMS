@@ -11,21 +11,10 @@ body, html {
 
 
 .pagina{
-    width: 130vh;
+    width: 123vh;
     margin: 0 auto;
     height: 100vh;
     padding: 5vh 3vw;
-}
-
-
-.box-calculadora {
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: max-content;
-    padding: 50px;
 }
 
 header {
@@ -47,4 +36,64 @@ header span {
     display: block;
     width: 52%;
     opacity: 0.9;
+}
+
+.container-main{
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.box-calculadora {
+    width: 70vw;
+    border: 1px solid rgba(97, 89, 89, 0.2);
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;   
+}
+.box-calculadora h2 {
+    color: #8b1a1a;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-family: "Fraunces", Georgia, serif;
+}
+
+.grupo-calculadora {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-weight: 400;
+}
+
+.grupo-calculadora p{
+    gap: 5px;
+    width: 100%;
+}
+
+.grupo-calculadora label{
+margin-bottom: 10px;
+font-family: DM Sans, system-ui, sans-serif;
+}
+
+.grupo-calculadora input{
+    background-color: #fcf8f0;
+    color: #333;
+    border: solid 1px rgba(97, 89, 89, 0.2);
+    height: 5vh;
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: 0 15px;
+    gap: 0;
+}
+
+.grupo-calculadora .dica {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 5px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }

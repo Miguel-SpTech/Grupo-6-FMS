@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -14,18 +14,43 @@
             <h1>Calculadora Financeira</h1>
             <span>Informe o faturamento diário, o ticket médio e quantas mesas você opera. A ferramenta estima a rotatividade média por mesa e indica, em linguagem clara, se o ritmo parece adequado e qual ganho financeiro poderia surgir com um controle de fluxo mais assertivo — como o que nosso serviço propõe.</span>
         </header>
-        <div class="box-calculadora">
-            <div class="faturamento">
-                <p>Qual seu faturamento bruto em um dia convencional</p>
-                <input type="number" id="ipt_faturamentoDia">
+        
+        <div class="container-main">
+            <!-- Left Panel -->
+            <div class="box-calculadora">
+                <h2>Dados do restaurante</h2>
+                
+                <div class="grupo-calculadora">
+                    <label>Faturamento diário (R$)</label>
+                    <input type="number" id="ipt_faturamentoDia" placeholder="Ex.: 1500">
+                    <p class="dica">Valor total faturado em um dia típico de operação.</p>
+                    
+                </div>
+                
+                <div class="grupo-calculadora">
+                    <label>Ticket médio (R$)</label>
+                    <input type="number" id="ipt_ticketMedio" placeholder="Ex.: 85">
+                    <p class="dica">Consideramos o ticket como valor médio por cliente (conta fechada por uso da mesa).</p>
+                    
+                </div>
+                
+                <div class="grupo-calculadora">
+                    <label>Quantidade de mesas</label>
+                    <input type="number" id="ipt_mesas" placeholder="Ex.: 18">
+                    <p class="dica">Mesas simultâneas disponíveis no salão.</p>
+                    
+                </div>
+                
+                <button class="btn-analizar" onclick="analisarRotatividade()">Analisar rotatividade e retorno</button>
             </div>
-            <div class="ticket">
-                <p>Quanto alguém gasta em média no seu restaurante?</p>
-                <input type="number" id="ipt_ticketMedio">
-            </div>
-            <div class="mesas">
-                <p>Quantas mesas voce possui no seu restaurante?</p>
-                <input type="number" id="ipt_mesas">
+            
+            <!-- Right Panel -->
+            <div class="box-grafico">
+                <h2>Comparativo em gráfico</h2>
+                <p class="texto-grafico">Faturamento diário atual frente a cenários conservadores de ganho com melhoria de fluxo (sem alterar ticket nem número de mesas).</p>
+                <div id="grafico-container" class="grafico-container">
+                    <p class="placeholder-grafico">Preencha o formulário e envie para visualizar o gráfico.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -33,5 +58,21 @@
 
 </html>
 <script>
-    
+    function analisarRotatividade() {
+        const faturamento = parseFloat(document.getElementById('ipt_faturamentoDia').value);
+        const ticket = parseFloat(document.getElementById('ipt_ticketMedio').value);
+        const mesas = parseFloat(document.getElementById('ipt_mesas').value);
+        
+        if (!faturamento || !ticket || !mesas) {
+            alert('Por favor, preencha todos os campos');
+            return;
+        }
+        
+        // Cálculo básico de rotatividade
+        const clientes = faturamento / ticket;
+        const rotatividade = clientes / mesas;
+        
+        console.log({faturamento, ticket, mesas, rotatividade});
+        // Aqui você pode adicionar lógica para gerar o gráfico
+    }
 </script>
