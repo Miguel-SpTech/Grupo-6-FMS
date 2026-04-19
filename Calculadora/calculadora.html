@@ -47,15 +47,25 @@
 
                 <button class="btn-analizar" onclick="analisarRotatividade()">Analisar rotatividade e retorno</button>
                 <div>
-                    <div class="resultados" >
-                        <div class="titulo-resultados"><h2>Resultado da análise</h2></div>
+                    <div class="resultados">
+                        <div class="titulo-resultados">
+                            <h2>Resultado da análise</h2>
+                        </div>
                         <div class="caixa-resultados">
-                            <div class="grupo-resultados"><h4>Atendimentos/dia (est.)</h4><span>1,0</span></div>
-                            <div class="grupo-resultados"><h4>Rotatividade/mesa</h4><span>0.10x</span></div>
-                            <div class="grupo-resultados"><h4>Leitura Rapida</h4><span>Baixa</span></div>
+                            <div class="grupo-resultados">
+                                <h4>Atendimentos/dia (est.)</h4><span>1,0</span>
+                            </div>
+                            <div class="grupo-resultados">
+                                <h4>Rotatividade/mesa</h4><span>0.10x</span>
+                            </div>
+                            <div class="grupo-resultados">
+                                <h4>Leitura Rapida</h4><span>Baixa</span>
+                            </div>
                         </div>
                         <div class="texto-resultados">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod repellendus dolore, libero delectus porro corrupti! Ea dicta suscipit in nostrum. Sit animi enim veniam modi maxime, assumenda tempore sint excepturi.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod repellendus dolore, libero
+                                delectus porro corrupti! Ea dicta suscipit in nostrum. Sit animi enim veniam modi
+                                maxime, assumenda tempore sint excepturi.</p>
                         </div>
                     </div>
                 </div>
@@ -66,7 +76,7 @@
                 <h2>Comparativo em gráfico</h2>
                 <p class="texto-grafico">Faturamento diário atual frente a cenários conservadores de ganho com melhoria
                     de fluxo (sem alterar ticket nem número de mesas).</p>
-                    <div class="div-grafico"></div>
+                <div class="div-grafico"><canvas id="myChart"></canvas></div>
                 <div id="grafico-container" class="placeholder-grafico">
                     <p>Preencha o formulário e envie para visualizar o gráfico.</p>
                 </div>
@@ -79,22 +89,109 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+    let clientes = 0;
+    let rotatividade = 0;
+    let leitura = '';
+    let chartInstance = null;
     function analisarRotatividade() {
-        const faturamento = parseFloat(document.getElementById('ipt_faturamentoDia').value);
-        const ticket = parseFloat(document.getElementById('ipt_ticketMedio').value);
-        const mesas = parseFloat(document.getElementById('ipt_mesas').value);
+        let faturamento = Number(ipt_faturamentoDia.value);
+        let ticket = Number(ipt_ticketMedio.value);
+        let mesas = Number(ipt_mesas.value);
 
         if (!faturamento || !ticket || !mesas) {
             alert('Por favor, preencha todos os campos');
             return;
         }
 
-        // Cálculo básico de rotatividade
-        const clientes = faturamento / ticket;
-        const rotatividade = clientes / mesas;
+        clientes = Number((faturamento / ticket).toFixed(1));
+        rotatividade = Number((clientes / mesas).toFixed(2));
+        if (rotatividade < 1.5) {
+            leitura = 'Baixa';
+        } else if (rotatividade >= 1.5 && rotatividade < 2) {
+            leitura = 'Moderada';
+        } else {
+            leitura = 'Recomendada';
+        }
 
-        console.log({ faturamento, ticket, mesas, rotatividade });
-        // Aqui você pode adicionar lógica para gerar o gráfico
+
+        console.log({ faturamento, ticket, mesas, rotatividade, clientes, leitura });
+
+        gerarGrafico(faturamento, rotatividade);
     }
+
+    function gerarGrafico(faturamento, rotatividade) {
+        const ctx = document.getElementById('myChart');
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+        Chart.defaults.backgroundColor = '#8b1a1a';
+        Chart.defaults.borderColor = '#8b1a1a';
+        Chart.defaults.color = '#000';
+        chartInstance = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Hoje (estimado)', '+10% de eficiência', '+20% de eficiência'],
+                datasets: [{
+                    label: 'Faturamento Diário (R$)',
+                    data: [faturamento, faturamento * 1.1, faturamento * 1.2],
+                    backgroundColor: ['rgba(139, 26, 26, 0.85)', 'rgba(139, 26, 26, 0.55)', 'rgba(139, 26, 26, 0.35)'],
+                    borderColor: ['#5f1212', '#8b1a1a', '#8b1a1a'],
+                    borderWidth: 1,
+                    borderRadius: 8,
+                    maxBarThickness: 56,
+                }]
+            },
+            options: {
+                 animation: {
+                    y: {
+                        duration: 2000, 
+                        from: 1000,     
+                        easing: 'easeOutQuart' 
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return ' ' + context.parsed.y.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+                            }
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#5c4a4a',
+                            callback: function (value) {
+                                return 'R$ ' + value;
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(139, 26, 26, 0.08)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#5c4a4a',
+                            maxRotation: 42,
+                            minRotation: 0,
+                            font: { size: 11 }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 </script>
