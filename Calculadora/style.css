@@ -13,8 +13,8 @@ body, html {
 .pagina{
     width: 123vh;
     margin: 0 auto;
-    height: 100vh;
-    padding: 5vh 3vw;
+    height: 100%;
+    padding: 4vh 3vw;
 }
 
 header {
@@ -46,14 +46,16 @@ header span {
 
 
 .box-calculadora {
-    width: 70vw;
+    width: 60vw;
     border: 1px solid rgba(97, 89, 89, 0.2);
     background-color: white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 30px;   
+    padding: 30px;  
+    padding-bottom: 15px;
+    height: 100%;
 }
 .box-calculadora h2 {
     color: #8b1a1a;
@@ -96,4 +98,115 @@ font-family: DM Sans, system-ui, sans-serif;
     margin-top: 5px;
     font-weight: 600;
     margin-bottom: 20px;
+}
+
+.btn-analizar {
+    background-color: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.titulo-resultados {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #8b1a1a;
+    margin-top: 5px;
+    font-family: "Fraunces", Georgia, serif;
+}
+
+.resultados {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.caixa-resultados {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.grupo-resultados {
+    background-color: #fcf8f0;
+    border: solid 1px rgba(97, 89, 89, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    color: #333;
+    
+}
+
+.grupo-resultados h4{
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    font-family: "DM Sans", system-ui, sans-serif;
+}
+
+.grupo-resultados span{
+    font-size: 1rem;
+    color: #8b1a1a;
+    font-weight: 600;
+    font-family: "DM Sans", system-ui, sans-serif;
+}
+
+.texto-resultados {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #000000;
+    font-size: 0.9rem;
+    font-family: "DM Sans", system-ui, sans-serif;
+    height: 7vh;
+    align-items: center;
+    padding-top: 10px;
+    opacity: 0.6;
+}
+
+.box-grafico{
+    border: 1px solid rgba(97, 89, 89, 0.2);
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin: 0 20px;
+    height: 55vh;
+    align-items: flex-start;
+    width: 40vw;
+}
+
+.box-grafico h2 {
+    color: #8b1a1a;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-family: "Fraunces", Georgia, serif;
+}
+
+.texto-grafico, .placeholder-grafico p {
+    color: black;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+}
+
+.div-grafico{
+    height: 100%;
 }
