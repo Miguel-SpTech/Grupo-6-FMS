@@ -1,0 +1,268 @@
+/* ESTILO SIMPLIFICADO FMS */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+  font-family: 'Poppins', 
+  sans-serif; 
+}
+body { 
+  background-color: #F5EDE0; 
+  color: #2D1A0E; 
+}
+
+/* NAVBAR */
+.navbar { 
+  background: #8B1A1A;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px; 
+  position: sticky;
+  top: 0; 
+  z-index: 100; 
+}
+.logo-icon img { 
+  width: 9%; 
+  height: 9%;
+}
+.navbar-links { 
+  display: flex; 
+  gap: 30px;
+  color: #fff; 
+  font-size: 0.9rem; 
+}
+.navbar-btn { 
+  border: 2px solid #E8622A; 
+  color: #E8622A; 
+  padding: 5px 20px; 
+  border-radius: 20px; 
+  font-weight: 600; 
+  cursor: pointer; 
+}
+
+/* HERO */
+.hero { 
+  
+  background-image: url(fundoo.png);
+  min-height: 80vh; display: flex; 
+  align-items: center; 
+  padding: 50px; 
+  position: relative; 
+  overflow: hidden; 
+}
+
+
+
+
+/* SOBRE */
+.sobre { 
+  padding: 80px 50px; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+}
+.sobre h2 { 
+  font-size: 2.2rem; 
+  margin-bottom: 40px; 
+}
+.brand { 
+  color: #8B1A1A; 
+  font-weight: 900; 
+}
+.about-grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1.5fr; 
+  gap: 50px; 
+  align-items: center; 
+}
+
+/* PASSOS */
+.passos { 
+  padding: 50px;
+  max-width: 800px; 
+  margin: 0 auto; 
+}
+.passos-card { 
+  background: #fff; 
+  padding: 20px; 
+  border-radius: 10px; 
+  margin-bottom: 15px; 
+  display: flex; 
+  gap: 20px; 
+  align-items: flex-start; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+.num { 
+  font-size: 2rem; 
+  font-weight: 900; 
+  color: #E8622A; 
+}
+.passos-info h3 { 
+  color: #8B1A1A; 
+  font-size: 1rem; 
+}
+.passos-info p { 
+  font-size: 0.9rem; 
+}
+
+/* DIFERENCIAL */
+.diff { 
+  padding: 100px 50px; 
+  background: #F5EDE0; 
+  display: flex; 
+  justify-content: center; 
+}
+.diff-container { 
+  background: #fff; 
+  padding: 50px; 
+  border-radius: 20px; 
+  text-align: center; 
+  max-width: 800px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+}
+.diff-container p { 
+  margin: 20px 0 40px; 
+  line-height: 1.8; 
+}
+
+/* MVV (MISSÃO VISÃO VALORES) */
+.mvv { 
+  padding: 80px 50px; 
+}
+.mvv-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px;
+  max-width: 1100px; 
+  margin: 0 auto;
+ }
+
+.mvv-card { 
+  background: #F5EDE0; 
+  border: 1px solid #EFE0CC; 
+  padding: 40px 30px; border-radius: 15px; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+  text-align: center; 
+  min-height: 350px; 
+}
+  
+.mvv-card h3 { 
+  font-size: 1.8rem; 
+  margin-bottom: 20px; 
+  color: #2D1A0E; 
+  letter-spacing: 2px; 
+}
+
+.mvv-card p, .mvv-card ul { 
+  font-size: 0.95rem; 
+  line-height: 1.6; 
+  text-align: left; 
+}
+.mvv-card ul { 
+  list-style: disc; 
+  padding-left: 20px; 
+}
+
+/* CONTATO */
+.contact { 
+  background: #8B1A1A; 
+  padding: 80px 50px; 
+  text-align: center; 
+  color: #fff; 
+}
+.contact-intro { 
+  font-size: 1.1rem; 
+  margin-bottom: 20px; 
+  opacity: 0.9; 
+}
+.contact h2 { 
+  font-size: 2.5rem; 
+  margin-bottom: 40px; 
+}
+.contact-brand { 
+  color: #E8622A; 
+  font-style: italic; 
+}
+.contact-form { 
+  max-width: 600px; 
+  margin: 0 auto; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+}
+.form-row { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 15px; 
+}
+.contact-form input, .contact-form textarea { 
+  padding: 15px 25px; 
+  border-radius: 30px; 
+  border: none; 
+  background: #F5EDE0; 
+  font-size: 0.9rem; 
+}
+.contact-form textarea { 
+  border-radius: 20px; 
+  height: 120px; 
+  resize: none; 
+}
+.contact-form button { 
+  background: #E8622A; 
+  color: #fff; 
+  border: none; 
+  padding: 15px; 
+  border-radius: 30px; 
+  font-weight: 700; 
+  cursor: pointer; 
+  margin-top: 10px; 
+}
+
+/* FOOTER */
+.footer { 
+  background: #8B1A1A; 
+  padding: 60px 50px 20px; 
+  color: #fff; 
+  border-top: 1px solid rgba(255,255,255,0.2); 
+}
+.footer-main {
+  max-width: 1100px; 
+  margin: 0 auto; 
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start; 
+  margin-bottom: 50px; 
+}
+.footer-logo-box { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 10px; 
+}
+.footer-logo-img img{ 
+  width: 160px; 
+  height: 110px; 
+  position: relative; 
+}
+
+.footer-brand-name { 
+  font-size: 2.5rem; 
+  font-weight: 900; 
+}
+.footer-columns { 
+  display: flex; 
+  gap: 60px; 
+}
+.footer-col h4 { 
+  font-size: 0.8rem; 
+  margin-bottom: 20px; 
+  opacity: 0.7; 
+  letter-spacing: 1px;
+ }
+.footer-col span { 
+  display: block; 
+  font-size: 0.85rem; 
+  margin-bottom: 10px; 
+  cursor: pointer; 
+}
