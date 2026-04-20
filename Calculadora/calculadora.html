@@ -47,23 +47,24 @@
 
                 <button class="btn-analizar" onclick="analisarRotatividade()">Analisar rotatividade e retorno</button>
                 <div>
-                    <div class="resultados">
+                    <div class="resultados" id="resultados" style="display: none;">
                         <div class="titulo-resultados">
                             <h2>Resultado da análise</h2>
                         </div>
                         <div class="caixa-resultados">
                             <div class="grupo-resultados">
-                                <h4>Atendimentos/dia (est.)</h4><span>1,0</span>
+                                <h4>Atendimentos/dia (est.)</h4><span id="resultado_clientes"></span>
                             </div>
                             <div class="grupo-resultados">
-                                <h4>Rotatividade/mesa</h4><span>0.10x</span>
+                                <h4>Rotatividade/mesa</h4><span id="resultado_rotatividade"></span>
                             </div>
                             <div class="grupo-resultados">
-                                <h4>Leitura Rapida</h4><span>Baixa</span>
+                                <h4>Leitura Rapida</h4><span id="resultado_leitura"></span>
                             </div>
                         </div>
                         <div class="texto-resultados">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod repellendus dolore, libero
+                            <p id="texto_resultados">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                                repellendus dolore, libero
                                 delectus porro corrupti! Ea dicta suscipit in nostrum. Sit animi enim veniam modi
                                 maxime, assumenda tempore sint excepturi.</p>
                         </div>
@@ -71,14 +72,25 @@
                 </div>
             </div>
 
+
+
+
+
+
+
+
+
+
+
+
             <!-- Right Panel -->
-            <div class="box-grafico">
+            <div class="box-grafico" id="box_grafico" style="display: none;">
                 <h2>Comparativo em gráfico</h2>
                 <p class="texto-grafico">Faturamento diário atual frente a cenários conservadores de ganho com melhoria
                     de fluxo (sem alterar ticket nem número de mesas).</p>
                 <div class="div-grafico"><canvas id="myChart"></canvas></div>
                 <div id="grafico-container" class="placeholder-grafico">
-                    <p>Preencha o formulário e envie para visualizar o gráfico.</p>
+                    <p id="dica_grafico">Preencha o formulário e envie para visualizar o gráfico.</p>
                 </div>
             </div>
         </div>
@@ -95,6 +107,8 @@
     let rotatividade = 0;
     let leitura = '';
     let chartInstance = null;
+    let faturamentoModerado = 0;
+    let faturamentoRecomendado = 0;
     function analisarRotatividade() {
         let faturamento = Number(ipt_faturamentoDia.value);
         let ticket = Number(ipt_ticketMedio.value);
@@ -115,83 +129,296 @@
             leitura = 'Recomendada';
         }
 
+        if (rotatividade < 1.5) {
+            rotatividadeideal = 1.5;
+            let clientesideais = mesas * rotatividadeideal;
+            faturamentoModerado = clientesideais * ticket;
+        }
+
+        if (rotatividade < 2) {
+            rotatividadeideal = 2;
+            let clientesideais = mesas * rotatividadeideal;
+            faturamentoRecomendado = clientesideais * ticket;
+        }
 
         console.log({ faturamento, ticket, mesas, rotatividade, clientes, leitura });
+        mostrarResultados(clientes, rotatividade, leitura);
+        gerarGrafico(faturamento);
 
-        gerarGrafico(faturamento, rotatividade);
+
     }
 
-    function gerarGrafico(faturamento, rotatividade) {
-        const ctx = document.getElementById('myChart');
-        if (chartInstance) {
-            chartInstance.destroy();
+    function mostrarResultados(clientes, rotatividade, leitura) {
+        if (leitura == "Baixa") {
+            resultados.style.display = 'block';
+            texto_resultados.innerHTML = `A rotatividade por mesa está <span style="color: #8b1a1a;">abaixo do recomendado</span>, indicando que as mesas estão sendo
+            ocupadas por períodos mais longos. Isso pode resultar em <span style="color: #8b1a1a; font-weight: bold;">menos clientes atendidos por dia</span> e potencialmente <span style="color: #8b1a1a; font-weight: bold;">menor faturamento</span>. Considerar estratégias para
+            aumentar a eficiência do atendimento e reduzir o tempo de permanência nas mesas pode ser benéfico para melhorar o fluxo e aumentar o número de clientes
+            atendidos.<br><br> Com o nosso serviço, é possível identificar oportunidades para otimizar o atendimento e aumentar a rotatividade, o que pode levar a
+            um <span style="color: #8b1a1a; font-weight: bold;">aumento significativo no faturamento</span> ao longo do tempo, indicando que as mesas estão sendo ocupadas por períodos mais longos. Isso pode resultar em
+            <span style="color: #8b1a1a; font-weight: bold;">menos clientes atendidos por dia</span> e potencialmente <span style="color: #8b1a1a; font-weight: bold;">menor faturamento</span>.
+            <br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
+        } else if (leitura == "Moderada") {
+            resultados.style.display = 'block';
+            texto_resultados.innerHTML = `A rotatividade por mesa está em um nível moderado, o que sugere que as mesas estão sendo ocupadas por períodos razoáveis.
+             No entanto, ainda há espaço para melhorias. Otimizar o atendimento e reduzir o tempo de permanência nas mesas pode ajudar a aumentar o número de clientes
+              atendidos por dia e potencialmente <span style="color: #8b1a1a; font-weight: bold;">aumentar o faturamento</span>.<br><br>Com o nosso serviço, é possível identificar oportunidades para melhorar o fluxo de 
+              clientes e aumentar a eficiência do atendimento, o que pode resultar em um <span style="color: #8b1a1a; font-weight: bold;">aumento significativo no faturamento</span> ao longo do tempo.
+              <br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
+        } else {
+            resultados.style.display = 'block';
+            texto_resultados.innerHTML = `A rotatividade por mesa está em um nível recomendado, indicando que as mesas estão sendo 
+            ocupadas por períodos adequados. Isso sugere que o fluxo de clientes é eficiente, permitindo um bom número de atendimentos 
+            por dia. Manter essa eficiência é importante para sustentar o faturamento e garantir uma boa experiência para os clientes.
+            <br><br>Continuar monitorando a rotatividade e buscar oportunidades para otimizar ainda mais o atendimento pode ajudar a manter
+            ou <span style="color: #8b1a1a; font-weight: bold;">aumentar o faturamento</span> ao longo do tempo. Com o nosso serviço, é possível identificar oportunidades para melhorar o fluxo de 
+            clientes e aumentar a eficiência do atendimento, o que pode resultar em um <span style="color: #8b1a1a; font-weight: bold;">aumento significativo no faturamento</span> ao longo do tempo.
+            <br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
         }
-        Chart.defaults.backgroundColor = '#8b1a1a';
-        Chart.defaults.borderColor = '#8b1a1a';
-        Chart.defaults.color = '#000';
-        chartInstance = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Hoje (estimado)', '+10% de eficiência', '+20% de eficiência'],
-                datasets: [{
-                    label: 'Faturamento Diário (R$)',
-                    data: [faturamento, faturamento * 1.1, faturamento * 1.2],
-                    backgroundColor: ['rgba(139, 26, 26, 0.85)', 'rgba(139, 26, 26, 0.55)', 'rgba(139, 26, 26, 0.35)'],
-                    borderColor: ['#5f1212', '#8b1a1a', '#8b1a1a'],
-                    borderWidth: 1,
-                    borderRadius: 8,
-                    maxBarThickness: 56,
-                }]
-            },
-            options: {
-                 animation: {
-                    y: {
-                        duration: 2000, 
-                        from: 1000,     
-                        easing: 'easeOutQuart' 
-                    }
+        box_grafico.style.display = 'block';
+        resultado_clientes.innerHTML = clientes;
+        resultado_rotatividade.innerHTML = rotatividade;
+        resultado_leitura.innerHTML = leitura;
+        dica_grafico.innerHTML = "O aumento de faturamento é evidente com o aumento de rotatividade efetiva (mais contas por mesa ao longo do dia). Percentuais são ilustrativos para conversa comercial.";
+    }
+
+    function gerarGrafico(faturamento) {
+        if (leitura == "Baixa") {
+            const ctx = document.getElementById('myChart');
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+            Chart.defaults.backgroundColor = '#8b1a1a';
+            Chart.defaults.borderColor = '#8b1a1a';
+            Chart.defaults.color = '#000';
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Faturamento Atual', 'Faturamento Moderado', 'Faturamento Recomendado'],
+                    datasets: [{
+                        label: 'Faturamento Diário (R$)',
+                        data: [faturamento, faturamentoModerado, faturamentoRecomendado],
+                        backgroundColor: ['rgba(139, 26, 26, 0.85)', 'rgba(139, 26, 26, 0.55)', 'rgba(139, 26, 26, 0.35)'],
+                        borderColor: ['#5f1212', '#8b1a1a', '#8b1a1a'],
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        maxBarThickness: 56,
+                    }]
                 },
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function (context) {
-                                return ' ' + context.parsed.y.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
-                            }
-                        }
-                    }
-                },
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            color: '#5c4a4a',
-                            callback: function (value) {
-                                return 'R$ ' + value;
-                            }
-                        },
-                        grid: {
-                            color: 'rgba(139, 26, 26, 0.08)'
+                options: {
+                    animation: {
+                        y: {
+                            duration: 1000,
+                            from: 1000,
+                            easing: 'easeOutQuart'
                         }
                     },
-                    x: {
-                        grid: {
+                    plugins: {
+                        legend: {
                             display: false
                         },
-                        ticks: {
-                            color: '#5c4a4a',
-                            maxRotation: 42,
-                            minRotation: 0,
-                            font: { size: 11 }
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return 'R$ ' + context.parsed.y.toFixed(2);
+                                }
+                            }
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            border:{
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            },
+                            ticks: {
+                                color: '#5c4a4a',
+                                callback: function (value) {
+                                    return 'R$ ' + value;
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            }
+                        },
+                        x: {
+                            border:{
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            },
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#5c4a4a',
+                                maxRotation: 42,
+                                minRotation: 0,
+                                font: { size: 11 }
+                            }
                         }
                     }
                 }
+            });
+        }
+        else if (leitura == "Moderada") {
+            const ctx = document.getElementById('myChart');
+            if (chartInstance) {
+                chartInstance.destroy();
             }
-        });
+            Chart.defaults.backgroundColor = '#8b1a1a';
+            Chart.defaults.borderColor = '#8b1a1a';
+            Chart.defaults.color = '#000';
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Faturamento Atual', 'Faturamento Recomendado', '+10% de eficiência'],
+                    datasets: [{
+                        label: 'Faturamento Diário (R$)',
+                        data: [faturamento, faturamentoRecomendado, faturamentoRecomendado * 1.1],
+                        backgroundColor: ['rgba(139, 26, 26, 0.85)', 'rgba(139, 26, 26, 0.55)', 'rgba(139, 26, 26, 0.35)'],
+                        borderColor: ['#5f1212', '#8b1a1a', '#8b1a1a'],
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        maxBarThickness: 56,
+                    }]
+                },
+                options: {
+                    animation: {
+                        y: {
+                            duration: 1000,
+                            from: 1000,
+                            easing: 'easeOutQuart'
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return 'R$ ' + context.parsed.y.toFixed(2);
+                                }
+                            }
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            border:{
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            },
+                            ticks: {
+                                color: '#5c4a4a',
+                                callback: function (value) {
+                                    return 'R$ ' + value;
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            }
+                        },
+                        x: {
+                            border:{
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            },
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#5c4a4a',
+                                maxRotation: 42,
+                                minRotation: 0,
+                                font: { size: 11 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        else {
+            const ctx = document.getElementById('myChart');
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+            Chart.defaults.backgroundColor = '#8b1a1a';
+            Chart.defaults.borderColor = '#8b1a1a';
+            Chart.defaults.color = '#000';
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Hoje (estimado)', '+10% de eficiência', '+20% de eficiência'],
+                    datasets: [{
+                        label: 'Faturamento Diário (R$)',
+                        data: [faturamento, faturamento * 1.1, faturamento * 1.2],
+                        backgroundColor: ['rgba(139, 26, 26, 0.85)', 'rgba(139, 26, 26, 0.55)', 'rgba(139, 26, 26, 0.35)'],
+                        borderColor: ['#5f1212', '#8b1a1a', '#8b1a1a'],
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        maxBarThickness: 56,
+                    }]
+                },
+                options: {
+                    animation: {
+                        y: {
+                            duration: 1000,
+                            from: 1000,
+                            easing: 'easeOutQuart'
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return 'R$ ' + context.parsed.y.toFixed(2);
+                                }
+                            }
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            border:{
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            },
+                            ticks: {
+                                color: '#5c4a4a',
+                                callback: function (value) {
+                                    return 'R$ ' + value;
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            }
+                        },
+                        x: {
+                            border:{
+                                color: 'rgba(139, 26, 26, 0.08)'
+                            },
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#5c4a4a',
+                                maxRotation: 42,
+                                minRotation: 0,
+                                font: { size: 11 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+
     }
 
 </script>
