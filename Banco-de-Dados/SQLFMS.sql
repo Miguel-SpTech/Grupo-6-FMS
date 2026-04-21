@@ -36,7 +36,6 @@ CREATE TABLE Endereco (
     numero VARCHAR(10),
     bairro VARCHAR(100) not null,
     cidade varchar(100) not null,
-    estado varchar(100) not null,
     uf char(2) not null,
     complemento varchar(100)
     );
@@ -44,22 +43,22 @@ CREATE TABLE Endereco (
 
 CREATE TABLE EmpresaTelefone (
     idEmpresaTelefone int primary key auto_increment,
-    fkEmpresa INT,
-    numero varchar(17),
-    tipoTelefone varchar(16),
+    fkEmpresa INT not null,
+    numero varchar(17) not null,
+    tipoTelefone varchar(16) not null,
     constraint chk_tipo_telefone check (tipoTelefone in ('Telefone Voip', 'Telefone Fixo', 'Telefone Celular')),
     constraint fk_empresa_empresatelefone FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
-);
+); 
 
 
 CREATE TABLE Cliente (
     idCliente INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) not null,
     email VARCHAR(100) not null,
-    cpf CHAR(11) not null,
+    cpf CHAR(11) not null unique,
     fkEmpresa INT not null,
     constraint fk_empresa_cliente FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
-);
+); 
 
 
 CREATE TABLE Blocos (
@@ -72,25 +71,25 @@ CREATE TABLE Blocos (
 
 CREATE TABLE Sensor (
     idSensor INT AUTO_INCREMENT PRIMARY KEY,
-    data_instalacao DATETIME,
-    data_manutencao DATETIME,
+    data_instalacao DATE,
+    data_manutencao DATE,
     status VARCHAR(7) not null,
     fkEmpresa int not null,
     fkBloco CHAR(2) not null,
     constraint fk_empresa_bloco_sensor foreign key (fkEmpresa, fkBloco) references Blocos(fkEmpresa, bloco),
     constraint chk_status_sensor check (status in ('Inativo', 'Ativo'))
-);
+); 
 
 
 CREATE TABLE Registros ( 
     idRegistro INT AUTO_INCREMENT PRIMARY KEY,
-    data timestamp default (current_timestamp()),
+    data datetime default (current_timestamp()),
     leitura tinyint,
     fkSensor INT,
     tipo_leitura VARCHAR(7),
     constraint fk_sensor_registros FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor),
     constraint chk_tipo_registros check(tipo_leitura in ('Mapa', 'Entrada', 'Saída'))
-);
+); 
 
 
 -------------------- INSERT EMPRESA MATRIZ --------------------
@@ -105,16 +104,8 @@ insert into Empresa values
 
 -------------------- INSERT EMPRESA FILIAIS -----------------
 -- nome fantasia é o mesmo, razão social possui diferenca no complemento
-truncate table Empresa;
-drop table Usuario;
-drop table cliente;
-drop table blocos;
-drop table Sensor;
-drop table Registros;
-drop table EmpresaTelefone;
-desc Empresa;
-select * from Endereco;
-select * from Empresa;
+
+
 INSERT INTO Empresa values
 (default, '11222333000222', 'Pizzaria Di Napoli Alimentos Ltda - Comércio', 'Bella Napoli', 'Ativo', 1, 6),
 (default, '11222333000333', 'Pizzaria Di Napoli Alimentos Ltda - Centro Histórico', 'Bella Napoli', 'Inativo', 1, 8),
@@ -356,71 +347,55 @@ INSERT INTO Sensor VALUES
 
 
 ----------------- insert leitor --------------------
-CREATE TABLE Leitores (
-    idLeitura INT AUTO_INCREMENT PRIMARY KEY,
-    data DATETIME,
-    leitura TINYINT,
-    fkSensor INT,
-    tipo_leitura VARCHAR(45),
-    FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
-);
-alter table Leitores modify column data datetime default (current_timestamp());
+select * from Sensor order by fkEmpresa;
+----------- Empresa 1
 -- sensor 1
-insert into Leitores values
-(null, default, 1, 1, '');
-insert into Leitores values
-(null, default, 0, 1, '');
+insert into Registros values
+(null, default, 1, 1, 'Entrada');
+insert into Registros values
+(null, default, 0, 1, 'Entrada');
 -- sensor 2
-Insert into Leitores values
-(null, default, 1, 2, '');
-insert into Leitores values
-(null, default, 0, 2, '');
+Insert into Registros values
+(null, default, 1, 2, 'Saída');
+insert into Registros values
+(null, default, 0, 2, 'Saída');
 -- sensor 3
-insert into Leitores values
-(null, default, 1, 3, '');
-insert into Leitores values
-(null, default, 0, 3, '');
+insert into Registros values
+(null, default, 1, 3, 'Mapa');
+insert into Registros values
+(null, default, 0, 3, 'Mapa');
+-- Sensor 4
+insert into Registros values
+(null, default, 1, 4, 'Mapa');
+insert into Registros values
+(null, default, 0, 4, 'Mapa');
+
+-------------- Empresa 2
 -- sensor 5
-insert into Leitores values
+insert into Registros values
 (null, default, 1, 5, '');
-insert into Leitores values
+insert into Registros values
 (null, default, 0, 5, '');
 -- sensor 6
-insert into Leitores values
+insert into Registros values
 (null, default, 1, 6, '');
-insert into Leitores values
+insert into Registros values
 (null, default, 0, 6, '');
 -- sensor 9
-insert into Leitores values
+insert into Registros values
 (null, default, 1, 9, '');
-insert into Leitores values
+insert into Registros values
 (null, default, 0, 9, '');
 -- sensor 10
-insert into Leitores values
+insert into Registros values
 (null, default, 1, 10, '');
-insert into Leitores values
+insert into Registros values
 (null, default, 0, 10, '');
+desc Registros;
 
-select * from Leitores;
 
 SELECT * FROM sensor order by fkBloco;
 SELECT idSensor from Sensor;
-
-
-
-
-show tables;
-desc Empresa;
-desc Blocos;
-desc Cliente;
-desc EmpresaTelefone;
-desc endereco;
-desc Leitores;
-desc Sensor;
-desc TipoTelefone;
-desc Usuario;
-
-alter table Sensor modify column fkBloco int not null;
 
 
 
@@ -448,6 +423,9 @@ alter table Endereco rename column estado to uf;
 -- SELECT DOS SENSORES
 select S.idSensor, S.data_manutencao, S.status, S.fkBloco, B.numeracao, B.fkEmpresa, E.nome_fantasia, E.status 
 from Sensor S JOIN Blocos B on S.fkBloco = B.idBloco JOIN Empresa E on B.fkEmpresa = E.idEmpresa;
+
+select * from Blocos b join Sensor s on s.fkEmpresa = b.fkEmpresa and s.fkBloco = b.Bloco join Empresa e on s.fkEmpresa = e.idEmpresa;
+
 
 -- SELECT DO REPRESENTANTE
 select * from Cliente C JOIN Empresa E on C.fkEmpresa = E.idEmpresa;
