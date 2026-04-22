@@ -2,6 +2,17 @@ CREATE DATABASE FMS;
 
 use FMS;
 
+CREATE TABLE Endereco (
+    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
+    cep CHAR(8) not null,
+    logradouro VARCHAR(100) not null,
+    numero VARCHAR(10),
+    bairro VARCHAR(100) not null,
+    cidade varchar(100) not null,
+    uf char(2) not null,
+    complemento varchar(100)
+    );
+
 CREATE TABLE Empresa (
     idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
     cnpj CHAR(14) not null,
@@ -29,16 +40,7 @@ CREATE TABLE Usuario (
 );
 
 
-CREATE TABLE Endereco (
-    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
-    cep CHAR(8) not null,
-    logradouro VARCHAR(100) not null,
-    numero VARCHAR(10),
-    bairro VARCHAR(100) not null,
-    cidade varchar(100) not null,
-    uf char(2) not null,
-    complemento varchar(100)
-    );
+
 
 
 CREATE TABLE EmpresaTelefone (
