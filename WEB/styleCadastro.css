@@ -1,6 +1,42 @@
+.navbar { 
+  background: #8B1A1A;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px; 
+  position: sticky;
+  top: 0; 
+  z-index: 100; 
+}
+.logo-icon img { 
+  width: 9%; 
+  height: 9%;
+}
+.navbar-links { 
+  display: flex; 
+  gap: 30px;
+  color: #fff; 
+  font-size: 0.9rem; 
+}
+.navbar-links a{
+  text-decoration: none;
+  color: #fff;
+}
 
+.navbar-btn { 
+  border: 2px solid #E8622A; 
+  color: #E8622A; 
+  padding: 5px 20px; 
+  border-radius: 20px; 
+  font-weight: 600; 
+  cursor: pointer; 
+}
 
-
+.navbar-btn a {
+    text-decoration: none;
+    color: #E8622A;
+}
 
 .verificacaoTrue {
     color: #15fc40;
@@ -23,24 +59,6 @@ body{
     justify-content: center;
     align-items: center;
     height: calc(100vh - 100px);
-}
-
-
-
-.navbar {
-    background-color: #982829;
-    width: 80%;
-    margin: 20px auto; 
-    height: 70px; 
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-}
-.header{
-    font-weight: bold;
-
 }
 
 
@@ -117,3 +135,34 @@ body{
     height:50px;
     font-size: 20px;
 }
+
+.login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 350px;
+            background: #ffff;
+            align-items: center;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .login input {
+            margin-top: 0px;
+            border-radius: 30px;
+            width: 250px;
+            height: 30px;
+            border: 2px solid black;
+        }
+
+        .login input::placeholder {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .login span { gap: 30px; }
+
+        #div_loginMsg {
+            font-size: 14px;
+            text-align: center;
+        }

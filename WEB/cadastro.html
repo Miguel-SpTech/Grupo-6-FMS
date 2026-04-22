@@ -8,21 +8,19 @@
     <link rel="stylesheet" href="stylecadastro.css">
 </head>
 <body>
-
-
-    <div class="navbar">
-    <img class="logoTop" src="logoWhiteWOfms.png" alt="">
-
-    <ul class="menu">
-        <li><a href="Calculdadora/Site-estático.html">Início</a></li>
-        <li><a href="#">Sobre nós</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Simulação</a></li>
-    </ul>
-<a href="login.html">
-    <button type="button" id="login" onclick="Login()">Login</button>
-    </a>
-</div>
+    <header class="navbar">
+      <div class="logo-icon">
+        <img src="logoWhiteWOfms.png" alt="">
+      </div>
+    <div class="navbar-links">
+      <span><a href="Estatico.html#inicio">Início</a></span>
+      <span><a href="Estatico.html#sobre">Sobre nós</a></span>
+      <span><a href="Estatico.html#faq">FAQ</a></span>
+      <span><a href="calculadora.html">Simulação</a></span>
+    </div>
+    <button class="navbar-btn"><a href="login.html">Login</a></button>
+  </header>
+  
 <div class="container">
      <div class="login">
         <div class="header">
@@ -136,7 +134,7 @@
                 } else {
                     alert("E-mail cadastrado com sucesso!");
 
-                    setTimeout(window.location.href="file:///C:/Users/migam/OneDrive/Documentos/Grupo6/Grupo-6-FMS/WEB/Login-cadastro/login.html",4000)
+                    setTimeout(window.location.href="file:///C:/Users/migam/OneDrive/Documentos/Grupo6/Grupo-6-FMS/WEB/login.html",4000)
                 }
                 }
         console.log(emails_cadastrados);

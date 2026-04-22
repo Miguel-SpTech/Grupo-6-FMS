@@ -47,6 +47,11 @@ body {
   cursor: pointer; 
 }
 
+.navbar-btn a {
+    text-decoration: none;
+    color: #E8622A;
+}
+
 /* HERO */
 .hero { 
   

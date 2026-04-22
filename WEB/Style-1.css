@@ -220,36 +220,8 @@
     position:absolute;
 }
 
-<<<<<<< HEAD
 .div1 {
     width: 100%;
     height: 300px;
     
-=======
-.flex {
-    display: flex;
-}
-
-.div1 {
-    width: 100%;
-    height: 400px;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    background-color: #f2dfce;
-}
-.paragrafo {
-    width: 50%;
-    height: 50%;
-    font-family: 'Comic Sans MS';
-    font-size: xx-large;
-    justify-self: center;
-    align-self: center;
-    align-items: center;
-    text-align: justify;
-}
-
-.center {
-    justify-self: center;
->>>>>>> refs/remotes/origin/main
 }

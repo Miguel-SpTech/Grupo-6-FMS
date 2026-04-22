@@ -23,7 +23,7 @@ const serial = async (
             user: 'USUARIO_DO_BANCO',
             password: 'SENHA_DO_BANCO',
             database: 'DATABASE_DO_BANCO',
-            port: 3306
+            port: 3307
         }
     ).promise();
 
