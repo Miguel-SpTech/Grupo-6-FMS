@@ -55,7 +55,7 @@ body {
 /* HERO */
 .hero { 
   
-  background-image: url(fundoo.png);
+  background-image: url(../img/fundoo.png);
   min-height: 80vh; display: flex; 
   align-items: center; 
   padding: 50px; 
