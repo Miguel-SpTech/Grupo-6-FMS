@@ -18,6 +18,7 @@ body, html {
 }
 
 header {
+    width: 107.5vh;
     border: 0px solid;
     border-radius: 25px;
     height: 30%;
