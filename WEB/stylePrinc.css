@@ -33,6 +33,11 @@ body {
   color: #fff; 
   font-size: 0.9rem; 
 }
+.navbar-links a{
+  text-decoration: none;
+  color: #fff;
+}
+
 .navbar-btn { 
   border: 2px solid #E8622A; 
   color: #E8622A; 
