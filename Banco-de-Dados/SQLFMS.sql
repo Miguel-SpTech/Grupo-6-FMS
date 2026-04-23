@@ -120,11 +120,11 @@ select * from Endereco;
 desc Empresa;
 
 insert into Empresa values
-(default,'11222333000111' , 'Pizzaria Di Napoli Alimentos Ltda.', 'Bella Napoli', 'Ativo', null, 1),
-(default, '44555666000144', 'Massa & Forno Gastronomia Eireli', 'Santo Pedaço', 'Inativo', null, 2),
-(default, '77888999000177', 'Comércio de Massas Artesanais Lupa Ltda.', 'Luppa Pizza Bar', 'Ativo', null, 3),
-(default, '10203040000110', 'Rede de Pizzarias Redonda de Ouro S.A.', 'Disco de Ouro', 'Ativo', null, 4),
-(default, '55444333000155', 'Mamma Mia Serviços de Alimentação Me.', 'Forno da Mamma', 'Inativo', null, 5);
+(default,'11222333000111' , 'Pizzaria Di Napoli Alimentos Ltda.', 'Bella Napoli', 'Ativo', null, 1, null),
+(default, '44555666000144', 'Massa & Forno Gastronomia Eireli', 'Santo Pedaço', 'Inativo', null, 2, null),
+(default, '77888999000177', 'Comércio de Massas Artesanais Lupa Ltda.', 'Luppa Pizza Bar', 'Ativo', null, 3, null),
+(default, '10203040000110', 'Rede de Pizzarias Redonda de Ouro S.A.', 'Disco de Ouro', 'Ativo', null, 4, null),
+(default, '55444333000155', 'Mamma Mia Serviços de Alimentação Me.', 'Forno da Mamma', 'Inativo', null, 5, null);
 
 -------------------- INSERT EMPRESA FILIAIS -----------------
 -- nome fantasia é o mesmo, razão social possui diferenca no complemento
