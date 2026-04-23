@@ -12,7 +12,6 @@ CREATE TABLE Endereco (
     uf char(2) not null,
     complemento varchar(100)
     );
-
 CREATE TABLE Empresa (
     idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
     cnpj CHAR(14) not null,
@@ -21,6 +20,7 @@ CREATE TABLE Empresa (
     status VARCHAR(7) not null,
     fkEmpresa int,
     fkEndereco int not null,
+    quantmesa int null,
     constraint fk_empresa foreign key (fkEmpresa) references Empresa(idEmpresa),
     constraint chk_status check (status in('Ativo', 'Inativo')),
     constraint fk_endereco foreign key (fkEndereco) references Endereco(idEndereco)
@@ -129,19 +129,17 @@ insert into Empresa values
 -------------------- INSERT EMPRESA FILIAIS -----------------
 -- nome fantasia é o mesmo, razão social possui diferenca no complemento
 
-
 INSERT INTO Empresa values
-(default, '11222333000222', 'Pizzaria Di Napoli Alimentos Ltda - Comércio', 'Bella Napoli', 'Ativo', 1, 6),
-(default, '11222333000333', 'Pizzaria Di Napoli Alimentos Ltda - Centro Histórico', 'Bella Napoli', 'Inativo', 1, 8),
-(default, '44555666000255', 'Massa & Forno Gastronomia Eireli - Praia de Iracema', 'Santo Pedaço', 'Ativo', 2, 7),
-(default, '44555666000366', 'Massa & Forno Gastronomia Eireli - ', 'Santo Pedaço', 'Inativo', 2, 9),
-(default, '77888999000288', 'Comércio de Massas Artesanais Lupa Ltda - Savassi', 'Luppa Pizza Bar', 'Ativo', 3, 10),
-(default, '77888999000399', 'Comércio de Massas Artesanais Lupa Ltda - Caminho das Árvores', 'Luppa Pizza Bar', 'Inativo', 3, 15),
-(default, '10203040000220', 'Rede de Pizzarias Redonda de Ouro S.A - Centro', 'Disco de Ouro', 'Ativo', 4, 12),
-(default, '10203040000330', 'Rede de Pizzarias Redonda de Ouro S.A - Centro Histórico', 'Disco de Ouro', 'Inativo', 4, 14),
-(default, '55444333000266', 'Mamma Mia Serviços de Alimentação Me - Aldeota', 'Forno de Mamma', 'Ativo', 5, 13),
-(default, '55444333000377', 'Mamma Mia Serviços de Alimentação Me - Rebouças', 'Forno de Mamma', 'Inativo', 5, 11);
-
+(default, '11222333000222', 'Pizzaria Di Napoli Alimentos Ltda - Comércio', 'Bella Napoli', 'Ativo', 1, 6,12),
+(default, '11222333000333', 'Pizzaria Di Napoli Alimentos Ltda - Centro Histórico', 'Bella Napoli', 'Inativo', 1, 8,14),
+(default, '44555666000255', 'Massa & Forno Gastronomia Eireli - Praia de Iracema', 'Santo Pedaço', 'Ativo', 2, 7,16),
+(default, '44555666000366', 'Massa & Forno Gastronomia Eireli - ', 'Santo Pedaço', 'Inativo', 2, 9,20),
+(default, '77888999000288', 'Comércio de Massas Artesanais Lupa Ltda - Savassi', 'Luppa Pizza Bar', 'Ativo', 3, 10,15),
+(default, '77888999000399', 'Comércio de Massas Artesanais Lupa Ltda - Caminho das Árvores', 'Luppa Pizza Bar', 'Inativo', 3, 15,18),
+(default, '10203040000220', 'Rede de Pizzarias Redonda de Ouro S.A - Centro', 'Disco de Ouro', 'Ativo', 4, 12,11),
+(default, '10203040000330', 'Rede de Pizzarias Redonda de Ouro S.A - Centro Histórico', 'Disco de Ouro', 'Inativo', 4, 14,8),
+(default, '55444333000266', 'Mamma Mia Serviços de Alimentação Me - Aldeota', 'Forno de Mamma', 'Ativo', 5, 13,14),
+(default, '55444333000377', 'Mamma Mia Serviços de Alimentação Me - Rebouças', 'Forno de Mamma', 'Inativo', 5, 11,15);
 ----------------- INSERT USUARIO CHEFE --------------
 desc Usuario;
 
