@@ -241,21 +241,21 @@ select * from EmpresaTelefone;
 select * from Empresa;
 desc Cliente;
 INSERT INTO Cliente values
-(default, 'Marcos Menezes', 'marcos.menezes@rep-brasil.com', '12345678900', 1),
-(default, 'Bruno Zimmerman', 'bruno.z@sulrepresentacoes.com.br', '56789012344', 2),
-(default, 'Amanda Ferreira', 'amanda.ferreira@norte-distrib.com', '01234567899', 3),
+(default, 'Marcos Menezes', 'marcos.menezes@rep-brasil.com', '1234567890', 1),
+(default, 'Bruno Zimmerman', 'bruno.z@sulrepresentacoes.com.br', '56789015344', 2),
+(default, 'Amanda Ferreira', 'amanda.ferreira@norte-distrib.com', '0123456789', 3),
 (default, 'Felipe Matos', 'felipe.matos@conexaosul.com.br', '78901234566', 4),
-(default, 'Rodrigo Amaral', 'rodrigo.amaral@central-vendas.com', '90123456788', 5),
+(default, 'Rodrigo Amaral', 'rodrigo.amaral@central-vendas.com', '90123456784', 5),
 (default, 'Vitor Hugo Peixoto', 'vitor.hugo@rep-brasil.com', '12345678900', 6),
-(default, 'Sabrina Esteves', 'sabrina.esteves@sulrepresentacoes.com.br', '56789012344', 7),
+(default, 'Sabrina Esteves', 'sabrina.esteves@sulrepresentacoes.com.br', '56789012334', 7),
 (default, 'Leandro Alencar', 'leandro.alencar@norte-distrib.com', '01234567899', 8),
-(default, 'Tainá Marcondes', 'taina.marcondes@vendas.com.br', '78901234566', 9),
+(default, 'Tainá Marcondes', 'taina.marcondes@vendas.com.br', '78901234556', 9),
 (default, 'Filipe Holanda', 'filipe.holanda@central-vendas.com', '90123456788', 10),
-(default, 'Lorena Caldeira', 'lorena.caldeira@algor.com.br', '78901234566', 11),
-(default, 'Murilo Bittencourt', 'murilo.bittencourt@irmaos.com.br', '78901234566', 12),
-(default, 'Erika Lins', 'erika.lins@centro.com.br', '78901234566', 13),
-(default, 'Samuel Quintela', 'samuel.quintela@conexaosul.com.br', '78901234566', 14),
-(default, 'Débora Mansur', 'debora.mansur@brasil.com.br', '78901234566', 15)
+(default, 'Lorena Caldeira', 'lorena.caldeira@algor.com.br', '78901234546', 11),
+(default, 'Murilo Bittencourt', 'murilo.bittencourt@irmaos.com.br', '78901234536', 12),
+(default, 'Erika Lins', 'erika.lins@centro.com.br', '78901234526', 13),
+(default, 'Samuel Quintela', 'samuel.quintela@conexaosul.com.br', '78901234516', 14),
+(default, 'Débora Mansur', 'debora.mansur@brasil.com.br', '78901234576', 15)
 ;
 select * from Cliente;
 -------------------- INSERT BLOCOS -------------------
@@ -431,7 +431,7 @@ select * from Blocos b join Sensor s on s.fkEmpresa = b.fkEmpresa and s.fkBloco 
 -- SELECT DO REPRESENTANTE
 select * from Cliente C JOIN Empresa E on C.fkEmpresa = E.idEmpresa;
 
-----------------------Criando usuarios ----------------------------
+-- Criando usuarios ----------------------------
 CREATE USER 'usuario_insert'@'localhost' IDENTIFIED BY 'Rml_1505';
 CREATE USER 'usuario_select'@'localhost' IDENTIFIED BY 'Yag_2102';
 
