@@ -94,6 +94,28 @@ CREATE TABLE Registros (
 ); 
 
 
+----------------------- INSERT ENDERECO ------------
+desc Endereco;
+select * from Endereco;
+INSERT INTO Endereco VALUES
+(default, '01310200', 'Avenida Paulista', '1500', 'Bela Vista', 'São Paulo', 'SP', 'Bloco 2A'),
+(default, '20040002', 'Avenida Rio Branco', '45', 'Centro', 'Rio de Janeiro','RJ', ''),
+(default, '70150900', 'Praça dos Três Poderes', 'SN', 'Zona Cívico - Administrativa', 'Brasília', 'DF', ''),
+(default, '30140061', 'Rua da Bahia', '1022', 'Lourdes', 'Belo Horizonte', 'MG', 'Bloco 6D'),
+(default, '80020100', 'Praça Tiradentes', '290', 'Centro', 'Curitiba', 'PR', ''),
+(default, '40020000', 'Praça Visconde de Cayru', '250', 'Comércio', 'Salvador', 'BA', 'Bloco 4C'),
+(default, '60060390', 'Rua dos Tabajaras', '410', 'Praia de Iracema', 'Fortaleza', 'CE', ''),
+(default, '90010001', 'Avenida Mauá', '1050', 'Centro Histórico', 'Porto Alegre', 'RS', ''),
+(default, '04101000', 'Rua das Orquídeas', '520', 'Vila Mariana', 'São Paulo', 'SP', ''),
+(default, '30112020', 'Avenida Getúlio Vargas', '1150', 'Savassi', 'Belo Horizonte', 'MG', ''),
+(default, '80230010', 'Alameda dos Anjos', '45', 'Rebouças', 'Curitiba', 'PR', ''),
+(default, '20040030', 'Rua do Ouvidor', '89', 'Centro', 'Rio de Janeiro', 'RJ', ''),
+(default, '60160230', 'Avenida Dom Luís', '1200', 'Aldeota', 'Fortaleza', 'CE', ''),
+(default, '90010001', 'Rua da Praia,', '330', 'Centro Historico', 'Porto Alegre', 'RS', ''),
+(default, '41820020', 'Avenida Tancredo Neves', '2450', 'Caminho das Árvores', 'Salvador', 'BA', '');
+select * from Endereco;
+
+
 -------------------- INSERT EMPRESA MATRIZ --------------------
 desc Empresa;
 
@@ -176,27 +198,6 @@ insert into Usuario values
 select * from Usuario;
 select f.nome, f.cargo, c.nome, c.cargo, e.nome_fantasia from Usuario f join Usuario c on f.fkUsuario = c.idUsuario
 join Empresa e on f.fkEmpresa = e.idEmpresa order by f.cargo;
-
------------------------ INSERT ENDERECO ------------
-desc Endereco;
-select * from Endereco;
-INSERT INTO Endereco VALUES
-(default, '01310200', 'Avenida Paulista', '1500', 'Bela Vista', 'São Paulo', 'SP', 'Bloco 2A'),
-(default, '20040002', 'Avenida Rio Branco', '45', 'Centro', 'Rio de Janeiro','RJ', ''),
-(default, '70150900', 'Praça dos Três Poderes', 'SN', 'Zona Cívico - Administrativa', 'Brasília', 'DF', ''),
-(default, '30140061', 'Rua da Bahia', '1022', 'Lourdes', 'Belo Horizonte', 'MG', 'Bloco 6D'),
-(default, '80020100', 'Praça Tiradentes', '290', 'Centro', 'Curitiba', 'PR', ''),
-(default, '40020000', 'Praça Visconde de Cayru', '250', 'Comércio', 'Salvador', 'BA', 'Bloco 4C'),
-(default, '60060390', 'Rua dos Tabajaras', '410', 'Praia de Iracema', 'Fortaleza', 'CE', ''),
-(default, '90010001', 'Avenida Mauá', '1050', 'Centro Histórico', 'Porto Alegre', 'RS', ''),
-(default, '04101000', 'Rua das Orquídeas', '520', 'Vila Mariana', 'São Paulo', 'SP', ''),
-(default, '30112020', 'Avenida Getúlio Vargas', '1150', 'Savassi', 'Belo Horizonte', 'MG', ''),
-(default, '80230010', 'Alameda dos Anjos', '45', 'Rebouças', 'Curitiba', 'PR', ''),
-(default, '20040030', 'Rua do Ouvidor', '89', 'Centro', 'Rio de Janeiro', 'RJ', ''),
-(default, '60160230', 'Avenida Dom Luís', '1200', 'Aldeota', 'Fortaleza', 'CE', ''),
-(default, '90010001', 'Rua da Praia,', '330', 'Centro Historico', 'Porto Alegre', 'RS', ''),
-(default, '41820020', 'Avenida Tancredo Neves', '2450', 'Caminho das Árvores', 'Salvador', 'BA', '');
-select * from Endereco;
 
 
 -------------- INSERT EMPRESATELEFONE-----------
@@ -431,3 +432,16 @@ select * from Blocos b join Sensor s on s.fkEmpresa = b.fkEmpresa and s.fkBloco 
 
 -- SELECT DO REPRESENTANTE
 select * from Cliente C JOIN Empresa E on C.fkEmpresa = E.idEmpresa;
+
+----------------------Criando usuarios ----------------------------
+CREATE USER 'usuario_insert'@'localhost' IDENTIFIED BY 'Rml_1505';
+CREATE USER 'usuario_select'@'localhost' IDENTIFIED BY 'Yag_2102';
+
+-- usar como root
+GRANT INSERT ON FMS.* TO 'usuario_insert'@'localhost';
+GRANT SELECT  ON FMS.* TO 'usuario_select'@'localhost';
+
+FLUSH PRIVILEGES;
+
+SHOW GRANTS FOR 'usuario_insert'@'localhost';
+SHOW GRANTS FOR 'usuario_select'@'localhost';
