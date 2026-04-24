@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded',async ()=> await fetch7days())
 document.addEventListener('DOMContentLoaded',async ()=> await fetchMonth())
+document.addEventListener('DOMContentLoaded',async ()=> await fetchHistorico())
 document.addEventListener('DOMContentLoaded',async ()=> await gerarBarChart())
 
-
-
-
+async function fetchHistorico(){
+  const fetchApi = await fetch('/api/selectHistorico') 
+  const data= await fetchApi.json()
+  document.getElementById("historyList").innerHTML = data.total_dia
+}
 async function fetch7days(){
     const fetchApi = await fetch('/api/select7days')
     const data = await fetchApi.json()
