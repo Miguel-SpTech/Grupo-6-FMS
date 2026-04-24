@@ -30,7 +30,7 @@ CREATE TABLE Usuario (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) not null,
     email VARCHAR(100) not null,
-    senha VARCHAR(255) not null, 
+    senha VARCHAR(40) not null, 
     cargo VARCHAR(13) not null,
     fkEmpresa INT not null,
     fkUsuario INT, 
