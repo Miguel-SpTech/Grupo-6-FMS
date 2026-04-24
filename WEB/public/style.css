@@ -8,7 +8,7 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* 🌑 FUNDO MAIS CONTROLADO (menos branco “estourado”) */
+/* FUNDO */
 body {
   min-height: 100vh;
   color: #1f1f1f;
@@ -17,7 +17,6 @@ body {
   animation: gradientMove 15s ease infinite;
 }
 
-/* animação mais suave */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -31,7 +30,7 @@ body {
   margin: 0 auto;
 }
 
-/* TFÍTULO */
+/* TÍTULO */
 .container h1 {
   font-size: 2.6rem;
   font-weight: 800;
@@ -39,7 +38,7 @@ body {
   color: #ffffff;
 }
 
-/* KPI GRID */
+/* KPIs */
 .kpis {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -47,26 +46,22 @@ body {
   margin-bottom: 50px;
 }
 
-/* 🧱 CARD MAIS SÓLIDO (SEM BRANCO ESTOURADO) */
+/* CARD */
 .card {
-  background:#f0e8dc;
-  border-left: 10px solid #8f4c4c ;
-  border-color: #411111;
+  background: #f0e8dc;
+  border-left: 10px solid #411111;
   border-radius: 22px;
   padding: 28px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
   transition: 0.3s ease;
   color: black;
 }
 
-/* hover mais suave */
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 45px rgba(0,0,0,0.5);
 }
 
-/* TITULO KPI */
 .card h2 {
   font-size: 0.85rem;
   font-weight: 600;
@@ -74,7 +69,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* VALOR KPI */
 .card p {
   font-size: 2.6rem;
   font-weight: 800;
@@ -88,7 +82,7 @@ body {
   gap: 28px;
 }
 
-/* GRÁFICO MAIS NEUTRO (SEM BRANCO FORTE) */
+/* GRÁFICOS */
 .chart {
   background: rgba(255,255,255,0.92);
   border-radius: 22px;
@@ -100,16 +94,21 @@ body {
   justify-content: center;
 }
 
-/* CANVAS */
 .chart canvas {
   width: 100% !important;
   height: 340px !important;
 }
 
-/* COR DE DESTAQUE */
-.red {
-  color: #E8622A;
-  font-weight: 800;
+/* LATERAL */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* HISTÓRICO (AGORA É SÓ UM CARD) */
+.history {
+  display: flex;
 }
 
 /* RESPONSIVO */
