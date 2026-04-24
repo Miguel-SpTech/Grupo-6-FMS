@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Dashboard FMS</h1>
+
+    <div class="kpis">
+      <div class="card">
+        <h2> Clientes nos ultimos 7 Dias</h2>
+        <p class="red" id="lastweek">182</p>
+      </div>
+
+      <div class="card">
+        <h2>Clientes no ultimo Mês</h2>
+        <p class="red" id="lastmonth">714</p>
+      </div>
+
+      <div class="card">
+        <h2>Numero de clientes Ideal para hoje</h2>
+        <p class="red">37</p>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="chart"><canvas id="barChart"></canvas></div>
+      <div class="chart">Mapa de Calor</div>
+    </div>
+
+  </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dashboard.js"></script>
+<script>
+  gerarBarChart()
+</script>
+</html>
