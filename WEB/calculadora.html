@@ -119,7 +119,8 @@
         }
 
         clientes = Number((faturamento / ticket).toFixed(1));
-        rotatividade = Number((clientes / mesas).toFixed(2));
+        // Adjusted to count 4 people per table
+        rotatividade = Number(((clientes / 4) / mesas).toFixed(2));
         if (rotatividade < 1.5) {
             leitura = 'Baixa';
         } else if (rotatividade >= 1.5 && rotatividade < 2) {
@@ -130,13 +131,13 @@
 
         if (rotatividade < 1.5) {
             rotatividadeideal = 1.5;
-            let clientesideais = mesas * rotatividadeideal;
+            let clientesideais = mesas * rotatividadeideal * 4; // Adjusted for 4 people per table
             faturamentoModerado = clientesideais * ticket;
         }
 
         if (rotatividade < 2) {
             rotatividadeideal = 2;
-            let clientesideais = mesas * rotatividadeideal;
+            let clientesideais = mesas * rotatividadeideal * 4; // Adjusted for 4 people per table
             faturamentoRecomendado = clientesideais * ticket;
         }
 
@@ -155,14 +156,14 @@
             aumentar a eficiência do atendimento e reduzir o tempo de permanência nas mesas pode ser benéfico para melhorar o fluxo e aumentar o número de clientes
             atendidos.<br><br> Com o nosso serviço, é possível identificar oportunidades para otimizar o atendimento e aumentar a rotatividade, o que pode levar a
             um <span style="color: #8b1a1a; font-weight: bold;">aumento significativo no faturamento</span> ao longo do tempo.
-            <br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
+            <br><br> Nota: A contagem de pessoas por mesa foi ajustada para considerar 4 pessoas por mesa.<br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
         } else if (leitura == "Moderada") {
             resultados.style.display = 'block';
             texto_resultados.innerHTML = `A rotatividade por mesa está em um nível moderado, o que sugere que as mesas estão sendo ocupadas por períodos razoáveis.
              No entanto, ainda há espaço para melhorias. Otimizar o atendimento e reduzir o tempo de permanência nas mesas pode ajudar a aumentar o número de clientes
               atendidos por dia e potencialmente <span style="color: #8b1a1a; font-weight: bold;">aumentar o faturamento</span>.<br><br>Com o nosso serviço, é possível identificar oportunidades para melhorar o fluxo de 
               clientes e aumentar a eficiência do atendimento, o que pode resultar em um <span style="color: #8b1a1a; font-weight: bold;">aumento significativo no faturamento</span> ao longo do tempo.
-              <br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
+              <br><br> Nota: A contagem de pessoas por mesa foi ajustada para considerar 4 pessoas por mesa.<br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
         } else {
             resultados.style.display = 'block';
             texto_resultados.innerHTML = `A rotatividade por mesa está em um nível recomendado, indicando que as mesas estão sendo 
@@ -171,7 +172,7 @@
             <br><br>Continuar monitorando a rotatividade e buscar oportunidades para otimizar ainda mais o atendimento pode ajudar a manter
             ou <span style="color: #8b1a1a; font-weight: bold;">aumentar o faturamento</span> ao longo do tempo. Com o nosso serviço, é possível identificar oportunidades para melhorar o fluxo de 
             clientes e aumentar a eficiência do atendimento, o que pode resultar em um <span style="color: #8b1a1a; font-weight: bold;">aumento significativo no faturamento</span> ao longo do tempo.
-            <br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
+            <br><br> Nota: A contagem de pessoas por mesa foi ajustada para considerar 4 pessoas por mesa.<br><br> Todos os calculos feitos com base na fonte:<a href="https://kpidepot.com/kpi/table-turnover-rate" target="_blank"> KPI - Rotatividade por Mesa</a>`;
         }
         box_grafico.style.display = 'block';
         resultado_clientes.innerHTML = clientes;
