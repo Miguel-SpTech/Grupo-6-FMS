@@ -112,6 +112,15 @@ body{
     color: white;
 }
 
+.btn {
+    border: 2px solid #E8622A; 
+    color: #FFF; 
+    padding: 5px 20px; 
+    border-radius: 20px; 
+    font-weight: 600; 
+    cursor: pointer; 
+}
+
 #login {
     background-color: #E4B97E;
     border: none;
