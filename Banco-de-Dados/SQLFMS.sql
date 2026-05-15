@@ -7,7 +7,7 @@ CREATE TABLE Restaurante (
     razao_social VARCHAR(100) NOT NULL,
     nome_fantasia VARCHAR(100) NOT NULL,
     cnpj CHAR(14) NOT NULL,
-    status VARCHAR(9) NOT NULL,
+    status VARCHAR(9) NOT NULL DEFAULT 'Pendente',
     quantmesa INT NOT NULL,
     CONSTRAINT chk_status_restaurante
     CHECK (status IN ('Aprovado', 'Pendente'))
@@ -99,10 +99,10 @@ desc Restaurante;
 
 INSERT INTO Restaurante VALUES
 (default, 'Pizzaria Di Napoli Alimentos Ltda.','Bella Napoli','11222333000111','Aprovado',40),
-(default, 'Massa & Forno Gastronomia Eireli','Santo Pedaço','44555666000144','Pendente',50),
+(default, 'Massa & Forno Gastronomia Eireli','Santo Pedaço','44555666000144','default',50),
 (default,  'Comércio de Massas Artesanais Lupa Ltda.', 'Luppa Pizza Bar','77888999000177', 'Aprovado', 30),
 (default,  'Rede de Pizzarias Redonda de Ouro S.A.', 'Disco de Ouro','10203040000110', 'Aprovado',100),
-(default,  'Mamma Mia Serviços de Alimentação Me.', 'Forno da Mamma','55444333000155', 'Pendente',150);
+(default,  'Mamma Mia Serviços de Alimentação Me.', 'Forno da Mamma','55444333000155', 'default',150);
 
 
 ----------------- INSERT ADMINISTRADORES  --------------
