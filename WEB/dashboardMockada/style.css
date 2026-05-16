@@ -110,7 +110,7 @@ main{
   background: #fdf6f6eb;
   border-radius: 12px;
   padding: 25px;
-  color: #f0e8dc;
+  color: #000000;
   box-shadow: 0 15px 35px rgba(0,0,0,0.25);
   min-height: 340px;
   display: flex;
