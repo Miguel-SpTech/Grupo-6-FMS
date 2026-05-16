@@ -16,7 +16,9 @@ body {
   background-size: 400% 400%;
   animation: gradientMove 15s ease infinite;
 }
-
+main{
+margin-left:100px;
+}
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -104,6 +106,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background: #8B1A1A;
+  width: 100px;
+  height: 100vh;
+  position: fixed;
 }
 
 /* HISTÓRICO (AGORA É SÓ UM CARD) */

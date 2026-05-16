@@ -12,11 +12,14 @@
 body {
   min-height: 100vh;
   color: #1f1f1f;
-  background: linear-gradient(135deg, #4a0f0f, #8B1A1A, #E8622A);
+  /* background: linear-gradient(135deg, #4a0f0f, #8B1A1A, #E8622A); */
+  background: linear-gradient(135deg, #5f0b0b, #7F1D1D, #450A0A);
   background-size: 400% 400%;
   animation: gradientMove 15s ease infinite;
 }
-
+main{
+  margin-left: 120px;
+}
 /* animação mais suave */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
@@ -24,6 +27,15 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+.logo-icon{ 
+  background-image: url('../assets/img/logoWhiteWOfms.png');
+  position:fixed;
+  width: 74px; 
+  height: 50px;
+  background-position: center;
+  background-size:cover;
+  bottom: 7%;
+}
 /* CONTAINER */
 .container {
   padding: 50px 80px;
@@ -31,13 +43,14 @@ body {
   margin: 0 auto;
 }
 
-/* TFÍTULO */
+/* TÍTULO */
 .container h1 {
   font-size: 2.6rem;
   font-weight: 800;
   margin-bottom: 40px;
   color: #ffffff;
 }
+
 
 /* KPI GRID */
 .kpis {
@@ -49,15 +62,17 @@ body {
 
 /* 🧱 CARD MAIS SÓLIDO (SEM BRANCO ESTOURADO) */
 .card {
-  background:#f0e8dc;
+  /* #f0e8dc */
+  background:rgba(34, 34, 34,0.92);
   border-left: 10px solid #8f4c4c ;
   border-color: #411111;
-  border-radius: 22px;
+  border-radius: 12px;
   padding: 28px;
+  color: #f0e8dc;
   box-shadow: 0 15px 35px rgba(0,0,0,0.35);
   backdrop-filter: blur(10px);
   transition: 0.3s ease;
-  color: black;
+  /* color: black; */
 }
 
 /* hover mais suave */
@@ -70,7 +85,8 @@ body {
 .card h2 {
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(78, 0, 0, 0.75);
+  /* color: rgba(78, 0, 0, 0.75); */
+  color: #f0e8dc;
   margin-bottom: 12px;
 }
 
@@ -78,7 +94,8 @@ body {
 .card p {
   font-size: 2.6rem;
   font-weight: 800;
-  color: rgb(100, 0, 0);
+  /* color: rgb(100, 0, 0); */
+  color: brown;
 }
 
 /* CHARTS */
@@ -90,9 +107,10 @@ body {
 
 /* GRÁFICO MAIS NEUTRO (SEM BRANCO FORTE) */
 .chart {
-  background: rgba(255,255,255,0.92);
-  border-radius: 22px;
+  background: rgba(34, 34, 34, 0.92);
+  border-radius: 12px;
   padding: 25px;
+  color: #f0e8dc;
   box-shadow: 0 15px 35px rgba(0,0,0,0.25);
   min-height: 340px;
   display: flex;
@@ -104,6 +122,7 @@ body {
 .chart canvas {
   width: 100% !important;
   height: 340px !important;
+  color: #f0e8dc;
 }
 
 /* COR DE DESTAQUE */
@@ -126,19 +145,181 @@ body {
     padding: 25px;
   }
 }
-.back {
-    margin-top: 2.5%;
-    margin-left: 4%;
-    position: absolute;
-    border: 2px solid #E8622A; 
-    color: #E8622A; 
-    padding: 5px 20px; 
-    border-radius: 20px; 
-    font-weight: 600; 
-    cursor: pointer;
+
+.side {
+  background: #8B1A1A;
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  height: 100vh;
+  position: fixed;
+  align-items: center;
+  left: 0;
+  border-right: solid #f0e8dc 1px;
+  /* padding: 20px 0px; */
+  
 }
 
-.back a {
-    text-decoration: none;
-    color: #E8622A;
+.conteudo{
+  width: 120px;
+  margin-top: 10%;
+  gap: 50px;
+  display:flex;
+  flex-direction: column;
+  position: fixed;
+  padding: 0;
 }
+
+.conteudo li{
+  display: block;
+  width: 100%;
+  /* padding: 15px 10px; */
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.back a{
+  font-weight: bold;
+  text-decoration: none;
+  color: rgba(34, 34, 34,0.92);
+  display: block;
+  padding: 10px 10px;
+  /* width: 120px; */
+  transition: 0.1s;
+}
+
+/* .back{
+  margin-bottom: 50%;
+} */
+
+.back :hover {
+  background-color: #1f1f1f;
+  border-left: 5px solid #411111;
+  color: wheat;
+  /* background: 120px; */
+  /* padding: 0px 55px; */
+  /* width: 120px;; */
+}
+
+
+
+
+/* .menu-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+} */
+
+.menu-item a {
+  display: block; /* Essencial para ocupar a largura total */
+  padding: 15px 25px; /* O preenchimento interno fica aqui */
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 100%; /* Garante que o link preencha o li */
+}
+
+/* O Efeito de Hover */
+.menu-item a:hover {
+  background-color: #cc2a1f; /* O vermelho moderno que você escolheu */
+  color: #ffffff;
+  /* Opcional: Adicionar uma bordinha de destaque à esquerda */
+  border-left: 5px solid #ff4d4d;
+}
+
+
+
+/* .conteudo ul a{
+  color: rgba(34, 34, 34,0.92);
+  text-decoration: none;
+  font-size: 0.9rem; 
+} */
+
+
+/* 
+
+.back {
+  position: fixed;
+  border: none;
+  border-radius: 8px; 
+  font-weight: 600; 
+  cursor: pointer;
+  Top: 10%;
+  background-color: #8b1a1a;
+}
+.back a {
+  text-decoration: none;
+  color: rgba(34, 34, 34,0.92);
+  font-weight: bold;
+}
+.back:hover{
+  text-decoration: none;
+  transition: 0.1s;
+  color: rgb(100, 0, 0);
+  font-weight: bold;
+  background-color: rgb(230, 230, 230);  
+}
+.back:hover a{
+  text-decoration: none;
+  transition: 0.1s;
+  color: rgb(100, 0, 0);
+  font-weight: bold;
+}
+.conteudo ul{
+  padding-left: 2%; 
+}
+.item1:hover{
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  transition: 0.1s;
+  color: rgb(100, 0, 0);
+  font-weight: bold;
+  background-color: rgb(230, 230, 230);  
+  
+}
+
+.item1:hover a{
+  text-decoration: none;
+  transition: 0.1s;
+  color: rgb(100, 0, 0);
+  font-weight: bold;
+}
+
+.item2:hover{
+  text-decoration: none;
+  border: none;
+  width: 100%;      
+  transition: 0.1s;
+  color: rgb(100, 0, 0);
+  font-weight: bold;
+  background-color: rgb(230, 230, 230);  
+  
+}
+
+.item2:hover a{
+  text-decoration: none;
+  transition: 0.1s;
+  color: rgb(100, 0, 0);
+  font-weight: bold;
+}
+
+.item3:hover{
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  transition: 0.1s;
+  color: rgb(100, 0, 0);
+  font-weight: bold;
+  background-color: rgb(230, 230, 230);  
+  
+}
+
+.item3:hover a{
+  text-decoration: none;
+  transition: 0.1s;
+  color: rgb(100, 0, 0);
+  font-weight: bold;
+} */

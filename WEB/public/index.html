@@ -6,15 +6,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Dashboard FMS</h1>
+  <header>
+    <div class="side">
+      <ul><a href=""></a></ul>
+      <ul><a href=""></a></ul>
+      <ul><a href=""></a></ul>
+    </div>
+  </header>
+  <main>
+
+    <div class="container">
+      <h1>Dashboard FMS</h1>
 
     <div class="kpis">
       <div class="card">
         <h2>Últimos 7 Dias</h2>
         <p class="red" id="lastweek"></p>
       </div>
-
+      
       <div class="card">
         <h2>Ultimo Mês</h2>
         <p class="red" id="lastmonth"></p>
@@ -25,23 +34,22 @@
         <p class="red">1750</p>
       </div>
     </div>
-
+    
     <div class="charts">
-
+      
       <div class="chart big">
         <canvas id="mainChart"></canvas>
       </div>
-
-        <div class="chart small">
-          <canvas id="barChart"></canvas>
-        </div>
-
+      
+      <div class="chart small">
+        <canvas id="barChart"></canvas>
       </div>
-
+      
     </div>
-
+    
   </div>
 
+</main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="dashboard.js"></script>
