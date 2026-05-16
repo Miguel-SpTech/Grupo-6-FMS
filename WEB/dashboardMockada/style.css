@@ -63,12 +63,12 @@ main{
 /* 🧱 CARD MAIS SÓLIDO (SEM BRANCO ESTOURADO) */
 .card {
   /* #f0e8dc */
-  background:rgba(34, 34, 34,0.92);
+  background:#fdf6f6eb;
   border-left: 10px solid #8f4c4c ;
-  border-color: #411111;
+  border-color: #000000;
   border-radius: 12px;
   padding: 28px;
-  color: #f0e8dc;
+  color: #000000;
   box-shadow: 0 15px 35px rgba(0,0,0,0.35);
   backdrop-filter: blur(10px);
   transition: 0.3s ease;
@@ -86,7 +86,7 @@ main{
   font-size: 0.85rem;
   font-weight: 600;
   /* color: rgba(78, 0, 0, 0.75); */
-  color: #f0e8dc;
+  color: #000000;
   margin-bottom: 12px;
 }
 
@@ -107,7 +107,7 @@ main{
 
 /* GRÁFICO MAIS NEUTRO (SEM BRANCO FORTE) */
 .chart {
-  background: rgba(34, 34, 34, 0.92);
+  background: #fdf6f6eb;
   border-radius: 12px;
   padding: 25px;
   color: #f0e8dc;
