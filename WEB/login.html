@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="icon" href="assets/img/logoWhiteWOfms.png">
-    <link rel="stylesheet" href="assets/styles/stylecadastro.css">
+    <link rel="stylesheet" href="assets/styles/styleLogin.css">
 </head>
 <body>
 
@@ -21,18 +21,23 @@
     </div>
     <button class="navbar-btn"><a href="cadastro.html">Cadastrar</a></button>
   </header>
-
+  <div class="div_body">
+        <div class="div_princ">
+            <h2>Login</h2>
+            <span id="spanEmail">e-mail</span>
+            <input type="text" placeholder="email:" id="inp_email">
+            <span>senha:</span>
+            <input type="password" placeholder="senha:" id="inp_password">
+            <div id="div_loginMsg"></div>
+            <button type="button" id="btnentrar" onclick="login()">Entrar</button>
+            <span id="loginSpan">Ainda não possui um cadastro? <a href="cadastro.html" id="loginA">Cadastrar</a></span>
+        </div>
     <div class="container">
         <div class="login">
             <div class="header">
-                <h2>Login</h2>
+                
             </div>
-            <input type="text" placeholder="email:" id="inp_email"><br>
-            <input type="password" placeholder="senha:" id="inp_password">
-            <br>
-            <div id="div_loginMsg"></div>
-            <button type="button" id="btnentrar" onclick="login()">Entrar</button>
-            <a href="cadastro.html" class="link-cadastro">Não tem conta? Cadastre-se</a>
+            
         </div>
     </div>
 

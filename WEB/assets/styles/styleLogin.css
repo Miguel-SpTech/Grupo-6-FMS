@@ -70,7 +70,7 @@ body{
     border-radius: 20px;
     background-color: #fff;
     color: #590000;
-    height: 85%;
+    height: 35%;
     width: 25%;
     display: flex;
     flex-wrap: wrap;
@@ -92,7 +92,7 @@ body{
     border: 3px solid #590000;
     border-radius: 10px;
     width: 90%;
-    height: 4%;
+    height: 7%;
     align-self: center;
     justify-self: center;
     padding-left: 1vh;
@@ -106,7 +106,7 @@ body{
 
 .div_princ button {
     width: 70%;
-    height: 6.5%;
+    height: 10%;
     border: 5px solid #9d2222;
     border-radius: 10px;
     color: #9d2222;
@@ -123,43 +123,4 @@ body{
 .div_princ a {
     text-decoration: none;
     color: #E8622A;
-}
-
-#loginSpan {
-    align-self: center;
-}
-
-#div_passwordVerification {
-    margin-left: 86vh;
-    align-self: center;
-    justify-self: center;
-    background-color: #00000081;
-    border: 0px solid;
-    border-radius: 10px;
-    padding: 1.75vh;
-}
-
-#inp_password {
-    width: 43%;
-}
-
-#spanPsswrdConfir {
-    margin-left: 15vh
-}
-
-#inp_password2 {
-    width: 43%;
-    margin-left: 1vh;
-}
-
-#spanComplemento {
-    margin-left: 15vh
-}
-#inp_complemento {
-    width: 43%;
-    margin-left: 1vh;
-}
-
-#inp_CEP {
-    width: 43%;
 }

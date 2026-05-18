@@ -20,35 +20,45 @@
         </div>
         <button class="navbar-btn"><a href="login.html">Login</a></button>
     </header>
-  
-<div class="container">
-     <div class="login">
-        <div class="header">
+    <div class="div_body">
+        <div class="div_princ">
             <h2>Cadastro</h2>
-            </div>
-    <input type="text" placeholder="email:" id="inp_email" oninput="verificarEmail()"><br>
-    <div id="div_emailVerification"></div>
-    <input type="password" placeholder="senha:" id="inp_password" oninput="verificarPsswrd()">
-    <div id="div_passwordVerification">
-        <span>a senha precisa ter no mínimo:</span><br>
-        <span id="span_psswrdCaracteres">6 caracteres</span><br>
-        <span id="span_psswrdNumber">1 número</span><br>
-        <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
-        <span id="span_psswrdLower">1 letra MINUSCULA</span>
+            <span id="spanEmail">e-mail</span><br>
+            <input type="text" placeholder="email:" id="inp_email" oninput="verificarEmail()"><br>
+            <div id="div_emailVerification"></div>
+            <span id="spanPsswrd">Senha</span><span id="spanPsswrdConfir">Confirmar Senha</span>
+            <input type="password" placeholder="senha:" id="inp_password" oninput="verificarPsswrd()">
+            <input type="password" placeholder="confirmar senha:" id="inp_password2" oninput="verificarPsswrd()">
+            <div id="div_passwrd_confirmation"></div><br>
+            <span id="">Razão Social</span>
+            <input type="text" placeholder="Razão Social:" id="inp_razaoSocial">
+            <span id="">Nome Fantasia</span>
+            <input type="text" placeholder="Nome fantasia:" id="inp_nomeFantasia">
+            <span id="">Quantidade de mesas</span>
+            <input type="number" placeholder="Quantidade de mesas:" id="inp_qtdMesas">
+            <span id="spanCep">CEP</span><span id="spanComplemento">Complemento</span>
+            <input type="text" placeholder="CEP:" id="inp_CEP">
+            <input type="text" placeholder="Complemento:" id="inp_complemento">
+            <span id="">CNPJ</span>
+            <input type="text" placeholder="CNPJ:" id="inp_CNPJ">
+            <span id="">Telefone</span>
+            <input type="text" placeholder="Telefone:" id="inp_telefone">
+            <button type="button" id="btnentrar" onclick="cadastrar()">Cadastrar</button>
+            <span id="loginSpan">já possui um cadastro? <a href="login.html" id="loginA">Logar</a></span>
+        </div>
+        <div id="div_passwordVerification">
+            <span>a senha precisa ter no mínimo:</span><br>
+            <span id="span_psswrdCaracteres">6 caracteres</span><br>
+            <span id="span_psswrdNumber">1 número</span><br>
+            <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
+            <span id="span_psswrdLower">1 letra MINUSCULA</span>
+        </div>
     </div>
-    <input type="password" placeholder="confirmar senha:" id="inp_password2" oninput="verificarPsswrd()">
-    <div id="div_passwrd_confirmation"></div>
-    <br>
-    <button class="btn" type="button" id="btnentrar" onclick="cadastrar()">Cadastrar</button>
-      </div>
-      
-     </div>
-    <div id="div_cadastro"></div>
 </body>
 </html>
 <script>
-    let emails_cadastrados = [];
-    let passwords_cadastrados = [];
+    let cadastros = [];
+
     function verificarEmail() {
         var email = inp_email.value.toLowerCase();
         inp_email.value = email;
@@ -116,14 +126,32 @@
     }
     function cadastrar() {
         var email = inp_email.value.toLowerCase();
-        let password = inp_password.value
+        let password = inp_password.value;
+        let razao_social = inp_razaoSocial.value
+        let nome_fantasia = inp_nomeFantasia.value
+        let qtd_mesas = inp_qtdMesas.value
+        let cep = inp_CEP.value
+        let complemento = inp_complemento.value
+        let CNPJ = inp_CNPJ.value
+        let telefone = inp_telefone.value
         let not_cadastrado = true;
         
             if (not_cadastrado){
                 if (verificarEmail() && verificarPsswrd()) {
-                        emails_cadastrados.push(email);
-                        passwords_cadastrados.push(password);
-                        localStorage.setItem(email, password)
+
+                        let novo_cadastro = {
+                            "email" : email,
+                            "senha" :   senha,
+                            "razao_social" : razao_social,
+                            "nome_fantasia" : nome_fantasia,
+                            "qtd_mesas" : qtd_mesas,
+                            "CEP" : cep,
+                            "Complemento" : complemento,
+                            "CNPJ" : CNPJ,
+                            "telefone" : telefone,
+                        }
+                        cadastros.push(novo_cadastro);
+                        localStorage.setItem(novo_cadastro)
                         
                     
                 } else {
@@ -140,8 +168,7 @@
                 }
                 if (!not_cadastrado) {
                     div_emailVerification.innerHTML = `<span class="text1 verificacaoFalse">E-mail já cadastrado</span>`;
-                    emails_cadastrados.pop();
-                    passwords_cadastrados.pop();
+                    cadastros.pop();
                 break
                 } else {
                     alert("E-mail cadastrado com sucesso!");
@@ -149,9 +176,6 @@
                     setTimeout(window.location.href="login.html",4000)
                 }
                 }
-        console.log(emails_cadastrados);
-        console.log(passwords_cadastrados);
-        
-    
+        console.log(cadastros);
     }
 </script>
