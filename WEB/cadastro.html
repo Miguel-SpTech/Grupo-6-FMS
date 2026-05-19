@@ -29,7 +29,6 @@
             <span id="spanPsswrd">Senha</span><span id="spanPsswrdConfir">Confirmar Senha</span>
             <input type="password" placeholder="senha:" id="inp_password" oninput="verificarPsswrd()">
             <input type="password" placeholder="confirmar senha:" id="inp_password2" oninput="verificarPsswrd()">
-            <div id="div_passwrd_confirmation"></div><br>
             <span id="">Razão Social</span>
             <input type="text" placeholder="Razão Social:" id="inp_razaoSocial">
             <span id="">Nome Fantasia</span>
@@ -37,12 +36,12 @@
             <span id="">Quantidade de mesas</span>
             <input type="number" placeholder="Quantidade de mesas:" id="inp_qtdMesas">
             <span id="spanCep">CEP</span><span id="spanComplemento">Complemento</span>
-            <input type="text" placeholder="CEP:" id="inp_CEP">
+            <input type="text" placeholder="CEP:" id="inp_CEP" maxlength="8">
             <input type="text" placeholder="Complemento:" id="inp_complemento">
             <span id="">CNPJ</span>
-            <input type="text" placeholder="CNPJ:" id="inp_CNPJ">
+            <input type="text" placeholder="CNPJ:" id="inp_CNPJ" maxlength="14">
             <span id="">Telefone</span>
-            <input type="text" placeholder="Telefone:" id="inp_telefone">
+            <input type="text" placeholder="Telefone:" id="inp_telefone" maxlength="11">
             <button type="button" id="btnentrar" onclick="cadastrar()">Cadastrar</button>
             <span id="loginSpan">já possui um cadastro? <a href="login.html" id="loginA">Logar</a></span>
         </div>
@@ -51,7 +50,8 @@
             <span id="span_psswrdCaracteres">6 caracteres</span><br>
             <span id="span_psswrdNumber">1 número</span><br>
             <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
-            <span id="span_psswrdLower">1 letra MINUSCULA</span>
+            <span id="span_psswrdLower">1 letra MINUSCULA</span><br>
+            <div id="div_passwrd_confirmation"></div>
         </div>
     </div>
 </body>
