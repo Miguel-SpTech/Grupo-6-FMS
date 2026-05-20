@@ -50,9 +50,9 @@
 }
 body{
     margin: 0;
-    font-family: Comic Sans MS, ComicSans, cursive;
     background-image: url("../img/fundoLogin&Cadastro.png");
     background-repeat: no-repeat;
+      font-family: 'Poppins', sans-serif; 
     background-size: cover;
     color: #fff;
     font-size: larger;
