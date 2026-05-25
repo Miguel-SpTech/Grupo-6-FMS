@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - FMS</title>
+    <link rel="icon" href="assets/img/logoWhiteWOfms.png">
+    <link rel="stylesheet" href="assets/styles/styleCadastro.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-icon">
+            <img src="assets/img/logoWhiteWOfms.png" alt="">
+        </div>
+        <div class="navbar-links">
+            <span><a href="index.html">Início</a></span>
+            <span><a href="index.html#sobre">Sobre nós</a></span>
+            <span><a href="index.html#faq">FAQ</a></span>
+            <span><a href="calculadora.html">Simulação</a></span>
+        </div>
+        <button class="navbar-btn"><a href="login.html">Login</a></button>
+    </header>
+    <div class="div_body">
+        <div class="div_princ">
+            <h2>Cadastro</h2>
+            
+            <h3>Dados do Usuário</h3>
+            <span>Nome Completo</span>
+            <input type="text" placeholder="Nome:" id="inp_nome"><br>
+            
+            <span id="spanEmail">E-mail</span><br>
+            <input type="text" placeholder="email:" id="inp_email" oninput="verificarEmail()"><br>
+            <div id="div_emailVerification"></div>
+            
+            <span id="spanPsswrd">Senha</span><span id="spanPsswrdConfir">Confirmar Senha</span>
+            <input type="password" placeholder="senha:" id="inp_password" oninput="verificarPsswrd()">
+            <input type="password" placeholder="confirmar senha:" id="inp_password2" oninput="verificarPsswrd()">
+            <div id="div_passwordVerification">
+                <span>a senha precisa ter no mínimo:</span><br>
+                <span id="span_psswrdCaracteres">6 caracteres</span><br>
+                <span id="span_psswrdNumber">1 número</span><br>
+                <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
+                <span id="span_psswrdLower">1 letra MINUSCULA</span><br>
+                <div id="div_passwrd_confirmation"></div>
+            </div>
+
+            <h3>Dados do Restaurante</h3>
+            <span>Razão Social</span>
+            <input type="text" placeholder="Razão Social:" id="inp_razaoSocial"><br>
+            
+            <span>Nome Fantasia</span>
+            <input type="text" placeholder="Nome fantasia:" id="inp_nomeFantasia"><br>
+            
+            <span>Quantidade de Mesas</span>
+            <input type="number" placeholder="Quantidade de mesas:" id="inp_qtdMesas"><br>
+            
+            <span>CNPJ</span>
+            <input type="text" placeholder="CNPJ (14 dígitos):" id="inp_CNPJ" maxlength="14"><br>
+            
+            <span id="spanCep">CEP</span><span id="spanComplemento">Complemento</span>
+            <input type="text" placeholder="CEP:" id="inp_CEP" maxlength="8">
+            <input type="text" placeholder="Complemento:" id="inp_complemento"><br>
+            
+            <div id="div_mensagem"></div>
+            <button type="button" id="btnCadastrar" onclick="cadastrar()">Cadastrar</button>
+            <span id="loginSpan">já possui um cadastro? <a href="login.html" id="loginA">Logar</a></span>
+        </div>
+    </div>
+
+    <script>
+        function verificarEmail() {
+            var email = document.getElementById("inp_email").value.toLowerCase();
+            document.getElementById("inp_email").value = email;
+            let local_arroba = email.indexOf("@");
+            let local_ponto_com = email.indexOf(".com");
+            let end_ponto_com = email.endsWith(".com");
+            let end_ponto_com_br = email.endsWith(".com.br");
+            let localVerification = local_arroba < local_ponto_com;
+            var end_verification_email = end_ponto_com || end_ponto_com_br && localVerification;
+
+            if (end_verification_email) {
+                document.getElementById("div_emailVerification").innerHTML = `<span class="text1 verificacaoTrue">E-mail válido!</span>`
+            } else {
+                document.getElementById("div_emailVerification").innerHTML = `<span class="text1 verificacaoFalse">E-mail inválido.</span>`
+            }
+            return end_verification_email;
+        }
+
+        function verificarPsswrd() {
+            let password = document.getElementById("inp_password").value;
+            let password2 = document.getElementById("inp_password2").value;
+            let regex_tem_numero = new RegExp("[0-9]"); 
+            let regex_tem_letra = new RegExp("[A-Z]");
+            let regex_tem_letra2 = new RegExp("[a-z]");
+            let psswrd_confirmation = password == password2;
+            var end_verification_psswrd = false;
+            let passwordLength = password.length;
+
+            if (regex_tem_numero.test(password)){
+                document.getElementById("span_psswrdNumber").innerHTML = `<span class = "verificacaoTrue">1 Número</span>`
+                end_verification_psswrd = true;
+            } else {
+                document.getElementById("span_psswrdNumber").innerHTML = `<span class = "verificacaoFalse">1 Número</span>`
+                end_verification_psswrd = false;
+            }
+            if (regex_tem_letra2.test(password)) {
+                document.getElementById("span_psswrdLower").innerHTML = `<span class = "verificacaoTrue">1 letra MINUSCULA</span>`
+                end_verification_psswrd = true;
+            } else {
+                document.getElementById("span_psswrdLower").innerHTML = `<span class = "verificacaoFalse">1 letra MINUSCULA</span>`
+                end_verification_psswrd = false;
+            }
+            if (regex_tem_letra.test(password)) {
+                document.getElementById("span_psswrdUpper").innerHTML = `<span class = "verificacaoTrue">1 letra MAIUSCULA</span>`
+                end_verification_psswrd = true;
+            } else {
+                document.getElementById("span_psswrdUpper").innerHTML = `<span class = "verificacaoFalse">1 letra MAIUSCULA</span>`
+                end_verification_psswrd = false;
+            }
+            if (passwordLength >= 6) {
+                document.getElementById("span_psswrdCaracteres").innerHTML = `<span class = "verificacaoTrue">6 caracteres</span>`
+                end_verification_psswrd = true;
+            } else {
+                document.getElementById("span_psswrdCaracteres").innerHTML = `<span class = "verificacaoFalse">6 caracteres</span>`
+                end_verification_psswrd = false;
+            }
+            if (psswrd_confirmation) {
+                end_verification_psswrd = true;
+                document.getElementById("div_passwrd_confirmation").innerHTML = ``
+            } else {
+                end_verification_psswrd = false;
+                document.getElementById("div_passwrd_confirmation").innerHTML = `<span>Senhas não correspondentes.</span>`;
+            }
+
+            return end_verification_psswrd;
+        }
+
+        function validarCNPJ(cnpj) {
+            // Remove caracteres não numéricos
+            cnpj = cnpj.replace(/\D/g, '');
+            
+            // Verifica se tem 14 dígitos
+            if (cnpj.length !== 14) {
+                return false;
+            }
+            
+            return true;
+        }
+
+        function cadastrar() {
+            var nome = document.getElementById("inp_nome").value.trim();
+            var email = document.getElementById("inp_email").value.toLowerCase();
+            var password = document.getElementById("inp_password").value;
+            var razaoSocial = document.getElementById("inp_razaoSocial").value.trim();
+            var nomeFantasia = document.getElementById("inp_nomeFantasia").value.trim();
+            var qtdMesas = document.getElementById("inp_qtdMesas").value;
+            var cnpj = document.getElementById("inp_CNPJ").value.trim();
+            var cep = document.getElementById("inp_CEP").value.trim();
+            var complemento = document.getElementById("inp_complemento").value.trim();
+            
+            let div_mensagem = document.getElementById("div_mensagem");
+
+            // Validações
+            if (!nome) {
+                div_mensagem.innerHTML = `<span class="verificacaoFalse">Nome do usuário é obrigatório.</span>`;
+                return;
+            }
+
+            if (!verificarEmail()) {
+                div_mensagem.innerHTML = `<span class="verificacaoFalse">E-mail inválido.</span>`;
+                return;
+            }
+
+            if (!verificarPsswrd()) {
+                div_mensagem.innerHTML = `<span class="verificacaoFalse">Senha não atende aos requisitos.</span>`;
+                return;
+            }
+
+            if (!razaoSocial) {
+                div_mensagem.innerHTML = `<span class="verificacaoFalse">Razão social é obrigatória.</span>`;
+                return;
+            }
+
+            if (!nomeFantasia) {
+                div_mensagem.innerHTML = `<span class="verificacaoFalse">Nome fantasia é obrigatório.</span>`;
+                return;
+            }
+
+            if (!qtdMesas || qtdMesas <= 0) {
+                div_mensagem.innerHTML = `<span class="verificacaoFalse">Quantidade de mesas deve ser maior que 0.</span>`;
+                return;
+            }
+
+            if (!validarCNPJ(cnpj)) {
+                div_mensagem.innerHTML = `<span class="verificacaoFalse">CNPJ deve ter 14 dígitos.</span>`;
+                return;
+            }
+
+            // Desabilitar botão e mostrar loading
+            document.getElementById("btnCadastrar").disabled = true;
+            div_mensagem.innerHTML = `<span class="verificacaoTrue">Processando cadastro...</span>`;
+
+            // Enviar dados para a API
+            fetch('/usuarios/cadastrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nomeUsuarioServer: nome,
+                    emailServer: email,
+                    senhaServer: password,
+                    cargoServer: "Administrador",
+                    razaoSocialServer: razaoSocial,
+                    nomeFantasiaServer: nomeFantasia,
+                    cnpjServer: cnpj,
+                    quantMesasServer: parseInt(qtdMesas)
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else if (response.status === 409) {
+                    return response.text().then(text => {
+                        throw new Error(text);
+                    });
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(text || 'Erro ao cadastrar');
+                    });
+                }
+            })
+            .then(data => {
+                div_mensagem.innerHTML = `<span class="verificacaoTrue">Cadastro realizado com sucesso! Redirecionando...</span>`;
+                
+                // Redirecionar para login após 3 segundos
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 3000);
+            })
+            .catch(err => {
+                console.error('Erro:', err);
+                div_mensagem.innerHTML = `<span class="verificacaoFalse">${err.message}</span>`;
+                document.getElementById("btnCadastrar").disabled = false;
+            });
+        }
+
+        // Permitir cadastro com Enter
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("inp_complemento").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    cadastrar();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="side">
+      <div class="logo-icon"></div>
+      <div class="conteudo">
+          <li class="back"><a href="../main.html">Voltar</a></li>
+          <li class="item1"><a href="main.html#sobre">Sobre nós</a></li>
+          <li class="item2"><a href="main.html#faq">FAQ</a></li>
+          <li class="item3"><a href="calculadora.html">Simulação</a></li>       
+      </div>
+    </nav>
+  </header>
+  <main>
+
+    <div class="container">
+      <h1>Dashboard FMS</h1>
+      
+      <div class="kpis">
+        <div class="card">
+          <h2> Clientes nos ultimos 7 Dias</h2>
+          <p class="red" id="lastweek">182</p>
+        </div>
+
+      <div class="card">
+        <h2>Clientes no ultimo Mês</h2>
+        <p class="red" id="lastmonth">714</p>
+      </div>
+
+      <div class="card">
+        <h2>Numero de clientes Ideal para hoje</h2>
+        <p class="red">37</p>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="chart">Mapa de Calor</div>
+      <div class="chart"><canvas id="barChart"></canvas></div>
+    </div>
+    
+  </div>
+  
+</main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dashboard.js"></script>
+<script>
+  gerarBarChart()
+</script>
+</html>
