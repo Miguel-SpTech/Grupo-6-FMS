@@ -2,6 +2,10 @@ CREATE DATABASE IF NOT EXISTS FMS;
 USE FMS;
 
 
+drop database FMS;
+
+
+
 CREATE TABLE Restaurante (
     idRestaurante INT AUTO_INCREMENT PRIMARY KEY,
     razao_social VARCHAR(100) NOT NULL,
@@ -99,10 +103,10 @@ desc Restaurante;
 
 INSERT INTO Restaurante VALUES
 (default, 'Pizzaria Di Napoli Alimentos Ltda.','Bella Napoli','11222333000111','Aprovado',40),
-(default, 'Massa & Forno Gastronomia Eireli','Santo Pedaço','44555666000144','default',50),
+(default, 'Massa & Forno Gastronomia Eireli','Santo Pedaço','44555666000144','Pendente',50),
 (default,  'Comércio de Massas Artesanais Lupa Ltda.', 'Luppa Pizza Bar','77888999000177', 'Aprovado', 30),
-(default,  'Rede de Pizzarias Redonda de Ouro S.A.', 'Disco de Ouro','10203040000110', 'Aprovado',100),
-(default,  'Mamma Mia Serviços de Alimentação Me.', 'Forno da Mamma','55444333000155', 'default',150);
+(default,  'Rede de Pizzarias Redonda de Ouro S.A.', 'Disco de Ouro','10203040000110', 'Aprovado',30), 
+(default,  'Mamma Mia Serviços de Alimentação Me.', 'Forno da Mamma','55444333000155', 'Pendente',20);
 
 
 ----------------- INSERT ADMINISTRADORES  --------------
@@ -125,8 +129,13 @@ INSERT INTO Bloco VALUES
 (1, '01'),
 (1, '02'),
 (2, '01'),
-(2, '02');
+(2, '02'),
+(3, '01'),
+(3, '02'),
+(4, '01'),
+(4, '02');
 
+select*from bloco;
 
 -------------------- INSERT SENSROR-------------------
 desc Sensor;
@@ -138,22 +147,22 @@ INSERT INTO Sensor VALUES
 (default, '2023-01-10', '2024-10-02', 'Ativo', 2, '01'),
 (default, '2023-01-10', '2025-07-04', 'Ativo', 2, '02'),
 (default, '2023-01-10', '2025-10-14', 'Inativo', 2, '03'),
-(default, '2020-07-22', '2024-10-17', 'Inativo', 7, '01'),
-(default, '2020-07-22', '2024-08-17', 'Inativo', 7, '02'),
-(default, '2020-07-22', '2024-08-25', 'Inativo', 7, '03'),
+(default, '2020-07-22', '2024-10-17', 'Inativo', 5, '01'),
+(default, '2020-07-22', '2024-08-17', 'Inativo', 5, '02'),
+(default, '2020-07-22', '2024-08-25', 'Inativo', 5, '03'),
 (default, '2024-02-05', '2024-05-30', 'Ativo', 3, '01'),
 (default, '2024-02-05', '2024-03-30', 'Inativo', 3, '02'),
 (default, '2024-02-05', '2025-09-20', 'Ativo', 3, '03'),
-(default, '2019-05-12', '2023-11-20', 'Ativo', 8, '02'),
-(default, '2019-05-12', '2023-11-01', 'Ativo', 8, '01'),
-(default, '2019-10-30', '2023-07-14', 'Inativo', 9, '01'),
-(default, '2019-10-30', '2023-07-14', 'Ativo', 9, '02'),
-(default, '2020-01-15', '2023-03-09', 'Ativo', 10, '01'),
-(default, '2020-01-15', '2023-03-09', 'Inativo', 10, '02'),
+(default, '2019-05-12', '2023-11-20', 'Ativo', 4, '02'),
+(default, '2019-05-12', '2023-11-01', 'Ativo', 4, '01'),
+(default, '2019-10-30', '2023-07-14', 'Inativo', 5, '01'),
+(default, '2019-10-30', '2023-07-14', 'Ativo', 5, '02'),
+(default, '2020-01-15', '2023-03-09', 'Ativo', 4, '01'),
+(default, '2020-01-15', '2023-03-09', 'Inativo', 4, '02'),
 (default, '2020-08-04', '2025-12-25', 'Ativo', 4, '01'),
 (default, '2020-08-04', '2022-12-25', 'Ativo', 4, '02'),
 (default, '2020-08-04', '2024-12-25', 'Ativo', 4, '03'),
-(default, '2021-04-22', '2024-01-05', 'Ativo', 11, '01'),
+(default, '2021-04-22', '2024-01-05', 'Ativo', 5, '01'),
 (default, '2021-04-22', '2022-06-05', 'Ativo', 11, '02'),
 (default, '2021-09-11', '2022-02-18', 'Inativo', 5, '01'),
 (default, '2021-09-11', '2021-11-18', 'Ativo', 5, '02'),
@@ -179,7 +188,21 @@ select * from Sensor order by fkRestaurante;
 -- sensor 1
 INSERT INTO Registro VALUES
 (null, default, 1, 1, 'Entrada'),
-(null, default, 0, 1, 'Entrada');
+(null, default, 1, 1, 'Entrada'),
+(null, default, 1, 1, 'Entrada'),
+(null, default, 1, 2, 'Entrada'),
+(null, default, 1, 2, 'Entrada'),
+(null, default, 1, 5, 'Entrada'),
+(null, default, 1, 6, 'Entrada');
+
+INSERT INTO Registro VALUES
+
+(null, default, 1, 3, 'Mapa'),
+(null, default, 1, 4, 'Mapa'),
+(null, default, 1, 5, 'Mapa');
+
+
+
 
 SELECT * FROM sensor order by fkBloco;
 SELECT idSensor from Sensor;
@@ -205,6 +228,8 @@ FROM Usuario u
 JOIN Restaurante r ON u.fkRestaurante = r.idRestaurante;
 
 
+-- insert operador
+
 INSERT INTO Usuario
  VALUES (default, 'Mariana Souza', 'mariana.oper@pizzaria.com','Mari#S2026','Operador',1,1),
 (default, 'Lucas Gabriel Santos','lucas.oper@pizzaria.com','Lks_8871ab','Operador',1,1);
@@ -228,3 +253,201 @@ FLUSH PRIVILEGES;
 
 SHOW GRANTS FOR 'usuario_insert'@'localhost';
 SHOW GRANTS FOR 'usuario_select'@'localhost';
+
+
+-- views da dashboard(kpis)
+
+-- rotação das mesas 
+
+
+select*from Sensor;
+CREATE VIEW vw_rotacao_mesa	 AS 
+SELECT 
+   r.idRestaurante,
+   r.nome_fantasia,
+   r.quantmesa,
+     COUNT(reg.idRegistro) AS totalCliente_hoje,
+     ROUND(COUNT(reg.idRegistro)/r.quantmesa,2) AS rotaçao_mesa
+     FROM Restaurante r
+     JOIN Sensor s on r.idRestaurante=s.fkRestaurante
+     JOIN Registro reg
+      on s.idSensor=reg.fkSensor
+	WHERE reg.tipo_leitura = 'Entrada'
+	AND DATE(reg.data) = CURDATE()
+
+	GROUP BY
+		r.idRestaurante,
+		r.nome_fantasia,
+		r.quantmesa;
+        
+        SELECT*FROM vw_rotacao_mesa;
+        
+      
+        
+        
+	-- kpi atual/ideal
+    
+    CREATE VIEW vw_fluxo_7dias AS
+SELECT
+    r.idRestaurante,
+    r.nome_fantasia,
+
+   
+
+    COUNT(reg.idRegistro) AS fluxo_atual_7dias,
+    
+    ROUND(r.quantmesa *2 *3.5*7,0)  AS fluxo_ideal_7dias
+
+FROM Restaurante r
+
+
+JOIN Sensor s
+    ON r.idRestaurante = s.fkRestaurante
+
+JOIN Registro reg
+    ON s.idSensor = reg.fkSensor
+
+WHERE reg.tipo_leitura = 'Entrada'
+AND reg.data >= NOW() - INTERVAL 7 DAY
+
+GROUP BY
+    r.idRestaurante,
+    r.nome_fantasia;
+   
+    
+    SELECT * FROM vw_fluxo_7dias;
+    
+
+	-- percentual de ocupação do restaurante 
+    
+    
+    CREATE VIEW vw_ocupacao_restaurante AS
+SELECT
+    r.idRestaurante,
+    r.nome_fantasia,
+    
+     ROUND(r.quantmesa *3.5 ,0)  AS capacidade_maxima,
+  
+   
+    SUM(
+        CASE
+            WHEN reg.tipo_leitura = 'Entrada' THEN 1
+            WHEN reg.tipo_leitura = 'Saída' THEN -1
+            ELSE 0
+        END
+    ) AS pessoas_no_restaurante,
+
+    ROUND(
+        (
+            SUM(
+                CASE
+                    WHEN reg.tipo_leitura = 'Entrada' THEN 1
+                    WHEN reg.tipo_leitura = 'Saída' THEN -1
+                    ELSE 0
+                END
+            ) /  (r.quantmesa * 3.5)
+        ) * 100,
+        2
+    ) AS percentual_ocupacao
+
+FROM Restaurante r
+
+JOIN Sensor s
+    ON r.idRestaurante = s.fkRestaurante
+
+JOIN Registro reg
+    ON s.idSensor = reg.fkSensor
+    
+    WHERE reg.data>= NOW() -INTERVAL 24 HOUR
+
+GROUP BY
+    r.idRestaurante,
+    r.nome_fantasia,
+    r.quantMesa;
+    
+    
+    SELECT *FROM vw_ocupacao_restaurante;
+    
+ 
+    
+-- view do heatmap 
+
+
+CREATE VIEW vw_heatmap_blocos AS
+SELECT
+    r.idRestaurante,
+    r.nome_fantasia,
+
+    s.fkBloco AS bloco,
+
+    COUNT(reg.idRegistro) AS total_movimentacoes
+
+FROM Restaurante r
+
+JOIN Sensor s
+    ON r.idRestaurante = s.fkRestaurante
+
+JOIN Registro reg
+    ON s.idSensor = reg.fkSensor
+
+WHERE reg.tipo_leitura = 'Mapa'
+
+GROUP BY
+    r.idRestaurante,
+    r.nome_fantasia,
+    s.fkBloco;
+    
+select *from vw_heatmap_blocos;
+
+
+-- view de quantidade clientes nos ultimos 7 dias 
+
+drop view vw_clientes_7dias;
+
+CREATE VIEW vw_clientes_7dias AS
+SELECT
+    r.idRestaurante,
+    r.nome_fantasia,
+    DATE(reg.data) AS data_dia,
+    
+     CASE DAYOFWEEK(reg.data)
+     WHEN 1 THEN 'Domingo'
+	 WHEN 2 THEN 'Segunda-Feira'
+	 WHEN 3 THEN 'Terça-Feira'
+	 WHEN 4 THEN 'Quarta-Feira'
+     WHEN 5 THEN 'Quinta-Feira'
+	 WHEN 6 THEN 'Sexta-Feira'
+	 WHEN 7 THEN 'Sabado'
+     END AS  dia_semana,
+     
+  
+    COUNT(reg.idRegistro) AS total_clientes
+    
+    FROM Restaurante r
+    
+       JOIN Sensor s 
+           on r.idRestaurante=s.fkRestaurante
+       
+       JOIN Registro reg
+       
+        on s.idSensor=reg.fkSensor
+
+
+		WHERE reg.tipo_leitura = 'Entrada'
+		AND reg.data >= NOW() - INTERVAL 7 DAY
+
+GROUP BY 
+ r.idRestaurante,
+ r.nome_fantasia,
+ DATE(reg.data)
+ 
+  ORDER  BY
+  r.idRestaurante,
+  data_dia;
+
+select *from vw_clientes_7dias;
+
+
+
+
+-- colocar para mostrar o dia exemplp segunda terça, quarta
