@@ -1,78 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Dashboard</title>
   <link rel="stylesheet" href="dash.css">
-  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
   <aside class="sidebar">
 
-        <div class="sidebar-logo">
- 
-    </div>
-        
-        <nav>
-            <ul>
-      <li>
-          <a href="dashboard.html">
-              <i class="fa-solid fa-chart-line"></i>
-              Dashboard
-          </a>
-      </li>
+    <div class="sidebar-logo">
 
-      <li>
-          <a href="adicionarusu.html">
-              <i class="fa-solid fa-user-plus"></i>
-              Adicionar Usuário
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="dashboard.html">
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
           </a>
-      </li>
-                  </ul>       
-        </nav>
-    </aside>
+        </li>
+
+        <li>
+          <a href="adicionarusu.html">
+            <i class="fa-solid fa-user-plus"></i>
+            Adicionar Usuário
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
   <main>
 
 
     <div class="container">
       <h1>Monitoramento do restaurante</h1>
-      
+
       <div class="kpis">
         <div class="card">
-             <i class="fa-solid fa-utensils icon"></i>
+          <i class="fa-solid fa-utensils icon"></i>
 
           <h2> Rotatividade das mesas</h2>
           <p class="red" id="rotatividademesa">182</p>
           <h3>Giro por mesa (hoje) </h3>
-      
+
         </div>
 
-      <div class="card">
-         <i class="fa-solid fa-users icon"></i>
-        <h2>Fluxo de clientes (Atual x Meta) </h2>
-        <p class="red" id="atualmeta">714/1400</p>
-        <h3>nos ultimos(7dias)</h3>
+        <div class="card">
+          <i class="fa-solid fa-users icon"></i>
+          <h2>Fluxo de clientes (Atual x Meta) </h2>
+          <p class="red" id="atualmeta"><span id="kpiFluxoAtual">714</span>/<span id="kpiFluxoMeta"></span></p>
+          <h3>nos ultimos(7dias)</h3>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-percent icon"></i>
+          <h2>Percetual de ocupação do restauraante</h2>
+          <p class="red" id="kpiOcupacao">1</p>
+        </div>
       </div>
 
-      <div class="card">  
-     <i class="fa-solid fa-percent icon"></i>
-        <h2>Percetual de ocupação do restauraante</h2>
-        <p class="red">1</p>
+      <div class="charts">
+        <div class="chart">Mapa de Calor</div>
+        <div class="chart"><canvas id="barChart"></canvas></div>
       </div>
+
     </div>
 
-    <div class="charts">
-      <div class="chart">Mapa de Calor</div>
-      <div class="chart"><canvas id="barChart"></canvas></div>
-    </div>
-    
-  </div>
-  
-</main>
+  </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="dashboard.js"></script>
 <script>
   gerarBarChart()
+
+  async function buscarKpi(){
+    // VOU MANDAR UM ID DE EMPRESA PLACEHOLDER ENQUANTO O LOGIN NAO FUNCIONA
+
+    var resposta = await fetch("/kpi/buscarKpi/1");
+    var Kpis = await resposta.json();
+    console.log(Kpis)
+
+    rotatividademesa.innerHTML = Kpis.rotatividade
+    kpiFluxoAtual.innerHTML = Kpis.fluxo[0]
+    kpiFluxoMeta.innerHTML = Kpis.fluxo[1]
+    kpiOcupacao.innerHTML = Kpis.ocupacao
+  }
+
+  buscarKpi()
 </script>
+
 </html>
