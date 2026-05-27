@@ -1,8 +1,7 @@
+drop database if exists FMS;
 CREATE DATABASE IF NOT EXISTS FMS;
 USE FMS;
 
-
-drop database FMS;
 
 
 
@@ -73,30 +72,6 @@ CREATE TABLE Registro (
     CHECK (tipo_leitura IN ('Mapa', 'Entrada', 'Saída'))
 );
 
-
------------------------ INSERT ENDERECO ------------
-desc Endereco;
-select * from Endereco;
-INSERT INTO Endereco VALUES
-
-(default, '01310200', 'Avenida Paulista', '1500', 'Bela Vista', 'São Paulo', 'SP', 'Bloco 2A', 1),
-(default, '20040002', 'Avenida Rio Branco', '45', 'Centro', 'Rio de Janeiro','RJ', '', 2),
-(default, '70150900', 'Praça dos Três Poderes', 'SN', 'Zona Cívico - Administrativa', 'Brasília', 'DF', '', 3),
-(default, '30140061', 'Rua da Bahia', '1022', 'Lourdes', 'Belo Horizonte', 'MG', 'Bloco 6D',4),
-(default, '80020100', 'Praça Tiradentes', '290', 'Centro', 'Curitiba', 'PR', '',5),
-(default, '40020000', 'Praça Visconde de Cayru', '250', 'Comércio', 'Salvador', 'BA', 'Bloco 4C',6),
-(default, '60060390', 'Rua dos Tabajaras', '410', 'Praia de Iracema', 'Fortaleza', 'CE', '',7),
-(default, '90010001', 'Avenida Mauá', '1050', 'Centro Histórico', 'Porto Alegre', 'RS', '',8),
-(default, '04101000', 'Rua das Orquídeas', '520', 'Vila Mariana', 'São Paulo', 'SP', '',9),
-(default, '30112020', 'Avenida Getúlio Vargas', '1150', 'Savassi', 'Belo Horizonte', 'MG', '',10),
-(default, '80230010', 'Alameda dos Anjos', '45', 'Rebouças', 'Curitiba', 'PR', '',11),
-(default, '20040030', 'Rua do Ouvidor', '89', 'Centro', 'Rio de Janeiro', 'RJ', '',12),
-(default, '60160230', 'Avenida Dom Luís', '1200', 'Aldeota', 'Fortaleza', 'CE', '',13),
-(default, '90010001', 'Rua da Praia,', '330', 'Centro Historico', 'Porto Alegre', 'RS', '',14),
-(default, '41820020', 'Avenida Tancredo Neves', '2450', 'Caminho das Árvores', 'Salvador', 'BA', '',15);
-select * from Endereco;
-
-
 -------------------- INSERT RESTAURANTE--------------------
 desc Restaurante;
 
@@ -107,6 +82,20 @@ INSERT INTO Restaurante VALUES
 (default,  'Comércio de Massas Artesanais Lupa Ltda.', 'Luppa Pizza Bar','77888999000177', 'Aprovado', 30),
 (default,  'Rede de Pizzarias Redonda de Ouro S.A.', 'Disco de Ouro','10203040000110', 'Aprovado',30), 
 (default,  'Mamma Mia Serviços de Alimentação Me.', 'Forno da Mamma','55444333000155', 'Pendente',20);
+
+
+
+----------------------- INSERT ENDERECO ------------
+desc Endereco;
+select * from Endereco;
+INSERT INTO Endereco VALUES
+(default, '01310200', 'Avenida Paulista', '1500', 'Bela Vista', 'São Paulo', 'SP', 'Bloco 2A', 1),
+(default, '20040002', 'Avenida Rio Branco', '45', 'Centro', 'Rio de Janeiro','RJ', '', 2),
+(default, '70150900', 'Praça dos Três Poderes', 'SN', 'Zona Cívico - Administrativa', 'Brasília', 'DF', '', 3),
+(default, '30140061', 'Rua da Bahia', '1022', 'Lourdes', 'Belo Horizonte', 'MG', 'Bloco 6D',4),
+(default, '80020100', 'Praça Tiradentes', '290', 'Centro', 'Curitiba', 'PR', '',5);
+select * from Endereco;
+
 
 
 ----------------- INSERT ADMINISTRADORES  --------------
@@ -128,12 +117,24 @@ ORDER BY f.cargo;
 INSERT INTO Bloco VALUES
 (1, '01'),
 (1, '02'),
+(1, '03'),
+(1, '04'),
+
 (2, '01'),
 (2, '02'),
+(2, '03'),
+
 (3, '01'),
 (3, '02'),
+(3, '03'),
+
 (4, '01'),
-(4, '02');
+(4, '02'),
+(4, '03'),
+
+(5, '01'),
+(5, '02'),
+(5, '03');
 
 select*from bloco;
 
@@ -163,23 +164,9 @@ INSERT INTO Sensor VALUES
 (default, '2020-08-04', '2022-12-25', 'Ativo', 4, '02'),
 (default, '2020-08-04', '2024-12-25', 'Ativo', 4, '03'),
 (default, '2021-04-22', '2024-01-05', 'Ativo', 5, '01'),
-(default, '2021-04-22', '2022-06-05', 'Ativo', 11, '02'),
 (default, '2021-09-11', '2022-02-18', 'Inativo', 5, '01'),
 (default, '2021-09-11', '2021-11-18', 'Ativo', 5, '02'),
-(default, '2021-09-11', '2023-12-18', 'Ativo', 5, '03'),
-(default, '2019-02-04', '2021-12-30', 'Inativo', 12, '02'),
-(default, '2019-02-04', '2025-12-30', 'Ativo', 12, '01'),
-(default, '2024-08-04', '2024-12-25', 'Ativo', 6, '01'),
-(default, '2024-08-04', '2025-12-25', 'Ativo', 6, '02'),
-(default, '2024-08-04', '2025-12-25', 'Ativo', 6, '03'),
-(default, '2022-08-04', '2022-01-09', 'Ativo', 9, '01'),
-(default, '2022-08-04', '2025-12-25', 'Ativo', 9, '02'),
-(default, '2023-12-04', '2023-12-25', 'Ativo', 14, '01'),
-(default, '2023-12-04', '2024-12-25', 'Ativo', 14, '02'),
-(default, '2021-12-04', '2023-12-25', 'Ativo', 13, '01'),
-(default, '2021-12-04', '2022-12-25', 'Ativo', 13, '02'),
-(default, '2025-12-04', '2025-12-05', 'Ativo', 15, '01'),
-(default, '2025-12-04', '2025-12-15', 'Ativo', 15, '02');
+(default, '2021-09-11', '2023-12-18', 'Ativo', 5, '03');
 
 
 ----------------- insert leitor --------------------
@@ -241,18 +228,7 @@ FROM Sensor s JOIN Bloco b ON s.fkRestaurante = b.fkRestaurante
 AND s.fkBloco = b.bloco JOIN Restaurante r ON b.fkRestaurante = r.idRestaurante;
 
 
--- Criando Usuarios para maquina virtual ----------------------------
-CREATE USER 'usuario_insert'@'localhost' IDENTIFIED BY 'Rml_1505';
-CREATE USER 'usuario_select'@'localhost' IDENTIFIED BY 'Yag_2102';
 
--- usar como root
-GRANT INSERT ON FMS.* TO 'usuario_insert'@'localhost';
-GRANT SELECT  ON FMS.* TO 'usuario_select'@'localhost';
-
-FLUSH PRIVILEGES;
-
-SHOW GRANTS FOR 'usuario_insert'@'localhost';
-SHOW GRANTS FOR 'usuario_select'@'localhost';
 
 
 -- views da dashboard(kpis)
@@ -280,7 +256,7 @@ SELECT
 		r.nome_fantasia,
 		r.quantmesa;
         
-        SELECT*FROM vw_rotacao_mesa;
+        SELECT*FROM 	;
         
       
         
@@ -402,8 +378,6 @@ select *from vw_heatmap_blocos;
 
 -- view de quantidade clientes nos ultimos 7 dias 
 
-drop view vw_clientes_7dias;
-
 CREATE VIEW vw_clientes_7dias AS
 SELECT
     r.idRestaurante,
@@ -445,9 +419,22 @@ GROUP BY
   r.idRestaurante,
   data_dia;
 
-select *from vw_clientes_7dias;
+select * from vw_clientes_7dias;
 
 
 
 
 -- colocar para mostrar o dia exemplp segunda terça, quarta
+
+-- Criando Usuarios para maquina virtual ----------------------------
+CREATE USER 'usuario_insert'@'localhost' IDENTIFIED BY 'Rml_1505';
+CREATE USER 'usuario_select'@'localhost' IDENTIFIED BY 'Yag_2102';
+
+-- usar como root
+GRANT INSERT ON FMS.* TO 'usuario_insert'@'localhost';
+GRANT SELECT  ON FMS.* TO 'usuario_select'@'localhost';
+
+FLUSH PRIVILEGES;
+
+SHOW GRANTS FOR 'usuario_insert'@'localhost';
+SHOW GRANTS FOR 'usuario_select'@'localhost';
