@@ -1,8 +1,8 @@
+
 drop database if exists FMS;
+
 CREATE DATABASE IF NOT EXISTS FMS;
 USE FMS;
-
-
 
 
 CREATE TABLE Restaurante (
@@ -182,6 +182,38 @@ INSERT INTO Registro VALUES
 (null, default, 1, 5, 'Entrada'),
 (null, default, 1, 6, 'Entrada');
 
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura) VALUES
+('2026-05-21 11:15:00', 1, 1, 'Entrada'),
+('2026-05-21 12:30:00', 1, 2, 'Entrada'),
+
+('2026-05-22 10:20:00', 1, 1, 'Entrada'),
+('2026-05-22 13:45:00', 1, 2, 'Entrada'),
+('2026-05-22 18:10:00', 1, 3, 'Entrada'),
+
+('2026-05-23 09:05:00', 1, 1, 'Entrada'),
+('2026-05-23 12:40:00', 1, 2, 'Entrada'),
+('2026-05-23 19:25:00', 1, 3, 'Entrada'),
+
+('2026-05-24 11:50:00', 1, 1, 'Entrada'),
+('2026-05-24 14:15:00', 1, 2, 'Entrada'),
+('2026-05-24 20:30:00', 1, 3, 'Entrada'),
+
+('2026-05-25 10:00:00', 1, 1, 'Entrada'),
+('2026-05-25 12:10:00', 1, 2, 'Entrada'),
+('2026-05-25 18:45:00', 1, 3, 'Entrada'),
+('2026-05-25 21:20:00', 1, 1, 'Entrada'),
+
+('2026-05-26 09:30:00', 1, 1, 'Entrada'),
+('2026-05-26 13:00:00', 1, 2, 'Entrada'),
+('2026-05-26 17:40:00', 1, 3, 'Entrada'),
+('2026-05-26 20:15:00', 1, 1, 'Entrada'),
+
+('2026-05-27 10:45:00', 1, 1, 'Entrada'),
+('2026-05-27 12:35:00', 1, 2, 'Entrada'),
+('2026-05-27 15:50:00', 1, 3, 'Entrada'),
+('2026-05-27 19:10:00', 1, 1, 'Entrada'),
+('2026-05-27 21:55:00', 1, 2, 'Entrada');
+
 INSERT INTO Registro VALUES
 
 (null, default, 1, 3, 'Mapa'),
@@ -256,7 +288,7 @@ SELECT
 		r.nome_fantasia,
 		r.quantmesa;
         
-        SELECT*FROM 	;
+        SELECT*FROM vw_rotacao_mesa	;
         
       
         
@@ -375,66 +407,60 @@ GROUP BY
     
 select *from vw_heatmap_blocos;
 
-
 -- view de quantidade clientes nos ultimos 7 dias 
 
+drop view  vw_clientes_7dias;
 CREATE VIEW vw_clientes_7dias AS
+
 SELECT
-    r.idRestaurante,
-    r.nome_fantasia,
-    DATE(reg.data) AS data_dia,
-    
-     CASE DAYOFWEEK(reg.data)
-     WHEN 1 THEN 'Domingo'
-	 WHEN 2 THEN 'Segunda-Feira'
-	 WHEN 3 THEN 'Terça-Feira'
-	 WHEN 4 THEN 'Quarta-Feira'
-     WHEN 5 THEN 'Quinta-Feira'
-	 WHEN 6 THEN 'Sexta-Feira'
-	 WHEN 7 THEN 'Sabado'
-     END AS  dia_semana,
-     
-  
-    COUNT(reg.idRegistro) AS total_clientes
-    
+    dados.idRestaurante,
+    dados.nome_fantasia,
+    dados.data_dia,
+
+    CASE DAYOFWEEK(dados.data_dia)
+        WHEN 1 THEN 'Domingo'
+        WHEN 2 THEN 'Segunda-Feira'
+        WHEN 3 THEN 'Terça-Feira'
+        WHEN 4 THEN 'Quarta-Feira'
+        WHEN 5 THEN 'Quinta-Feira'
+        WHEN 6 THEN 'Sexta-Feira'
+        WHEN 7 THEN 'Sábado'
+    END AS dia_semana,
+
+    dados.total_clientes
+
+FROM (
+
+    SELECT
+        r.idRestaurante,
+        r.nome_fantasia,
+        DATE(reg.data) AS data_dia,
+        COUNT(reg.idRegistro) AS total_clientes
+
     FROM Restaurante r
+
+    JOIN Sensor s
+        ON r.idRestaurante = s.fkRestaurante
+
+    JOIN Registro reg
+        ON s.idSensor = reg.fkSensor
+
+WHERE reg.tipo_leitura = 'Entrada'
+AND reg.data >= CURDATE() - INTERVAL 7 DAY
+AND reg.data <  CURDATE()
+
+    GROUP BY
+        r.idRestaurante,
+        r.nome_fantasia,
+        DATE(reg.data)
+
+) AS dados
+
+ORDER BY
+    dados.idRestaurante,
+    dados.data_dia;
     
-       JOIN Sensor s 
-           on r.idRestaurante=s.fkRestaurante
-       
-       JOIN Registro reg
-       
-        on s.idSensor=reg.fkSensor
+  select *from vw_clientes_7dias;
+  drop view vw_clientes_7dias;
 
 
-		WHERE reg.tipo_leitura = 'Entrada'
-		AND reg.data >= NOW() - INTERVAL 7 DAY
-
-GROUP BY 
- r.idRestaurante,
- r.nome_fantasia,
- DATE(reg.data)
- 
-  ORDER  BY
-  r.idRestaurante,
-  data_dia;
-
-select * from vw_clientes_7dias;
-
-
-
-
--- colocar para mostrar o dia exemplp segunda terça, quarta
-
--- Criando Usuarios para maquina virtual ----------------------------
-CREATE USER 'usuario_insert'@'localhost' IDENTIFIED BY 'Rml_1505';
-CREATE USER 'usuario_select'@'localhost' IDENTIFIED BY 'Yag_2102';
-
--- usar como root
-GRANT INSERT ON FMS.* TO 'usuario_insert'@'localhost';
-GRANT SELECT  ON FMS.* TO 'usuario_select'@'localhost';
-
-FLUSH PRIVILEGES;
-
-SHOW GRANTS FOR 'usuario_insert'@'localhost';
-SHOW GRANTS FOR 'usuario_select'@'localhost';
