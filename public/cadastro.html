@@ -20,11 +20,20 @@
         </div>
         <button class="navbar-btn"><a href="login.html">Login</a></button>
     </header>
+    
     <div class="div_body">
+        <div id="div_passwordVerification">
+                <span>a senha precisa ter no mínimo:</span><br>
+                <span id="span_psswrdCaracteres">6 caracteres</span><br>
+                <span id="span_psswrdNumber">1 número</span><br>
+                <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
+                <span id="span_psswrdLower">1 letra MINUSCULA</span><br>
+                <div id="div_passwrd_confirmation"></div>
+            </div>
+            
         <div class="div_princ">
             <h2>Cadastro</h2>
             
-            <h3>Dados do Usuário</h3>
             <span>Nome Completo</span>
             <input type="text" placeholder="Nome:" id="inp_nome"><br>
             
@@ -35,16 +44,7 @@
             <span id="spanPsswrd">Senha</span><span id="spanPsswrdConfir">Confirmar Senha</span>
             <input type="password" placeholder="senha:" id="inp_password" oninput="verificarPsswrd()">
             <input type="password" placeholder="confirmar senha:" id="inp_password2" oninput="verificarPsswrd()">
-            <div id="div_passwordVerification">
-                <span>a senha precisa ter no mínimo:</span><br>
-                <span id="span_psswrdCaracteres">6 caracteres</span><br>
-                <span id="span_psswrdNumber">1 número</span><br>
-                <span id="span_psswrdUpper">1 letra MAIUSCULA</span><br>
-                <span id="span_psswrdLower">1 letra MINUSCULA</span><br>
-                <div id="div_passwrd_confirmation"></div>
-            </div>
-
-            <h3>Dados do Restaurante</h3>
+        
             <span>Razão Social</span>
             <input type="text" placeholder="Razão Social:" id="inp_razaoSocial"><br>
             
