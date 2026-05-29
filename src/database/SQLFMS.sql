@@ -449,18 +449,18 @@ WHERE reg.tipo_leitura = 'Entrada'
 AND reg.data >= CURDATE() - INTERVAL 7 DAY
 AND reg.data <  CURDATE()
 
-    GROUP BY
-        r.idRestaurante,
-        r.nome_fantasia,
-        DATE(reg.data)
+GROUP BY 
+ r.idRestaurante,
+ r.nome_fantasia,
+ DATE(reg.data)
+ 
+  ORDER  BY
+  r.idRestaurante,
+  data_dia;
 
-) AS dados
-
-ORDER BY
-    dados.idRestaurante,
-    dados.data_dia;
-    
-  select *from vw_clientes_7dias;
-  drop view vw_clientes_7dias;
+select *from vw_clientes_7dias;
 
 
+
+
+-- colocar para mostrar o dia exemplp segunda terça, quarta

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="heatmap.css">
+    <title>Exemplo de Heatmap - SPTECH Store</title>
+   
+    <script src="https://unpkg.com/heatmap.js"></script> <!-- Importar a biblioteca heatmap.js -->
+</head>
+
+<body>
+    <!-- Controles para filtrar os dados por intervalo de data e hora -->
+    <div class="controles">
+        <div>
+            <h3>Intervalo de Tempo</h3>
+            <p>Selecione um intervalo de tempo para visualizar os dados:</p>
+        </div>
+        <div class="data-hora">
+            <label for="data-inicial">Data Inicial:</label>
+            <input type="date" id="data-inicial" name="data-inicial" value="2024-01-01">
+            <label for="data-final">Data Final:</label>
+            <input type="date" id="data-final" name="data-final" value="2024-10-01">
+        </div>
+        <div class="data-hora">
+            <label for="hora">Hora Intervalo:</label>
+            <select id="hora" name="hora">
+                <option value="00:00-01:00">00:00 - 01:00</option>
+                <option value="01:00-02:00">01:00 - 02:00</option>
+                <option value="02:00-03:00">02:00 - 03:00</option>
+                <option value="03:00-04:00">03:00 - 04:00</option>
+                <option value="04:00-05:00">04:00 - 05:00</option>
+                <option value="05:00-06:00">05:00 - 06:00</option>
+                <option value="06:00-07:00">06:00 - 07:00</option>
+                <option value="07:00-08:00">07:00 - 08:00</option>
+                <option value="08:00-09:00">08:00 - 09:00</option>
+                <option value="09:00-10:00">09:00 - 10:00</option>
+                <option value="10:00-11:00">10:00 - 11:00</option>
+                <option value="11:00-12:00">11:00 - 12:00</option>
+                <option value="12:00-13:00">12:00 - 13:00</option>
+                <option value="13:00-14:00">13:00 - 14:00</option>
+                <option value="14:00-15:00">14:00 - 15:00</option>
+                <option value="15:00-16:00">15:00 - 16:00</option>
+                <option value="16:00-17:00">16:00 - 17:00</option>
+                <option value="17:00-18:00">17:00 - 18:00</option>
+                <option value="18:00-19:00">18:00 - 19:00</option>
+                <option value="19:00-20:00">19:00 - 20:00</option>
+                <option value="20:00-21:00">20:00 - 21:00</option>
+                <option value="21:00-22:00">21:00 - 22:00</option>
+                <option value="22:00-23:00">22:00 - 23:00</option>
+                <option value="23:00-00:00">23:00 - 00:00</option>
+            </select>
+        </div>
+
+        <button onclick="filtrarDadosPorDataHora()">Aplicar Intervalo de Tempo</button>
+    </div>
+
+    <!-- Div para exibir o heatmap -->
+    <div class="arduinoAlocacao"></div>
+    <div class="heatmap"></div>
+    <script>
+        // Criar uma instância do heatmap.js
+        var instanciaHeatmap = h337.create({
+            container: document.querySelector('.heatmap')
+        });
+
+        // Estrutura de dados separada por locais, cada local tem várias capturas de dados com datas e horários
+            const mapaSequencial = {
+            "01": { x: 50,  y: 50 },
+            "02": { x: 150, y: 50 },
+            "03": { x: 250, y: 50 },
+            "04": { x: 350, y: 50 },
+            "05": { x: 450, y: 50 },
+
+            "06": { x: 50,  y: 150 },
+            "07": { x: 150, y: 150 },
+            "08": { x: 250, y: 150 },
+            "09": { x: 350, y: 150 },
+            "10": { x: 450, y: 150 },
+
+            "11": { x: 50,  y: 250 },
+            "12": { x: 150, y: 250 },
+            "13": { x: 250, y: 250 },
+            "14": { x: 350, y: 250 },
+            "15": { x: 450, y: 250 },
+
+            "16": { x: 50,  y: 350 },
+            "17": { x: 150, y: 350 },
+            "18": { x: 250, y: 350 },
+            "19": { x: 350, y: 350 },
+            "20": { x: 450, y: 350 },
+
+            "21": { x: 50,  y: 450 },
+            "22": { x: 150, y: 450 },
+            "23": { x: 250, y: 450 },
+            "24": { x: 350, y: 450 },
+
+            // 🔴 bloco 25 (tempo real)
+            "25": { x: 450, y: 450 }
+            };
+
+         
+        // Função para converter data e hora em um objeto Date
+     function filtrarDadosPorDataHora() {
+
+    const dataInicial = document.getElementById('data-inicial').value;
+    const dataFinal = document.getElementById('data-final').value;
+    const horaIntervalo = document.getElementById('hora').value;
+
+    const [horaInicial, horaFinal] = horaIntervalo.split("-");
+
+    const dataHoraInicial = new Date(`${dataInicial}T${horaInicial}`);
+    const dataHoraFinal = new Date(`${dataFinal}T${horaFinal}`);
+
+    if (dataHoraFinal < dataHoraInicial) {
+        alert("Data inválida");
+        return;
+    }
+
+    const heatmapData = [];
+
+    dadosBlocos.forEach(item => {
+
+        const dataItem = new Date(item.dataHora);
+
+        if (dataItem >= dataHoraInicial && dataItem <= dataHoraFinal) {
+
+            const pos = mapaSequencial[item.bloco];
+
+            if (pos) {
+                heatmapData.push({
+                    x: pos.x,
+                    y: pos.y,
+                    value: item.value,
+                    radius: 100
+                });
+            }
+        }
+    });
+
+    const max = Math.max(...heatmapData.map(d => d.value), 1);
+
+    instanciaHeatmap.setData({
+        max: max,
+        data: heatmapData
+    });
+}
+    </script>
+
+</body>
+
+</html>

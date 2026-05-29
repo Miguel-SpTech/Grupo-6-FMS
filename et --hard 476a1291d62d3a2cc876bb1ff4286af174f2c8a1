@@ -1,0 +1,626 @@
+[33mcommit 46671d619a48b3bb43c4362353960e9d800457a3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Raissa <142915471+raissalim@users.noreply.github.com>
+Date:   Thu May 28 12:39:32 2026 -0300
+
+    Update SQLFMS.sql
+
+[33mcommit d648f564401ca1db66612fc8caf2a65931656d48[m
+Merge: 99e70df 72e403e
+Author: raissalim <raissa.lima@sptech.school>
+Date:   Wed May 27 17:50:07 2026 -0300
+
+    Resolve conflitos de merge
+
+[33mcommit 99e70df90097a53bc035b1ecafffbadc596b00e1[m
+Author: raissalim <raissa.lima@sptech.school>
+Date:   Wed May 27 17:41:49 2026 -0300
+
+    tela aprovacao
+
+[33mcommit 72e403e6bb8d88118894e2b334817d243c0cd4be[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Wed May 27 16:57:11 2026 -0300
+
+    arrumando o bd
+
+[33mcommit 476a1291d62d3a2cc876bb1ff4286af174f2c8a1[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Wed May 27 16:54:53 2026 -0300
+
+    feat: Kpis funcionando na dashboard, e removi alguns arquivos inuteis
+
+[33mcommit fe6ae5a5ab9be81952070eb71917aa80d9213cf0[m
+Author: Raissa <142915471+raissalim@users.noreply.github.com>
+Date:   Mon May 25 14:03:31 2026 -0300
+
+    Update SQLFMS.sql
+
+[33mcommit 498c8d98c285e22ae5ddc51e0ef5b1fe4c818451[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Mon May 25 00:28:36 2026 -0300
+
+    login and register with api
+
+[33mcommit c39b8ab7aed842af50436db7a61f43489ebb5369[m
+Author: raissalim <raissa.lima@sptech.school>
+Date:   Thu May 21 18:49:53 2026 -0300
+
+    layout da dashboard finalizado
+
+[33mcommit 04af3bfeff1561130ddc4c6d1b9d1767384d70ff[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Wed May 20 10:43:35 2026 -0300
+
+    arrumando fonte e arrumando estilização
+
+[33mcommit e0036d5fd42919c941dda8f6cb3281b3a7063f61[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Wed May 20 10:22:10 2026 -0300
+
+    atualizando
+
+[33mcommit 6729d2cd82394245497eb12caaf18d9e4959a176[m
+Merge: ae23297 f6576bc
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Tue May 19 09:43:57 2026 -0300
+
+    só falta o JS
+
+[33mcommit ae23297e92e5a4b358bd07e1772f5c152798b9b2[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Tue May 19 09:42:02 2026 -0300
+
+    só falta o JS
+
+[33mcommit f6576bced07b0cae942fa795664a57c61b3bcbe1[m
+Merge: 5a909d7 0d3cd61
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Tue May 19 07:35:58 2026 -0300
+
+    Merge branch 'main' of https://github.com/Miguel-SpTech/Grupo-6-FMS
+
+[33mcommit 5a909d706e054b17b6e9cd7afecc40dff7ee950b[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Tue May 19 07:35:03 2026 -0300
+
+    Dashboard
+
+[33mcommit 0d3cd6199b581c901f3a7d98cded292a659ab048[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Mon May 18 19:44:11 2026 -0300
+
+    tela de login e cadastro finalizado
+
+[33mcommit 45344cb87108b63ce1a281595f5686c014893486[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Sat May 16 19:52:40 2026 -0300
+
+    cores dash
+
+[33mcommit 38b4482d3a94d2b9e67f401405eed41e741885ad[m
+Author: NandoLFC12 <luizfernandolufe@yahoo.com.br>
+Date:   Sat May 16 19:50:40 2026 -0300
+
+    cores dashboard
+
+[33mcommit ea204efed28efbdac69ee49a4027fd2bd53d4620[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Sat May 16 19:24:54 2026 -0300
+
+    Sidebar atualizada
+
+[33mcommit 7f80ea5c8ba136630dcd91dd2c943021961de485[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Sat May 16 19:12:24 2026 -0300
+
+    Código da Dashboard atualizado
+
+[33mcommit 6712c2cb11e199868c687e52aed51c3b9a4cee77[m
+Author: Raissa <142915471+raissalim@users.noreply.github.com>
+Date:   Fri May 15 14:29:32 2026 -0300
+
+    Update SQLFMS.sql
+
+[33mcommit e1f45caf171e573b69116fbfd1b73aa4cc5d13f6[m
+Author: Loouiz <luiz.correia@sptech.school>
+Date:   Thu May 14 20:14:29 2026 -0300
+
+    Add files via upload
+
+[33mcommit 17d69d72eaaeecbf3d80de63385fcabfbfc4fa4f[m
+Author: Loouiz <luiz.correia@sptech.school>
+Date:   Thu May 14 20:13:58 2026 -0300
+
+    Delete Banco-de-Dados/modelagemv3.mwb
+
+[33mcommit 813796e7292dc34a584408f0d8c0d2d2bddd686f[m
+Author: Raissa <142915471+raissalim@users.noreply.github.com>
+Date:   Thu May 14 13:16:13 2026 -0300
+
+    Update SQLFMS.sql
+
+[33mcommit 902aeebb8aae22f15379c6008cbe5a09c23c9c94[m
+Author: Loouiz <luiz.correia@sptech.school>
+Date:   Wed May 13 15:58:45 2026 -0300
+
+    Add files via upload
+
+[33mcommit 550b225fe09e4b797e3b07fe6e9adadb6d89053d[m
+Author: Loouiz <luiz.correia@sptech.school>
+Date:   Wed May 13 15:57:12 2026 -0300
+
+    Delete Banco-de-Dados/modelagemv3.mwb
+
+[33mcommit 269e97b23144b9dd89b90bc4c95f5709f4713828[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Sun Apr 26 20:12:56 2026 -0300
+
+    arrumando calculadora
+
+[33mcommit 0b4856374bfe4d24c2b4c3ef67bc0be02a20ed7c[m
+Author: Miguel <miguel.mauer@sptech.school>
+Date:   Sun Apr 26 17:12:50 2026 -0300
+
+    fix some things
+
+[33mcommit 7a95ad323bfc0350c59751f18d02146b81ad6e24[m
+Author: Miguel <miguel.mauer@sptech.school>
+Date:   Sun Apr 26 16:56:18 2026 -0300
+
+    ignora o commit passado
+
+[33mcommit 3c287e3f28ef0915c61770d60f6572bfb372cd35[m
+Author: Miguel <miguel.mauer@sptech.school>
+Date:   Sun Apr 26 16:41:40 2026 -0300
+
+    add password verification
+
+[33mcommit 0493d532a5370ffa9a9b0f8fef5e42c1a17c7ace[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Fri Apr 24 15:43:44 2026 -0300
+
+    atualizando usuario do banco de dados
+
+[33mcommit 372c8d604fd2207d25ac265b1b0f4845b29c42f9[m
+Merge: 80ed91b f82ae25
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Fri Apr 24 14:09:46 2026 -0300
+
+    Merge branch 'main' of https://github.com/Miguel-SpTech/Grupo-6-FMS
+
+[33mcommit 80ed91b1fc0c776c087b984ce70de9a01d3ac3b2[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Fri Apr 24 14:09:31 2026 -0300
+
+    criando a dashboard mockada
+
+[33mcommit f82ae2578889b3ddea9ccb9d72c00f26bb5f2352[m
+Merge: 04dcdba 2f0abef
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Fri Apr 24 14:08:36 2026 -0300
+
+    Merge branch 'main' of github.com:Miguel-SpTech/Grupo-6-FMS
+
+[33mcommit 04dcdba9261e370688046225428297e2e771c44e[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Fri Apr 24 14:08:16 2026 -0300
+
+    atulizando modelagem logica
+
+[33mcommit 2f0abefea29cd264b8b402bce2925ff4f0c0c544[m
+Author: usuario <usuario@localhost.localdomain>
+Date:   Fri Apr 24 13:50:17 2026 -0300
+
+    dashboard faltando heatmap
+
+[33mcommit b0711452bec2fe4436cf7c5211fa3c0df7ebd0ac[m
+Author: Loouiz <luiz.correia@sptech.school>
+Date:   Fri Apr 24 09:08:02 2026 -0300
+
+    correção senha SQLFMS.sql
+
+[33mcommit 33ffbdccf6f99afa20847f6f42b351b30aaf8a1f[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Thu Apr 23 22:34:25 2026 -0300
+
+    correção banner hero
+
+[33mcommit 20901dbf224e4fc1138985c5747b3686d0085e66[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Thu Apr 23 13:23:37 2026 -0300
+
+    Dashboard organization
+
+[33mcommit 616ae6e2afca18934dd1675accd77e2d9d48cb05[m
+Author: victorMonteiro22 <victor.monteiro@sptech.school>
+Date:   Thu Apr 23 13:21:01 2026 -0300
+
+    Add files via upload
+
+[33mcommit 9e98cad816d2089b0af3ffdd1c3df4d1a8844e3b[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Thu Apr 23 12:06:02 2026 -0300
+
+    fix databse
+
+[33mcommit 54722462dc35376efef1db9257c492e6d47b9726[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Thu Apr 23 11:52:25 2026 -0300
+
+    atualização no BD
+
+[33mcommit b4ec4d5f58ee19655ad5ff857275118f4215a864[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Thu Apr 23 11:49:03 2026 -0300
+
+    atualização no BD
+
+[33mcommit db54020d4d1da07b72d2876c1567a84c530d1c7c[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Thu Apr 23 10:44:12 2026 -0300
+
+    fix the organization of Dashboard
+
+[33mcommit 2d9e3b7cdfa422c7fcabeb578a746b2d6c32969c[m
+Author: victorMonteiro22 <victor.monteiro@sptech.school>
+Date:   Thu Apr 23 10:40:21 2026 -0300
+
+    add Dashboard
+
+[33mcommit 543474015d656bdde782fc485295dfb383dfb8a9[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Thu Apr 23 09:55:38 2026 -0300
+
+    criação dos usuarios do banco de dados, e alteração da ordem dos inserts na tabela
+
+[33mcommit b881a6b0aef874ef7937b3e4ee04287b0bab3222[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 14:50:36 2026 -0300
+
+    fixed git organization
+
+[33mcommit a9c1cfc72b5cdf2c58f173d57d73305dfc3ea926[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 14:10:36 2026 -0300
+
+    EVERYTHING finished - WEB - less Dashboard
+
+[33mcommit 4c91533528f4d3d566e9187dde60fa5da7a5729a[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 14:04:53 2026 -0300
+
+    add button on calculator
+
+[33mcommit 7729f3a2c46dc00148b15de2ba76eb670ccd621c[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 13:42:15 2026 -0300
+
+    nothing
+
+[33mcommit 624c85ebbd5cb044d1c4f327e21fbbde63b8c46b[m
+Author: victorMonteiro22 <victor.monteiro@sptech.school>
+Date:   Wed Apr 22 13:22:31 2026 -0300
+
+    server
+    
+    adicionei uma opção para visualização como servidor
+
+[33mcommit d4f493a0984473e496b4bb27e572c9eb61919b3b[m
+Merge: 0a17656 f3974cb
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 13:20:37 2026 -0300
+
+    fix WEB
+
+[33mcommit 0a17656c1bac19c374b1af9e2f4399a11e68689c[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 13:18:55 2026 -0300
+
+    fix web
+
+[33mcommit f3974cb5578804afef31a36c4d8df783b8daa146[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Wed Apr 22 12:42:06 2026 -0300
+
+    reconfigurando banco de dados e api
+
+[33mcommit 4f90736fee6e2f48b36fb1a2e45a9b6c13831ea1[m
+Merge: e954a70 3757ff2
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Wed Apr 22 11:33:56 2026 -0300
+
+    Merge branch 'main' of https://github.com/Miguel-SpTech/Grupo-6-FMS
+
+[33mcommit e954a7048d064ed9c6ee266a494b591a9b0f4428[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Wed Apr 22 11:33:28 2026 -0300
+
+    Feat: Arrumando Api Data Aquino para o nosso projeto
+
+[33mcommit 3757ff2d70b2d27b487600bb40424578c0bf17cb[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Wed Apr 22 11:20:56 2026 -0300
+
+    correção texto
+
+[33mcommit 93a370d1d4e865f3777fdfc841037f51e3038d2d[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Wed Apr 22 11:20:09 2026 -0300
+
+    correção texto
+
+[33mcommit 2504f452f4bc4756df9d61f9beec5a15a68b5622[m
+Merge: 3cc4196 2c20f8e
+Author: Yagho Chinaglia <yagho.chinaglia@sptech.school>
+Date:   Wed Apr 22 11:07:17 2026 -0300
+
+    Merge branch 'main' of https://github.com/Miguel-SpTech/Grupo-6-FMS
+
+[33mcommit 2c20f8ecb85971ebbffda8e88c72a0939b7b1f55[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Wed Apr 22 11:02:15 2026 -0300
+
+    codigo/sensor
+
+[33mcommit 3cc4196b3246dd9f804d5695b85456e5c4dbcdc6[m
+Author: Yagho Chinaglia <yagho.chinaglia@sptech.school>
+Date:   Wed Apr 22 11:01:38 2026 -0300
+
+    Feat: Modificação de diretorio da API
+
+[33mcommit 3e3936e8063795afe55bf51b3202f6aca1e45c92[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 10:15:37 2026 -0300
+
+    API add
+
+[33mcommit 1e15a08b04fc0a0b574a0d3ea9ce9d85d2c1146a[m
+Merge: ec2520e 726341b
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 09:14:02 2026 -0300
+
+    fix WEB
+
+[33mcommit ec2520e588047bb94920cbe2119323bfe7f4041b[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 22 09:13:30 2026 -0300
+
+    fix WEB
+
+[33mcommit 726341b0861781b1602ee1f3e64e65b60ac474bd[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Tue Apr 21 12:44:53 2026 -0300
+
+    Modelagem atualizada
+
+[33mcommit 4b071187d1d34949a16ec1032118ac9002524351[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Tue Apr 21 12:29:22 2026 -0300
+
+    novas alterações script
+
+[33mcommit c0574bca7dedab59a42e8e66f733f1524e83a61c[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Mon Apr 20 20:44:41 2026 -0300
+
+    Script atualizada do Banco de Dados
+
+[33mcommit 844e4979ed7626b1b06c9fe469cab3da184dcb61[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Mon Apr 20 09:58:42 2026 -0300
+
+    Site estatico v1
+
+[33mcommit b8bf176069785fbdeda30b4c26c2d6f08640cac9[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Sun Apr 19 21:14:50 2026 -0300
+
+    Calculadora Finalizada
+
+[33mcommit d156f4b99e9cf4bf8d9a6be48edee14bebc0adac[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Sun Apr 19 15:15:25 2026 -0300
+
+    Grafico Meio pronto
+
+[33mcommit b8981f04cf27f2d237566e316dcf74b62bc8e3e0[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Sun Apr 19 02:51:33 2026 -0300
+
+    terminei o css da calculadora
+
+[33mcommit 4329669a027e28507c375e7e76519e1644180365[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Fri Apr 17 10:30:24 2026 -0300
+
+    adicionado toFixed() na rotatividade
+
+[33mcommit b14a838251baedeba1049991726a524e605d85da[m
+Merge: 9f43409 67b7d94
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Thu Apr 16 23:40:11 2026 -0300
+
+    Merge branch 'main' of https://github.com/Miguel-SpTech/Grupo-6-FMS
+
+[33mcommit 9f4340907d88138920aaa1d914f2e1b667d65e17[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Thu Apr 16 23:37:11 2026 -0300
+
+    atualizações no estilo da calculadora
+
+[33mcommit 67b7d94adacff23fa4ab65c3dd08c159783e6f6b[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Thu Apr 16 15:33:35 2026 -0300
+
+    Add files via upload
+
+[33mcommit 04aa783a7e63a99bb4604e7e6af36c077146e457[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Wed Apr 15 22:24:36 2026 -0300
+
+    atualização da calculadora
+
+[33mcommit 3c70b2d92e8f36d45685848beaecc7e549f32ceb[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Mon Apr 13 13:19:29 2026 -0300
+
+    Script com Insert e Select SQLFMS.sql
+    
+    Precisa de atualização, conforme digitado no script.
+
+[33mcommit be0c1e845427ca4d1524555c95027367c08796d0[m
+Author: Loouiz <luiz.correia@sptech.school>
+Date:   Mon Apr 13 13:17:19 2026 -0300
+
+    Delete Banco-de-Dados/modelagemv1.mwb
+
+[33mcommit 06f301028a492d7db11d6ee47cd0d9d2cb3f8b59[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Mon Apr 13 10:45:27 2026 -0300
+
+    local storage cadastro e login
+
+[33mcommit 68e5f571c7c33ec0066c46ce6194f8a22010f647[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Mon Apr 13 09:09:40 2026 -0300
+
+    final cadastro
+
+[33mcommit 801900c1db9ad804888c87227e0ce405be24ca3e[m
+Author: victorMonteiro22 <victor.monteiro@sptech.school>
+Date:   Sun Apr 12 23:22:50 2026 -0300
+
+    login
+
+[33mcommit 2fef1372fedc98ea619233e06519ff75fe98d086[m
+Author: Miguel <miguel.mauer@sptech.school>
+Date:   Sat Apr 11 20:31:33 2026 -0300
+
+    cadastro
+
+[33mcommit 12de88acf2c5ca60a8b49923f50e54bb5809ffcc[m
+Merge: 7b85979 e044fdd
+Author: Miguel <miguel.mauer@sptech.school>
+Date:   Sat Apr 11 14:32:06 2026 -0300
+
+    to do git pull
+
+[33mcommit 7b859790dbd55ff836bbe0a49d39e15951a95cea[m
+Merge: 9f3e67d 0eb4d0e
+Author: Miguel <miguel.mauer@sptech.school>
+Date:   Sat Apr 11 14:31:33 2026 -0300
+
+    to do git pull
+
+[33mcommit e044fdd270deef2f768edeb0ca9e470b982f0878[m
+Author: raissalim <raissa.lima@sptech.school>
+Date:   Sat Apr 11 13:03:23 2026 -0300
+
+    Personalizando login
+
+[33mcommit 9f3e67dfee25b8ed1b7c027191f452a505af9848[m
+Author: Miguel <miguel.mauer@sptech.school>
+Date:   Thu Apr 9 21:03:28 2026 -0300
+
+    fix
+
+[33mcommit 0eb4d0ef930a8ad9b422bea861f44a7c14763ebd[m
+Merge: 257fe1e 380bf20
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Thu Apr 9 20:54:05 2026 -0300
+
+    v1 cadastro
+
+[33mcommit 257fe1e915e3fd5362e4c41723688a290ff9c673[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Thu Apr 9 20:52:55 2026 -0300
+
+    cadastro page v1
+
+[33mcommit 380bf207797e74a5bc3646319023e21fe381e773[m
+Author: LuizSptech <luiz.correia@sptech.school>
+Date:   Mon Apr 6 14:50:26 2026 -0300
+
+    teste
+
+[33mcommit 8b7bbd91b527cd5fb9631575356dc9b84e5082c0[m
+Author: Loouiz <luiz.correia@sptech.school>
+Date:   Mon Apr 6 10:03:54 2026 -0300
+
+    Add files via upload
+
+[33mcommit e1e28664eb1ed265ac02683a82f158cd090e2f97[m
+Merge: 1017715 43f7b98
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Mon Apr 6 09:55:49 2026 -0300
+
+    fix commit
+
+[33mcommit 101771510cd26719ba008b1c39688c530fb31042[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Wed Apr 1 10:46:52 2026 -0300
+
+    codigo arduino e biblioteca
+
+[33mcommit 43f7b98f23ce3a883e257d7dc5852e12dcba6cc8[m
+Author: raissalim <raissa.lima@sptech.school>
+Date:   Wed Apr 1 10:17:47 2026 -0300
+
+    Atualizei o site e adicionei imagens
+
+[33mcommit b95b1cbf5ab478ecc7ab1585c3711096a53cf706[m
+Author: YaghoCodes <yagho.chinaglia@sptech.school>
+Date:   Mon Mar 30 12:45:09 2026 -0300
+
+    Update team members in README.md
+    
+    Added Yagho Chinaglia to the team members list.
+
+[33mcommit 6668d6736fa1211e912f3785c22b3940985a12ed[m
+Author: Kevin-Jhn2 <kevin.moreira@sptech.school>
+Date:   Mon Mar 30 12:43:59 2026 -0300
+
+    Update README.md
+
+[33mcommit 838b23f8ec17a5c32eb0edad61c81ee79f59b54e[m
+Author: Loouiz <luiz.correia@sptech.school>
+Date:   Mon Mar 30 12:43:17 2026 -0300
+
+    Update README.md
+
+[33mcommit b3dcb17463b9eeb2852e1b799d27cf3fc544b06d[m
+Author: victorMonteiro22 <victor.monteiro@sptech.school>
+Date:   Mon Mar 30 12:41:30 2026 -0300
+
+    Update README.md
+
+[33mcommit 700ec24500fd225f9c8835fad0f83e312c12b90a[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Sat Mar 28 13:35:45 2026 -0300
+
+    V1 site estático
+
+[33mcommit 4bf779eba8edb40c094b413daecd3dde617494f1[m
+Merge: 3156728 bc32781
+Author: raissalim <raissa.lima@sptech.school>
+Date:   Thu Mar 26 13:03:26 2026 -0300
+
+    Merge branch 'main' of https://github.com/Miguel-SpTech/Grupo-6-FMS
+
+[33mcommit 3156728d19ab6c9c4ea94bc5f06131fd25f12600[m
+Author: raissalim <raissa.lima@sptech.school>
+Date:   Thu Mar 26 12:57:44 2026 -0300
+
+    Primeiro commit da Raissa
+
+[33mcommit bc327810c258a29f70da494e68d7a2db902e3368[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Tue Mar 24 09:48:30 2026 -0300
+
+    add-repositorys
+
+[33mcommit 6afc3e79e16d45358feaffc6b82ea5843450462d[m
+Author: Miguel-SpTech <miguel.mauer@sptech.school>
+Date:   Tue Mar 24 09:45:33 2026 -0300
+
+    my-first-commit

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Dashboard</title>
   <link rel="stylesheet" href="dash.css">
-  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
   <aside class="sidebar">
@@ -27,17 +27,10 @@
               <i class="fa-solid fa-user-plus"></i>
               Adicionar Usuário
           </a>
-
-         <li>
-          <a href="solicitacao.html">
-              <i class="fa-solid fa-user-plus"></i>
-             Ver Solicitações de cadastro
-          </a>
-      </li>
-      </li>
-                  </ul>       
-        </nav>
-    </aside>
+        </li>
+      </ul>
+    </nav>
+  </aside>
   <main>
 
 
@@ -69,18 +62,43 @@
       </div>
     </div>
 
-    <div class="charts">
-      <div class="chart">Mapa de Calor</div>
-      <div class="chart"><canvas id="barChart"></canvas></div>
+      <div class="charts">
+        <div class="chart">
+          <div class="heatmap">
+            
+          </div>
+        </div>
+        <div class="chart"><canvas id="barChart"></canvas></div>
+      </div>
+
     </div>
-    
-  </div>
-  
-</main>
+
+  </main>
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="dashboard.js"></script>
 <script>
+
   gerarBarChart()
+
+  async function buscarKpi(){
+    // VOU MANDAR UM ID DE EMPRESA PLACEHOLDER ENQUANTO O LOGIN NAO FUNCIONA
+
+    var resposta = await fetch("/kpi/buscarKpi/1");
+    var Kpis = await resposta.json();
+    console.log(Kpis)
+
+    rotatividademesa.innerHTML = Kpis.rotatividade
+    kpiFluxoAtual.innerHTML = Kpis.fluxo[0]
+    kpiFluxoMeta.innerHTML = Kpis.fluxo[1]
+    kpiOcupacao.innerHTML = Kpis.ocupacao
+  }
+
+   async function carregarGrid(){
+   }
+
+  buscarKpi()
 </script>
+
 </html>

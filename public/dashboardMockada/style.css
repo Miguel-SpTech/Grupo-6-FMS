@@ -147,19 +147,7 @@ main{
   }
 }
 
-.side {
-  background: #8B1A1A;
-  display: flex;
-  flex-direction: column;
-  width: 120px;
-  height: 100vh;
-  position: fixed;
-  align-items: center;
-  left: 0;
-  border-right: solid #f0e8dc 1px;
-  /* padding: 20px 0px; */
-  
-}
+
 
 .conteudo{
   width: 120px;

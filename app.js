@@ -19,6 +19,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var empresasRouter = require("./src/routes/empresas");
 var kpiRouter = require("./src/routes/kpi");
+var heatmapRoutes = require("./src/routes/heatmap");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +31,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/empresas", empresasRouter);
 app.use("/kpi", kpiRouter);
+app.use("/", heatmapRoutes);
 
 app.listen(PORTA_APP, function () {
     console.log(`

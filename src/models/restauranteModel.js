@@ -68,9 +68,14 @@ function cadastrar(razao_social, nome_fantasia, cnpj, quantmesa) {
     return database.executar(instrucaoSql);
 }
 
+
+
+
+
 module.exports = {
     buscarPorCnpj,
     buscarPorId,
     listar,
     cadastrar
+    
 };
