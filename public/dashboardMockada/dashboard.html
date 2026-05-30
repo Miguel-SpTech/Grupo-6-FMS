@@ -80,7 +80,7 @@
 <script src="dashboard.js"></script>
 <script>
 
-  gerarBarChart()
+  
 
   async function buscarKpi(){
     // VOU MANDAR UM ID DE EMPRESA PLACEHOLDER ENQUANTO O LOGIN NAO FUNCIONA
@@ -99,6 +99,13 @@
    }
 
   buscarKpi()
+
+  fetch(`/coluna/dashboard/1`)
+  .then(res => res.json())
+    .then(dados => {
+      atualizarGrafico(dados);
+    })
+  
 </script>
 
 </html>

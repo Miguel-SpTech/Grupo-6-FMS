@@ -20,13 +20,15 @@ var usuarioRouter = require("./src/routes/usuarios");
 var empresasRouter = require("./src/routes/empresas");
 var kpiRouter = require("./src/routes/kpi");
 var heatmapRoutes = require("./src/routes/heatmap");
+const colunaRoutes = require('./routes/coluna');
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(cors());
 
+app.use('/coluna', colunaRoutes);
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/empresas", empresasRouter);
