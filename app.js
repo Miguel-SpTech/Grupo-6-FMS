@@ -33,7 +33,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/empresas", empresasRouter);
 app.use("/kpi", kpiRouter);
 app.use("/", heatmapRoutes);
-app.use('/coluna', colunaRoutes);
+app.use("/coluna", colunaRoutes);
 
 app.listen(PORTA_APP, function () {
     console.log(`

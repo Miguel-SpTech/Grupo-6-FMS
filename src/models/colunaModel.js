@@ -1,15 +1,14 @@
 
-var db = require('../database/config'); 
+var database = require("../database/config")
 var router = require('../routes');
 
-function teste(){
+function buscarPorEmpresa(){
   var consultaSql = 
     `select * from vw_clientes_7dias;`
+     return database.executar(consultaSql);
   }
 
 
 module.exports = {
- teste,
- router,
- db,
+ buscarPorEmpresa
 };

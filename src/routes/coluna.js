@@ -5,6 +5,8 @@ var colunaController = require('../controllers/colunaController');
 
 router.get('/dashboard/:empresa', colunaController.buscarDados);
 
-module.exports = {
-  router, 
-};
+router.get("/dashboard/:empresa", function (req, res) {
+    colunaController.buscarDados(req, res);
+});
+
+module.exports = router;

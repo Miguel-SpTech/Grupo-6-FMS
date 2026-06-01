@@ -1,6 +1,6 @@
 var colunaModel = require('../models/colunaModel');
 
-function tengolengo(req, res) {
+function buscarDados(req, res) {
     var { idEmpresa } = req.params;
     var dados = colunaModel.buscarPorEmpresa(idEmpresa);
     res.json(dados);
@@ -9,5 +9,5 @@ function tengolengo(req, res) {
 
 
 module.exports = {
-  tengolengo
+  buscarDados
 };
