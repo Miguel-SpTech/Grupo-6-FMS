@@ -9,5 +9,7 @@ function teste(){
 
 
 module.exports = {
- teste
+ teste,
+ router,
+ db,
 };
