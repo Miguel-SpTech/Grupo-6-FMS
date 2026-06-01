@@ -20,7 +20,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var empresasRouter = require("./src/routes/empresas");
 var kpiRouter = require("./src/routes/kpi");
 var heatmapRoutes = require("./src/routes/heatmap");
-const colunaRoutes = require('./routes/coluna');
+var colunaRoutes = require('./routes/coluna');
 
 
 app.use(express.json());
