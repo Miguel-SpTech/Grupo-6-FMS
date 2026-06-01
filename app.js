@@ -28,12 +28,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
-app.use('/coluna', colunaRoutes);
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/empresas", empresasRouter);
 app.use("/kpi", kpiRouter);
 app.use("/", heatmapRoutes);
+app.use('/coluna', colunaRoutes);
 
 app.listen(PORTA_APP, function () {
     console.log(`

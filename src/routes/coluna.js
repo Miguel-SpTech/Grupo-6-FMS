@@ -1,8 +1,12 @@
 
-const express = require('express');
-const router = express.Router();
-const colunaController = require('../controllers/colunaController');
+var express = require('express');
+var router = express.Router();
+var colunaController = require('../controllers/colunaController');
+const { executar } = require('../database/config');
 
 router.get('/dashboard/:empresa', colunaController.buscarDados);
 
-module.exports = router;
+module.exports = {
+  router,
+  express, colunaController, executar
+};
