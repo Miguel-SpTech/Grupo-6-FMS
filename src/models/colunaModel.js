@@ -1,5 +1,5 @@
 
-var db = require('database/config'); 
+var db = require('../database/config'); 
 var router = require('../routes');
 
 function teste(){
@@ -9,6 +9,5 @@ function teste(){
 
 
 module.exports = {
- tengolengo,
- teste,
+ teste
 };
