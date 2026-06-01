@@ -445,22 +445,21 @@ FROM (
     JOIN Registro reg
         ON s.idSensor = reg.fkSensor
 
-WHERE reg.tipo_leitura = 'Entrada'
-AND reg.data >= CURDATE() - INTERVAL 7 DAY
-AND reg.data <  CURDATE()
+    WHERE reg.tipo_leitura = 'Entrada'
+      AND reg.data >= CURDATE() - INTERVAL 7 DAY
+      AND reg.data < CURDATE()
 
-GROUP BY 
- r.idRestaurante,
- r.nome_fantasia,
- DATE(reg.data)
- 
-  ORDER  BY
-  r.idRestaurante,
-  data_dia;
+    GROUP BY
+        r.idRestaurante,
+        r.nome_fantasia,
+        DATE(reg.data)
+
+) dados;
 
 select *from vw_clientes_7dias;
 
-
+CREATE USER 'usuario_insert'@'localhost' IDENTIFIED BY 'Rml_1505';
+CREATE USER 'usuario_select'@'localhost' IDENTIFIED BY 'Yag_2102';
 
 
 -- colocar para mostrar o dia exemplp segunda terça, quarta
