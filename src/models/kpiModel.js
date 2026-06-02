@@ -3,7 +3,7 @@ var database = require("../database/config")
 async function buscarRotatividade(empresa){
 console.log("Cheguei no model de buscar a kpi de: rotatividade");
     var instrucaoSql = `
-        SELECT rotaçao_mesa as rotatividade from
+        SELECT rotacao_mesa as rotatividade from
         vw_rotacao_mesa WHERE idRestaurante = ${empresa}
                 `;
     

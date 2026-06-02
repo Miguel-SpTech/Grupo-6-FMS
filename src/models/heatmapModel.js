@@ -4,7 +4,7 @@ function buscarHeatmap(idRestaurante) {
     const sql = `
         SELECT *
         FROM vw_heatmap_blocos
-        WHERE idRestaurante = ?;
+        WHERE idRestaurante =  ${idRestaurante};;
     `;
 
     return database.executar(sql, [idRestaurante]);

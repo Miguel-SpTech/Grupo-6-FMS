@@ -138,20 +138,23 @@ main{
 }
 .charts {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  margin: 35px;
+    grid-template-columns: auto auto;
+    margin:150px;
+    justify-content: start;
+    gap: 30px;
+ 
 }
 
 /* GRÁFICO MAIS NEUTRO (SEM BRANCO FORTE) */
 .chart {
   background: #fdf6f6eb;
   border-radius: 12px;
-  padding: 25px;
+  padding: 10px;
   color: #000000;
   box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-  min-height: 340px;
-   display: flex;
+  max-height: 350px;
+  max-width: 500px;
+display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
@@ -160,8 +163,8 @@ main{
 /* CANVAS */
 
 .chart canvas {
-  width: 80% !important;
-  height: 200px !important;
+  width: 100% !important;
+  height: 100% !important;
   color: #f0e8dc;
 }
 
@@ -435,22 +438,39 @@ main{
     width: 25px;
 }
 
-.campo h4,
+
 
 
 
 .heatmap{
+    position: absolute;
     display:grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap:10px;
-    width:350px;
+    width: 210px;
+    height: 210px;
+    grid-template-columns: repeat(12, 32px);
+    top: 35px;
+    left: 25px;
+    
 }
 .cell{
      aspect-ratio: 1;
-    border: 1px solid #ccc;
+   border: 1px solid rgba(214, 214, 214, 0);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 3px;
     font-weight: bold;
+    width: 29px;
+    height: 20px;
+
+}
+.mapa{
+    top:20px;
+    margin-left:25px;
+    position: relative;
+    width: 450px;
+    height: 400px;
+    background-image: url("../assets/img/fundomapa.png");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
