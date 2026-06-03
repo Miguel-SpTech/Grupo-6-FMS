@@ -1,7 +1,7 @@
 var usuarioModel = require("../models/usuarioModel");
 
 
-function autenticar(req, res) {
+async function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
@@ -10,7 +10,7 @@ function autenticar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-
+        console.log('iniciando autenticar')
         usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
@@ -18,18 +18,21 @@ function autenticar(req, res) {
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
                     if (resultadoAutenticar.length == 1) {
+                        console.log('conclui autenticar')
                         console.log(resultadoAutenticar);
 
                         // aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
                         //     .then((resultadoAquarios) => {
                         //         if (resultadoAquarios.length > 0) {
-                        //             res.json({
-                        //                 id: resultadoAutenticar[0].id,
-                        //                 email: resultadoAutenticar[0].email,
-                        //                 nome: resultadoAutenticar[0].nome,
-                        //                 senha: resultadoAutenticar[0].senha,
-                        //                 aquarios: resultadoAquarios
-                        //             });
+                                    res.json({
+                                        id: resultadoAutenticar[0].idUsuario,
+                                        email: resultadoAutenticar[0].email,
+                                        nome: resultadoAutenticar[0].nome,
+                                        senha: resultadoAutenticar[0].senha,
+                                        cargo: resultadoAutenticar[0].cargo,
+                                        fkRestaurante: resultadoAutenticar[0].fkRestaurante,
+                                        fkUsuario: resultadoAutenticar[0].fkUsuario
+                                    });
                         //         } else {
                         //             res.status(204).json({ aquarios: [] });
                         //         }
@@ -75,7 +78,6 @@ function autenticar(req, res) {
     } else {
         console.log("vou tentar logar agora ")
 
-    try {
         console.log("Iniciei o cadastrarRestaurante")
         await usuarioModel.cadatrarRestaurante(razaoSocial, nomeFantasia, cnpj, qtdMesa);
         console.log("Conclui o cadastrarRestaurante");
@@ -94,13 +96,14 @@ function autenticar(req, res) {
         console.log("Iniciei o cadastrarUsuario")
         await usuarioModel.cadastrarUsuario(nome, email, senha, fkRestaurante);
         console.log("Conclui o cadastrarUsuario")
-
-    } catch (erro) {
+        .then( resultadoCadastrar => {
+            res.json(resultadoCadastrar);
+        }).catch (erro => {
         console.error("houve um problema ao tentar o cadastro", erro.message);
-    }
+        })
     
+        }
     }
-}
 
 module.exports = {
     autenticar,

@@ -136,12 +136,15 @@
         }
 
         function validarCNPJ(cnpj) {
-            // Remove caracteres não numéricos
-            cnpj = cnpj.replace(/\D/g, '');
-            
-            // Verifica se tem 14 dígitos
+            let regex_tem_letra = new RegExp("[A-Z]");
+            let regex_tem_letra2 = new RegExp("[a-z]");
+
             if (cnpj.length !== 14) {
                 return false;
+            } else if (regex_tem_letra.test(cnpj)) {
+                return false
+            } else if(regex_tem_letra2.test(cnpj)) {
+                return false
             }
             
             return true;

@@ -42,12 +42,12 @@
     </div>
 
     <script>
-        function login() {
-            const email = document.getElementById("inp_email").value.toLowerCase()
-            const password = document.getElementById("inp_password").value
-            const div_loginMsg = document.getElementById("div_loginMsg")
+        async function login() {
+            var emailVar = document.getElementById("inp_email").value.toLowerCase()
+            var passwordVar = document.getElementById("inp_password").value
+            let div_loginMsg = document.getElementById("div_loginMsg")
 
-            if (!email || !password) {
+            if (!emailVar || !passwordVar) {
                 div_loginMsg.innerHTML = `<span class="verificacaoFalse">Preencha todos os campos.</span>`
                 return
             }
@@ -63,8 +63,8 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    emailServer: email,
-                    senhaServer: password
+                    emailServer: emailVar,
+                    senhaServer: passwordVar
                 })
             })
             .then(response => {
@@ -77,17 +77,17 @@
                 }
             })
             .then(data => {
-                // Armazenar dados da sessão
-                sessionStorage.setItem('ID_USUARIO', data.id)
+
+                sessionStorage.setItem('ID_USUARIO', data.idUsuario)
                 sessionStorage.setItem('EMAIL_USUARIO', data.email)
                 sessionStorage.setItem('NOME_USUARIO', data.nome)
                 sessionStorage.setItem('CARGO_USUARIO', data.cargo)
-                sessionStorage.setItem('RESTAURANTE_ID', data.restaurante.id)
-                sessionStorage.setItem('RESTAURANTE_NOME', data.restaurante.nome_fantasia)
+                sessionStorage.setItem('RESTAURANTE_ID', data.fkRestaurante)
+                sessionStorage.setItem('GERENTE_ID', data.fkUsuario)
                 
                 div_loginMsg.innerHTML = `<span class="verificacaoTrue">Login realizado com sucesso!</span>`
                 
-                // Redirecionar para o dashboard após 2 segundos
+                
                 setTimeout(() => {
                     window.location.href = "dashboard/dashboard.html"
                 }, 2000)
@@ -98,15 +98,6 @@
                 document.getElementById("btnentrar").disabled = false
             })
         }
-
-        // Permitir login com Enter
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById("inp_password").addEventListener("keypress", function(event) {
-                if (event.key === "Enter") {
-                    login()
-                }
-            })
-        })
     </script>
 </body>
 </html>
