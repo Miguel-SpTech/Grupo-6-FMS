@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-var restauranteModel = require("../models/restauranteModel");
+
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -20,25 +20,20 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        // Buscar dados do restaurante associado
-                        restauranteModel.buscarPorId(resultadoAutenticar[0].restauranteId)
-                            .then((resultadoRestaurante) => {
-                                if (resultadoRestaurante.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].id,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        cargo: resultadoAutenticar[0].cargo,
-                                        restaurante: resultadoRestaurante[0]
-                                    });
-                                } else {
-                                    res.status(404).json({ erro: "Restaurante não encontrado" });
-                                }
-                            })
-                            .catch((erro) => {
-                                console.log(erro);
-                                res.status(500).json(erro.sqlMessage);
-                            });
+                        // aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
+                        //     .then((resultadoAquarios) => {
+                        //         if (resultadoAquarios.length > 0) {
+                        //             res.json({
+                        //                 id: resultadoAutenticar[0].id,
+                        //                 email: resultadoAutenticar[0].email,
+                        //                 nome: resultadoAutenticar[0].nome,
+                        //                 senha: resultadoAutenticar[0].senha,
+                        //                 aquarios: resultadoAquarios
+                        //             });
+                        //         } else {
+                        //             res.status(204).json({ aquarios: [] });
+                        //         }
+                        //     })
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -56,118 +51,54 @@ function autenticar(req, res) {
 
 }
 
-function cadastrar(req, res) {
-    // Dados do usuário
-    var nomeUsuario = req.body.nomeUsuarioServer;
+ async function cadastrar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nome = req.body.nomeUsuarioServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var cargo = req.body.cargoServer || "Operador"; // Default para Operador
-
-    // Dados do restaurante
     var razaoSocial = req.body.razaoSocialServer;
     var nomeFantasia = req.body.nomeFantasiaServer;
+    var qtdMesa = req.body.quantMesasServer;
     var cnpj = req.body.cnpjServer;
-    var quantMesas = req.body.quantMesasServer;
+    var cep = req.body.cepServer;
+    var complemento = req.body.complementoServer;
 
-    // Validações
-    if (!nomeUsuario) {
-        res.status(400).send("Nome do usuário está undefined!");
-    } else if (!email) {
-        res.status(400).send("Email está undefined!");
-    } else if (!senha) {
-        res.status(400).send("Senha está undefined!");
-    } else if (!razaoSocial) {
-        res.status(400).send("Razão social está undefined!");
-    } else if (!nomeFantasia) {
-        res.status(400).send("Nome fantasia está undefined!");
-    } else if (!cnpj) {
-        res.status(400).send("CNPJ está undefined!");
-    } else if (!quantMesas) {
-        res.status(400).send("Quantidade de mesas está undefined!");
+    // Faça as validações dos valores
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    // } else if (fkEmpresa == undefined) {
+        // res.status(400).send("Sua empresa a vincular está undefined!");
     } else {
-        // Verificar se o email já existe
-        usuarioModel.buscarPorEmail(email)
-            .then((usuariosExistentes) => {
-                if (usuariosExistentes.length > 0) {
-                    res.status(409).send("Email já cadastrado no sistema!");
-                    return;
-                }
+        console.log("vou tentar logar agora ")
 
-                // Verificar se o CNPJ já existe
-                restauranteModel.buscarPorCnpj(cnpj)
-                    .then((restaurantesExistentes) => {
-                        if (restaurantesExistentes.length > 0) {
-                            res.status(409).send("CNPJ já cadastrado no sistema!");
-                            return;
-                        }
+    try {
+        console.log("Iniciei o cadastrarRestaurante")
+        await usuarioModel.cadatrarRestaurante(razaoSocial, nomeFantasia, cnpj, qtdMesa);
+        console.log("Conclui o cadastrarRestaurante");
 
-                        // Cadastrar o restaurante primeiro
-                        restauranteModel.cadastrar(razaoSocial, nomeFantasia, cnpj, quantMesas)
-                            .then((resultadoRestaurante) => {
-                                console.log("Restaurante cadastrado com sucesso:", resultadoRestaurante);
-                                
-                                // Obter o ID do restaurante inserido
-                                restauranteModel.buscarPorCnpj(cnpj)
-                                    .then((restaurante) => {
-                                        const idRestaurante = restaurante[0].id;
+        console.log("Iniciei o selectIdRestaurante")
+        const resultadoFkRestaurante = await usuarioModel.selectIdRestaurante(razaoSocial, cnpj);
+        console.log("Conclui o selectIdRestaurante")
 
-                                        // Cadastrar o usuário com o ID do restaurante
-                                        usuarioModel.cadastrar(nomeUsuario, email, senha, cargo, idRestaurante)
-                                            .then((resultadoUsuario) => {
-                                                console.log("Usuário cadastrado com sucesso:", resultadoUsuario);
-                                                res.json({
-                                                    mensagem: "Cadastro realizado com sucesso!",
-                                                    usuario: {
-                                                        email: email,
-                                                        nome: nomeUsuario,
-                                                        cargo: cargo
-                                                    },
-                                                    restaurante: {
-                                                        razao_social: razaoSocial,
-                                                        nome_fantasia: nomeFantasia,
-                                                        cnpj: cnpj
-                                                    }
-                                                });
-                                            })
-                                            .catch((erro) => {
-                                                console.log(erro);
-                                                res.status(500).json({
-                                                    erro: "Erro ao cadastrar usuário",
-                                                    detalhes: erro.sqlMessage
-                                                });
-                                            });
-                                    })
-                                    .catch((erro) => {
-                                        console.log(erro);
-                                        res.status(500).json({
-                                            erro: "Erro ao recuperar restaurante cadastrado",
-                                            detalhes: erro.sqlMessage
-                                        });
-                                    });
-                            })
-                            .catch((erro) => {
-                                console.log(erro);
-                                res.status(500).json({
-                                    erro: "Erro ao cadastrar restaurante",
-                                    detalhes: erro.sqlMessage
-                                });
-                            });
-                    })
-                    .catch((erro) => {
-                        console.log(erro);
-                        res.status(500).json({
-                            erro: "Erro ao verificar CNPJ",
-                            detalhes: erro.sqlMessage
-                        });
-                    });
-            })
-            .catch((erro) => {
-                console.log(erro);
-                res.status(500).json({
-                    erro: "Erro ao verificar email",
-                    detalhes: erro.sqlMessage
-                });
-            });
+        const fkRestaurante = resultadoFkRestaurante[0].idRestaurante;
+        console.log('separei a fkRestaurante: ' + fkRestaurante)
+
+        console.log("Iniciei o cadastrarEndereco")
+        await usuarioModel.cadastrarEndereco(cep, fkRestaurante);
+        console.log("Conclui o cadastrarEndereco")
+
+        console.log("Iniciei o cadastrarUsuario")
+        await usuarioModel.cadastrarUsuario(nome, email, senha, fkRestaurante);
+        console.log("Conclui o cadastrarUsuario")
+
+    } catch (erro) {
+        console.error("houve um problema ao tentar o cadastro", erro.message);
+    }
+    
     }
 }
 

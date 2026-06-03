@@ -147,21 +147,23 @@
             return true;
         }
 
-        function cadastrar() {
-            var nome = document.getElementById("inp_nome").value.trim();
-            var email = document.getElementById("inp_email").value.toLowerCase();
-            var password = document.getElementById("inp_password").value;
-            var razaoSocial = document.getElementById("inp_razaoSocial").value.trim();
-            var nomeFantasia = document.getElementById("inp_nomeFantasia").value.trim();
-            var qtdMesas = document.getElementById("inp_qtdMesas").value;
-            var cnpj = document.getElementById("inp_CNPJ").value.trim();
-            var cep = document.getElementById("inp_CEP").value.trim();
-            var complemento = document.getElementById("inp_complemento").value.trim();
+        async function cadastrar() {
+            var nomeVar = document.getElementById("inp_nome").value.trim();
+            var emailVar = document.getElementById("inp_email").value.toLowerCase();
+            var passwordVar = document.getElementById("inp_password").value;
+            var razaoSocialVar = document.getElementById("inp_razaoSocial").value.trim();
+            var nomeFantasiaVar = document.getElementById("inp_nomeFantasia").value.trim();
+            var qtdMesasVar = document.getElementById("inp_qtdMesas").value;
+            var cnpjVar = document.getElementById("inp_CNPJ").value.trim();
+            var cepVar = document.getElementById("inp_CEP").value.trim();
+            var complementoVar = document.getElementById("inp_complemento").value.trim();
             
+
+
             let div_mensagem = document.getElementById("div_mensagem");
 
             // Validações
-            if (!nome) {
+            if (!nomeVar) {
                 div_mensagem.innerHTML = `<span class="verificacaoFalse">Nome do usuário é obrigatório.</span>`;
                 return;
             }
@@ -176,22 +178,22 @@
                 return;
             }
 
-            if (!razaoSocial) {
+            if (!razaoSocialVar) {
                 div_mensagem.innerHTML = `<span class="verificacaoFalse">Razão social é obrigatória.</span>`;
                 return;
             }
 
-            if (!nomeFantasia) {
+            if (!nomeFantasiaVar) {
                 div_mensagem.innerHTML = `<span class="verificacaoFalse">Nome fantasia é obrigatório.</span>`;
                 return;
             }
 
-            if (!qtdMesas || qtdMesas <= 0) {
+            if (!qtdMesasVar || qtdMesasVar <= 0) {
                 div_mensagem.innerHTML = `<span class="verificacaoFalse">Quantidade de mesas deve ser maior que 0.</span>`;
                 return;
             }
 
-            if (!validarCNPJ(cnpj)) {
+            if (!validarCNPJ(cnpjVar)) {
                 div_mensagem.innerHTML = `<span class="verificacaoFalse">CNPJ deve ter 14 dígitos.</span>`;
                 return;
             }
@@ -199,60 +201,54 @@
             // Desabilitar botão e mostrar loading
             document.getElementById("btnCadastrar").disabled = true;
             div_mensagem.innerHTML = `<span class="verificacaoTrue">Processando cadastro...</span>`;
+            console.log("vou entrar no cadastro")
+            fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeUsuarioServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: passwordVar,
+        razaoSocialServer: razaoSocialVar,
+        nomeFantasiaServer: nomeFantasiaVar,
+        quantMesasServer: parseInt(qtdMesasVar),
+        cnpjServer: cnpjVar,
+        cepServer: cepVar,
+        complementoServer: complementoVar
+      }),
+    })
 
-            // Enviar dados para a API
-            fetch('/usuarios/cadastrar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    nomeUsuarioServer: nome,
-                    emailServer: email,
-                    senhaServer: password,
-                    cargoServer: "Administrador",
-                    razaoSocialServer: razaoSocial,
-                    nomeFantasiaServer: nomeFantasia,
-                    cnpjServer: cnpj,
-                    quantMesasServer: parseInt(qtdMesas)
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else if (response.status === 409) {
-                    return response.text().then(text => {
-                        throw new Error(text);
-                    });
-                } else {
-                    return response.text().then(text => {
-                        throw new Error(text || 'Erro ao cadastrar');
-                    });
-                }
-            })
-            .then(data => {
-                div_mensagem.innerHTML = `<span class="verificacaoTrue">Cadastro realizado com sucesso! Redirecionando...</span>`;
-                
-                // Redirecionar para login após 3 segundos
-                setTimeout(() => {
-                    window.location.href = "login.html";
-                }, 3000);
-            })
-            .catch(err => {
-                console.error('Erro:', err);
-                div_mensagem.innerHTML = `<span class="verificacaoFalse">${err.message}</span>`;
-                document.getElementById("btnCadastrar").disabled = false;
-            });
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!" ;
         }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
 
-        // Permitir cadastro com Enter
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById("inp_complemento").addEventListener("keypress", function(event) {
-                if (event.key === "Enter") {
-                    cadastrar();
-                }
-            });
-        });
+      });
+
+    return false;
+
+  
+  }
     </script>
 </body>
 </html>
