@@ -18,7 +18,6 @@ CREATE TABLE Endereco (
     idEndereco INT AUTO_INCREMENT PRIMARY KEY,
     cep CHAR(8) NOT NULL,
     logradouro VARCHAR(100),
-    numero VARCHAR(10),
     bairro VARCHAR(100),
     cidade VARCHAR(50),
     uf CHAR(2),
