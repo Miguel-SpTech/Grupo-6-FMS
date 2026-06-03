@@ -88,7 +88,7 @@ function autenticar(req, res) {
         console.log('separei a fkRestaurante: ' + fkRestaurante)
 
         console.log("Iniciei o cadastrarEndereco")
-        await usuarioModel.cadastrarEndereco(cep, fkRestaurante);
+        await usuarioModel.cadastrarEndereco(cep,complemento, fkRestaurante);
         console.log("Conclui o cadastrarEndereco")
 
         console.log("Iniciei o cadastrarUsuario")
