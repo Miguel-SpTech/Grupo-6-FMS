@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+0<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -181,16 +181,20 @@
 
     const dados = await resposta.json();
     console.log(dados)  
-  }
+  
 
-  plotarGraficoColuna()
+  const diasSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+    
+    const labels = dados.map(d => diasSemana[d.diaSemana]);
+    const valores = dados.map(d => d.total_clientes);
 
-      
-   async function iniciar() {
-    await carregarGrid();
-    await carregarHeatmap();
-      await buscarKpi();
-
+    gerarBarChart(labels, valores);
+}
+async function iniciar(){
+  await carregarGrid();
+  await carregarHeatmap();
+  await buscarKpi();
+  await plotarGraficoColuna();
 }
 iniciar();
 

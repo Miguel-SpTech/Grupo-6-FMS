@@ -1,5 +1,5 @@
 
- function gerarBarChart(){
+ function gerarBarChart(labels, valores){
 let chartInstance = null
 const ctx = document.getElementById('barChart');
             if (chartInstance) {
@@ -11,10 +11,10 @@ const ctx = document.getElementById('barChart');
             chartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Domingo','Segunda', 'Terça', 'Quarta', 'Quinta','Sexta','Sabado'],
+                    labels: labels,
                     datasets: [{
                         label: 'Quantidade de clientes',
-                        data: [40, 12, 15, 18, 22, 30, 45],
+                        data: valores,
                         backgroundColor: ['rgba(139, 26, 26, 0.85)', 'rgba(139, 26, 26, 0.55)', 'rgba(139, 26, 26, 0.35)'],
                         borderColor: ['#5f1212', '#8b1a1a', '#8b1a1a'],
                         borderWidth: 1,
