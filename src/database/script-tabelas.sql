@@ -381,7 +381,7 @@ SELECT
    r.nome_fantasia,
    r.quantmesa,
      COUNT(reg.idRegistro) AS totalCliente_hoje,
-     ROUND(COUNT(reg.idRegistro)/r.quantmesa,2) AS rotaçao_mesa
+     ROUND(COUNT(reg.idRegistro)/r.quantmesa,2) AS rotacao_mesa
      FROM Restaurante r
      JOIN Sensor s on r.idRestaurante=s.fkRestaurante
      JOIN Registro reg
@@ -397,7 +397,14 @@ SELECT
         SELECT*FROM vw_rotacao_mesa	;
         
       
-        
+	INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+VALUES
+(NOW(), 1, 1, 'Entrada'),
+(NOW(), 1, 2, 'Entrada'),
+(NOW(), 1, 3, 'Entrada'),
+(NOW(), 1, 1, 'Entrada'),
+(NOW(), 1, 2, 'Entrada'),
+(NOW(), 1, 3, 'Entrada');
         
 	-- kpi atual/ideal
     
@@ -534,6 +541,36 @@ SELECT
 CREATE USER IF NOT EXISTS 'usuario_insert'@'localhost' IDENTIFIED BY 'Rml_1505';
 CREATE USER IF NOT EXISTS 'usuario_select'@'localhost' IDENTIFIED BY 'Yag_2102';
 
+select * from usuario;
 
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+VALUES
 
+('2026-05-30 11:00:00', 1, 1, 'Entrada'),
+('2026-05-30 13:20:00', 1, 2, 'Entrada'),
 
+('2026-05-31 10:15:00', 1, 1, 'Entrada'),
+('2026-05-31 12:40:00', 1, 2, 'Entrada'),
+('2026-05-31 19:10:00', 1, 3, 'Entrada'),
+
+('2026-06-01 09:30:00', 1, 1, 'Entrada'),
+('2026-06-01 14:20:00', 1, 2, 'Entrada'),
+
+('2026-06-02 10:00:00', 1, 1, 'Entrada'),
+('2026-06-02 12:15:00', 1, 2, 'Entrada'),
+('2026-06-02 18:45:00', 1, 3, 'Entrada'),
+('2026-06-02 20:10:00', 1, 1, 'Entrada'),
+
+('2026-06-03 11:25:00', 1, 2, 'Entrada'),
+
+('2026-06-04 09:50:00', 1, 1, 'Entrada'),
+('2026-06-04 13:30:00', 1, 2, 'Entrada'),
+('2026-06-04 21:00:00', 1, 3, 'Entrada'),
+
+('2026-06-05 10:10:00', 1, 1, 'Entrada'),
+('2026-06-05 12:50:00', 1, 2, 'Entrada'),
+('2026-06-05 18:20:00', 1, 3, 'Entrada'),
+('2026-06-05 20:40:00', 1, 1, 'Entrada'),
+('2026-06-05 21:30:00', 1, 2, 'Entrada');
+
+select * from vw_clientes_7dias WHERE idRestaurante = 1 order by dia_na_semana_num ASC;
