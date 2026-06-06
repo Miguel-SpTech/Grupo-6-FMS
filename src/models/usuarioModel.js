@@ -63,10 +63,21 @@ function cadastrarUsuario(nome, email, senha, fkRestaurante) {
     return  database.executar(instrucaoSql_insertUsuario);
 }
 
+function cadastrarUsuarioDash(nome, email, senha, cargo, fkRestaurante){
+        var instrucaoSql_insertUsuario = `
+        INSERT INTO Usuario (nome, email, senha, cargo, fkRestaurante) VALUES ('${nome}', '${email}', '${senha}', '${cargo}', ${fkRestaurante});
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql_insertUsuario);
+
+    return  database.executar(instrucaoSql_insertUsuario);
+}
+
 module.exports = {
     autenticar,
     cadatrarRestaurante,
     cadastrarEndereco,
     cadastrarUsuario,
-    selectIdRestaurante
+    selectIdRestaurante,
+    cadastrarUsuarioDash
 };

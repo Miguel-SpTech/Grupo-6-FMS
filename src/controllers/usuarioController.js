@@ -105,7 +105,34 @@ async function autenticar(req, res) {
     }
     }
 
+async function cadastrarDash(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nome = req.body.nomeUsuarioServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var cargo = req.body.cargoServer;
+    var Restaurante = req.body.fkRestaurante;
+
+    // Faça as validações dos valores
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+        console.log("vou começar agora ")
+
+       
+        await usuarioModel.cadastrarUsuarioDash(nome, email, senha, cargo,Restaurante);
+        console.log("Conclui o cadastrarUsuario da dashboard")
+
+        res.status(200).send("Cadastro realizado com sucesso!");
+    }
+    }
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarDash
 }

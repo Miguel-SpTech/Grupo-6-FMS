@@ -32,7 +32,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       </li>
 
        <li>
-          <a href="solicitacao.html">
+          <a href="solicitacao.html" id="solicitacaoCadastroNavbar" style="display: none;">
             <i class="fa-solid fa-eye"></i>
             Analisar Cadastro
           </a>
@@ -47,23 +47,23 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       <h1>Monitoramento do restaurante</h1>
 
 
-        <form class="formulario">
+        <form class="formulario" id="formAdicionarUsuario">
 
         <h2>Adicionar Usuário</h2>
 
         <label>Nome</label>
-        <input type="text" placeholder="Digite o nome">
+        <input id="nomeUsuario" type="text" placeholder="Digite o nome" required>
 
         <label>Email</label>
-        <input type="email" placeholder="Digite o email">
+        <input id="emailUsuario" type="email" placeholder="Digite o email" required>
 
         <label>Senha</label>
-        <input type="password" placeholder="Digite a senha">
+        <input id="senhaUsuario" type="password" placeholder="Digite a senha" required>
 
         <label>Tipo de usuário</label>
-        <select>
-            <option>Administrador</option>
-            <option>Operador</option>
+        <select id="cargoUsuario" required>
+            <option value="Administrador">Administrador</option>
+            <option value="Operador">Operador</option>
         </select>
 
         <div class="botoes">
@@ -88,3 +88,37 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 </main>
 </body>
 </html>
+
+<script>
+  function configNavbar(){
+    const cargo = (sessionStorage.getItem('CARGO_USUARIO') || '').trim();
+    const solicitacaoCadastro = document.getElementById('solicitacaoCadastroNavbar');
+
+    if (cargo === 'superAdmin') {
+      solicitacaoCadastro.style.display = 'block';
+    }
+  }
+
+ async function cadastrarUsuario(){
+
+    const dados = {
+      nomeUsuarioServer: nomeUsuario.value,
+      emailServer: emailUsuario.value,
+      senhaServer: senhaUsuario.value,
+      cargoServer: cargoUsuario.value,
+      fkRestaurante: Number(sessionStorage.getItem('RESTAURANTE_ID'))
+    };
+    await fetch('/usuarios/cadastrarDash', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    })
+
+  }
+
+  document.getElementById('formAdicionarUsuario').addEventListener('submit', function (event) {
+    event.preventDefault();
+    cadastrarUsuario();
+  });
+  configNavbar();
+</script>
