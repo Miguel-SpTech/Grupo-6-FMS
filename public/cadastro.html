@@ -62,6 +62,9 @@
             <input type="text" placeholder="Complemento:" id="inp_complemento"><br>
             
             <div id="div_mensagem"></div>
+            <div id="cardErro" style="display: none;">
+                <span id="mensagem_erro"></span>
+            </div>
             <button type="button" id="btnCadastrar" onclick="cadastrar()">Cadastrar</button>
             <span id="loginSpan">já possui um cadastro? <a href="login.html" id="loginA">Logar</a></span>
         </div>
@@ -160,7 +163,12 @@
             var cnpjVar = document.getElementById("inp_CNPJ").value.trim();
             var cepVar = document.getElementById("inp_CEP").value.trim();
             var complementoVar = document.getElementById("inp_complemento").value.trim();
-            
+            const response = await fetch(`https://viacep.com.br/ws/${cepVar}/json/`);
+            const data = await response.json();
+            var logradouroVar = data.logradouro;
+            var bairroVar = data.bairro;
+            var cidadeVar = data.localidade;
+            var ufVar = data.uf;
 
 
             let div_mensagem = document.getElementById("div_mensagem");
@@ -221,10 +229,13 @@
         quantMesasServer: parseInt(qtdMesasVar),
         cnpjServer: cnpjVar,
         cepServer: cepVar,
-        complementoServer: complementoVar
+        logradouroServer: logradouroVar,
+        bairroServer: bairroVar,
+        cidadeServer: cidadeVar,
+        ufServer: ufVar,
+        complementoServer: complementoVar,
       }),
-    })
-
+        })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 

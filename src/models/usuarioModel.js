@@ -44,9 +44,9 @@ function selectIdRestaurante(razao_social, cnpj) {
     return database.executar(instrucaoSql_selectIdRestaurante);
 }
 
-function cadastrarEndereco(cep,complemento, fkRestaurante) {
+function cadastrarEndereco(cep, logradouro, bairro, cidade, uf, complemento, fkRestaurante) {
     var instrucaoSql_insertEndereco = `
-        INSERT INTO Endereco (cep, complemento,fkRestaurante) VALUES ('${cep}', '${complemento}', '${fkRestaurante}');
+        INSERT INTO Endereco (cep, logradouro, bairro, cidade, uf, complemento, fkRestaurante) VALUES ('${cep}', '${logradouro}', '${bairro}', '${cidade}', '${uf}', '${complemento}', '${fkRestaurante}');
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql_insertEndereco);

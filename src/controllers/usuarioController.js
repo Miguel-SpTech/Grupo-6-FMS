@@ -64,6 +64,10 @@ async function autenticar(req, res) {
     var qtdMesa = req.body.quantMesasServer;
     var cnpj = req.body.cnpjServer;
     var cep = req.body.cepServer;
+    var logradouro = req.body.logradouroServer;
+    var bairro = req.body.bairroServer;
+    var cidade = req.body.cidadeServer;
+    var uf = req.body.ufServer;
     var complemento = req.body.complementoServer;
 
     // Faça as validações dos valores
@@ -76,7 +80,7 @@ async function autenticar(req, res) {
     // } else if (fkEmpresa == undefined) {
         // res.status(400).send("Sua empresa a vincular está undefined!");
     } else {
-        console.log("vou tentar logar agora ")
+        console.log("vou começar agora ")
 
         console.log("Iniciei o cadastrarRestaurante")
         await usuarioModel.cadatrarRestaurante(razaoSocial, nomeFantasia, cnpj, qtdMesa);
@@ -90,19 +94,15 @@ async function autenticar(req, res) {
         console.log('separei a fkRestaurante: ' + fkRestaurante)
 
         console.log("Iniciei o cadastrarEndereco")
-        await usuarioModel.cadastrarEndereco(cep,complemento, fkRestaurante);
+        await usuarioModel.cadastrarEndereco(cep, logradouro, bairro, cidade, uf, complemento, fkRestaurante);
         console.log("Conclui o cadastrarEndereco")
 
         console.log("Iniciei o cadastrarUsuario")
         await usuarioModel.cadastrarUsuario(nome, email, senha, fkRestaurante);
         console.log("Conclui o cadastrarUsuario")
-        .then( resultadoCadastrar => {
-            res.json(resultadoCadastrar);
-        }).catch (erro => {
-        console.error("houve um problema ao tentar o cadastro", erro.message);
-        })
-    
-        }
+
+        res.status(201).send("Cadastro realizado com sucesso!");
+    }
     }
 
 module.exports = {
