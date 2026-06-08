@@ -85,7 +85,6 @@ body{
 #spanEmail {
     width: 100%;
     text-align: center;
-    margin-top: -20px;
 }
 
 .div_princ input {
@@ -163,3 +162,4 @@ body{
 #inp_CEP {
     width: 43%;
 }
+
