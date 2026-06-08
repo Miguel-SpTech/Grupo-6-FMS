@@ -37,7 +37,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
             Analisar Cadastro
           </a>
         </li>
-                
+                 <li>
+          <a onclick="limparSessao()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sair
+          </a>
+        </li>
             </ul>       
         </nav>
     </aside>
@@ -90,6 +95,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 </html>
 
 <script>
+function limparSessao() {
+    sessionStorage.clear();
+    window.location = "../login.html";
+}
+
   function configNavbar(){
     const cargo = (sessionStorage.getItem('CARGO_USUARIO') || '').trim();
     const solicitacaoCadastro = document.getElementById('solicitacaoCadastroNavbar');
