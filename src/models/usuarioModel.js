@@ -12,7 +12,7 @@ function autenticar(email, senha) {
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha, razao_social, nome_fantasia, quantMesa, cnpj, cep, complemento) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
-    
+
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     cadatrarRestaurante(razao_social, nome_fantasia, cnpj, status, quantMesa)
@@ -20,7 +20,7 @@ function cadastrar(nome, email, senha, razao_social, nome_fantasia, quantMesa, c
     cadastrarEndereco(cep, fkRestaurante)
     cadastrarUsuario(nome, email, senha, fkRestaurante, fkUsuario)
 
-    
+
 }
 
 function cadatrarRestaurante(razao_social, nome_fantasia, cnpj, quantMesa) {
@@ -60,17 +60,67 @@ function cadastrarUsuario(nome, email, senha, fkRestaurante) {
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql_insertUsuario);
 
-    return  database.executar(instrucaoSql_insertUsuario);
+    return database.executar(instrucaoSql_insertUsuario);
 }
 
-function cadastrarUsuarioDash(nome, email, senha, cargo, fkRestaurante){
-        var instrucaoSql_insertUsuario = `
+function cadastrarUsuarioDash(nome, email, senha, cargo, fkRestaurante) {
+    var instrucaoSql_insertUsuario = `
         INSERT INTO Usuario (nome, email, senha, cargo, fkRestaurante) VALUES ('${nome}', '${email}', '${senha}', '${cargo}', ${fkRestaurante});
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql_insertUsuario);
 
-    return  database.executar(instrucaoSql_insertUsuario);
+    return database.executar(instrucaoSql_insertUsuario);
+}
+
+function buscarPendentes() {
+    var instrucaoSql_insertUsuario = `
+        select idRestaurante, nome_fantasia, nome, email, cnpj from restaurante join usuario on 
+    idRestaurante = fkRestaurante  where status = 'pendente' limit 3;
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql_insertUsuario);
+
+    return database.executar(instrucaoSql_insertUsuario);
+}
+
+function verificarStatusRestaurante(idRestaurante) {
+    const instrucaoSql = `
+        SELECT status FROM Restaurante WHERE idRestaurante = ${idRestaurante};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function aprovarSolicitacao(idRestaurante) {
+    const instrucaoSql = `
+        UPDATE Restaurante
+        SET status = 'Aprovado'
+        WHERE idRestaurante = ${idRestaurante};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function recusarSolicitacao(idRestaurante) {
+    const instrucaoSqlDeleteEndereco = `
+        DELETE FROM Endereco WHERE fkRestaurante = ${idRestaurante};
+    `;
+
+    const instrucaoSqlDeleteUsuarios = `
+        DELETE FROM Usuario WHERE fkRestaurante = ${idRestaurante};
+    `;
+
+    const instrucaoSqlDeleteRestaurante = `
+        DELETE FROM Restaurante WHERE idRestaurante = ${idRestaurante};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSqlDeleteEndereco);
+    return database.executar(instrucaoSqlDeleteEndereco)
+        .then(() => database.executar(instrucaoSqlDeleteUsuarios))
+        .then(() => database.executar(instrucaoSqlDeleteRestaurante));
 }
 
 module.exports = {
@@ -79,5 +129,9 @@ module.exports = {
     cadastrarEndereco,
     cadastrarUsuario,
     selectIdRestaurante,
-    cadastrarUsuarioDash
+    cadastrarUsuarioDash,
+    buscarPendentes,
+    verificarStatusRestaurante,
+    aprovarSolicitacao,
+    recusarSolicitacao
 };

@@ -16,4 +16,20 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.get("/pendentes", function (req, res) {
+    usuarioController.buscarPendentes(req, res);
+});
+
+router.get("/status-restaurante/:id", function (req, res) {
+    usuarioController.verificarStatusRestaurante(req, res);
+});
+
+router.post("/aprovar/:id", function (req, res) {
+    usuarioController.aprovarSolicitacao(req, res);
+});
+
+router.post("/recusar/:id", function (req, res) {
+    usuarioController.recusarSolicitacao(req, res);
+});
+
 module.exports = router;

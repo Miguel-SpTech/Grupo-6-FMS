@@ -262,186 +262,116 @@ display: flex;
 
 }
 
-.cardssolitacao{
-     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    gap: 40px;
-    width: 80%;
-    color:black;
-    justify-content: space-between;
-    background-color: #FFFDFD;
-    border-radius: 20px;  
-    padding: 2%;
-    text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
-    box-shadow: 0% 4% 10% rgba(149, 147, 147, 0.2);
-    font-weight: bold;
-    margin: 2% 10% 2% 8%;
-}
-
-
-.container h3{
-     margin: 1% 8% 2% 5%;
-     max-width: 90%;       
-    line-height: 1.2;        
-    text-align: justify;    
-    font-size: 16px;
-    color:rgb(171, 169, 169);
-}
-
-
-
-.botoessolicitacao{
+.cardssolitacao {
     display: flex;
-    gap:10px;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    width: 82%;
+    color: #222;
+    background-color: #FFFDFD;
+    border-radius: 24px;
+    padding: 18px 20px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 6px 18px rgba(149, 147, 147, 0.18);
+    font-weight: 600;
+    margin: 2% auto;
 }
-#btn_aprovar{
+
+.container h3 {
+    margin: 1% 8% 2% 5%;
+    max-width: 90%;
+    line-height: 1.2;
+    text-align: left;
+    font-size: 16px;
+    color: #7a7a7a;
+}
+
+.botoessolicitacao {
     display: flex;
     gap: 10px;
-     margin-top: 15px;
-    padding: 12px;
+    flex-direction: column;
+    min-width: 150px;
+    align-items: stretch;
+}
+
+.btn_aprovar,
+.btn_recusar {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 12px;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.btn_aprovar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
     background-color: #8B1A1A;
     color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
 }
-#btn_recusar{
-     width: 110px;
-    height: 45px;
-    margin-top: 15px;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
+
+.btn_recusar {
     background-color: #ede5e5;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    color: #111;
 }
-.dados{
+
+.dados {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    flex: 1;
 }
-.dados i{
-       font-size: 20px;
+
+.dados i {
+    font-size: 18px;
 }
+
 .dados h3,
-.dados p{
+.dados p {
     margin: 0;
 }
-.campo{
+
+.campo {
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
-.campo i{
-    font-size: 20px;
+.campo i {
+    font-size: 18px;
     color: #8B1A1A;
-    width: 25px;
+    width: 24px;
+    margin-top: 2px;
 }
 
 .campo h4,
-.campo p{
+.campo p {
     margin: 0;
 }
 
-.campo h4{
-    margin-bottom: 4px;
+.campo h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #7a7a7a;
+    margin-bottom: 2px;
 }
 
-.cardssolitacao{
-     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    gap: 40px;
-    width: 80%;
-    color:black;
-    justify-content: space-between;
-    background-color: #FFFDFD;
-    border-radius: 30px;  
-    padding: 2%;
-    text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
-    box-shadow: 0% 4% 10% rgba(149, 147, 147, 0.2);
-    font-weight: bold;
-    margin: 2% 10% 5% 8%;
-}
-
-
-.container h3{
-  margin: 1% 8% 2% 5%;
-     max-width: 90%;       
-    line-height: 1.2;        
-    text-align: justify;    
-    font-size: 16px;
-    color:black;
-}
-
-
-
-.botoessolicitacao{
-    display: flex;
-    gap:10px;
-    flex-direction: column;
-}
-#btn_aprovar{
-    display: flex;
-    gap: 10px;
-     margin-top: 15px;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #8B1A1A;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-#btn_recusar{
-     width: 110px;
-    height: 45px;
-    margin-top: 15px;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #ede5e5;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.dados{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.dados i{
-       font-size: 20px;
-}
-.dados h3,
-.dados p{
-    margin: 0;
-}
-.campo{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-}
-
-.campo i{
-    font-size: 20px;
-    color: #8B1A1A;
-    width: 25px;
+.campo p {
+    font-size: 14px;
+    line-height: 1.3;
+    color: #222;
 }
 
 

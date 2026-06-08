@@ -131,8 +131,72 @@ async function cadastrarDash(req, res) {
     }
     }
 
+async function buscarPendentes(req, res) {
+    try {
+        const usuariosPendentes = await usuarioModel.buscarPendentes();
+
+        res.status(200).json(usuariosPendentes);
+    } catch (erro) {
+        console.log("ERRO COMPLETO:", erro);
+        res.status(500).json({
+            erro: "Erro ao buscar usuários pendentes"
+        });
+    }
+}
+
+async function verificarStatusRestaurante(req, res) {
+    try {
+        const idRestaurante = req.params.id;
+
+        const resultado = await usuarioModel.verificarStatusRestaurante(idRestaurante);
+
+        if (resultado.length > 0) {
+            res.status(200).json({ status: resultado[0].status });
+        } else {
+            res.status(404).json({ erro: "Restaurante não encontrado" });
+        }
+    } catch (erro) {
+        console.log("ERRO COMPLETO:", erro);
+        res.status(500).json({ erro: "Erro ao verificar status do restaurante" });
+    }
+}
+
+async function aprovarSolicitacao(req, res) {
+    try {
+        const id = req.params.id;
+
+        await usuarioModel.aprovarSolicitacao(id);
+
+        res.status(200).json({ mensagem: "Solicitação aprovada com sucesso" });
+    } catch (erro) {
+        console.log("ERRO COMPLETO:", erro);
+        res.status(500).json({
+            erro: "Erro ao aprovar solicitação"
+        });
+    }
+}
+
+async function recusarSolicitacao(req, res) {
+    try {
+        const id = req.params.id;
+
+        await usuarioModel.recusarSolicitacao(id);
+
+        res.status(200).json({ mensagem: "Solicitação recusada com sucesso" });
+    } catch (erro) {
+        console.log("ERRO COMPLETO:", erro);
+        res.status(500).json({
+            erro: "Erro ao recusar solicitação"
+        });
+    }
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    cadastrarDash
+    cadastrarDash,
+    buscarPendentes,
+    verificarStatusRestaurante,
+    aprovarSolicitacao,
+    recusarSolicitacao
 }

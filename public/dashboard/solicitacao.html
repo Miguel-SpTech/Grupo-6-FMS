@@ -1,172 +1,160 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Dashboard</title>
   <link rel="stylesheet" href="dash.css">
-  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
   <aside class="sidebar">
 
-        <div class="sidebar-logo">
- 
+    <div class="sidebar-logo">
+
     </div>
-        
-        <nav>
-            <ul>
-      <li>
+
+    <nav>
+      <ul>
+        <li>
           <a href="dashboard.html">
-              <i class="fa-solid fa-chart-line"></i>
-              Dashboard
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
           </a>
-      </li>
+        </li>
 
-      <li>
+        <li>
           <a href="adicionarusu.html">
-              <i class="fa-solid fa-user-plus"></i>
-              Adicionar Usuário
+            <i class="fa-solid fa-user-plus"></i>
+            Adicionar Usuário
           </a>
 
-         <li>
+        <li>
           <a href="solicitacao.html">
             <i class="fa-solid fa-eye"></i>
-             Ver Solicitações de cadastro
+            Ver Solicitações de cadastro
           </a>
-      </li>
-      </li>
-                  </ul>       
-        </nav>
-    </aside>
+        </li>
+        </li>
+      </ul>
+    </nav>
+  </aside>
   <main>
 
 
     <div class="container">
       <h1>Cadastros pendentes de aprovação</h1>
 
-        <h3>2 solicitações aguardando revisão</h3>
-    <div class="cardssolitacao">
-
-       
-        <div class="dados">
-
-          <div class="campo">
-            <i class="fa-solid fa-user"></i>
-            <div>
-              <h4>Nome</h4>
-              <p>João Silva</p>
-            </div>
-          </div>
-
-          <div class="campo">
-            <i class="fa-solid fa-envelope"></i>
-            <div>
-              <h4>Email</h4>
-              <p>joao@email.com</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="dados">
-
-          <div class="campo">
-            <i class="fa-solid fa-building"></i>
-            <div>
-              <h4>Empresa</h4>
-              <p>XPTO</p>
-            </div>
-          </div>
-
-          <div class="campo">
-            <i class="fa-solid fa-phone"></i>
-            <div>
-              <h4>Telefone</h4>
-              <p>(11)9999-99999</p>
-            </div>
-          </div>
-
-        </div>
-
-        
-        <div class="botoessolicitacao">
-
-          <button id="btn_aprovar">
-            <i class="fa-solid fa-check"></i>
-            Aprovar
-          </button>
-
-          <button id="btn_recusar">
-            <i class="fa-solid fa-xmark"></i>
-            Recusar
-          </button>
-
-        </div>
-
-        
-
-      </div>
-
-      <div class="cardssolitacao">
-            <div class="dados">
-
-          <div class="campo">
-            <i class="fa-solid fa-user"></i>
-            <div>
-              <h4>Nome</h4>
-              <p>Mariana Silva</p>
-            </div>
-          </div>
-
-          <div class="campo">
-            <i class="fa-solid fa-envelope"></i>
-            <div>
-              <h4>Email</h4>
-              <p>mariana123@email.com</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="dados">
-
-          <div class="campo">
-            <i class="fa-solid fa-building"></i>
-            <div>
-              <h4>Empresa</h4>
-              <p>SPtech</p>
-            </div>
-          </div>
-
-          <div class="campo">
-            <i class="fa-solid fa-phone"></i>
-            <div>
-              <h4>Telefone</h4>
-              <p>(11)19993-99999</p>
-            </div>
-          </div>
-
-        </div>
-
-        
-        <div class="botoessolicitacao">
-
-          <button id="btn_aprovar">
-            <i class="fa-solid fa-check"></i>
-            Aprovar
-          </button>
-
-          <button id="btn_recusar">
-            <i class="fa-solid fa-xmark"></i>
-            Recusar
-          </button>
-
-        </div>
-
-      </div>
+      <h3 id="contadorSolicitacoes">Carregando solicitações...</h3>
+      <div id="listaSolicitacoes"></div>
 
     </div>
   </main>
 
 </body>
+<script>
+  async function aprovarSolicitacao(id) {
+    await fetch(`/usuarios/aprovar/${id}`, { method: 'POST' });
+  }
+
+  async function recusarSolicitacao(id) {
+    await fetch(`/usuarios/recusar/${id}`, { method: 'POST' });
+  }
+
+  async function carregarSolicitacoes() {
+      const resposta = await fetch('/usuarios/pendentes');
+
+      const dados = await resposta.json();
+      console.log(dados);
+
+      const lista = Array.isArray(dados) ? dados : (dados.solicitacoes || []);
+      const container = document.getElementById('listaSolicitacoes');
+      const contador = document.getElementById('contadorSolicitacoes');
+
+      container.innerHTML = '';
+      contador.textContent = `${lista.length} solicitação(ões) aguardando revisão`;
+
+      lista.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'cardssolitacao';
+
+        card.innerHTML = `
+          <div class="dados">
+            <div class="campo">
+              <i class="fa-solid fa-user"></i>
+              <div>
+                <h4>Nome</h4>
+                <p>${item.nome}</p>
+              </div>
+            </div>
+
+            <div class="campo">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p>${item.email}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dados">
+            <div class="campo">
+              <i class="fa-solid fa-building"></i>
+              <div>
+                <h4>Empresa</h4>
+                <p>${item.nome_fantasia || '—'}</p>
+              </div>
+            </div>
+
+            <div class="campo">
+              <i class="fa-solid fa-id-card"></i>
+              <div>
+                <h4>CNPJ</h4>
+                <p>${item.cnpj || '—'}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="botoessolicitacao">
+            <button type="button" class="btn_aprovar" data-id="${item.idRestaurante}">
+              <i class="fa-solid fa-check"></i>
+              Aprovar
+            </button>
+            <button type="button" class="btn_recusar" data-id="${item.idRestaurante}">
+              <i class="fa-solid fa-xmark"></i>
+              Recusar
+            </button>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      document.querySelectorAll('.btn_aprovar').forEach((botao) => {
+        botao.addEventListener('click', async () => {
+          const id = botao.getAttribute('data-id');
+          if (!id) return;
+          await aprovarSolicitacao(id);
+          await carregarSolicitacoes();
+        });
+      });
+
+      document.querySelectorAll('.btn_recusar').forEach((botao) => {
+        botao.addEventListener('click', async () => {
+          const id = botao.getAttribute('data-id');
+          if (!id) return;
+          await recusarSolicitacao(id);
+          await carregarSolicitacoes();
+        });
+      });
+
+      if (!lista.length) {
+        container.innerHTML = '<p>Nenhuma solicitação pendente encontrada.</p>';
+      }
+  }
+
+  carregarSolicitacoes();
+</script>
+
 </html>
