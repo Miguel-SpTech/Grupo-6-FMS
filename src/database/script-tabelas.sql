@@ -472,8 +472,8 @@ INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura) VALUES
 ('2026-05-27 10:45:00', 1, 1, 'Entrada'),
 ('2026-05-27 12:35:00', 1, 2, 'Entrada')
 ;
-
-
+USE FMS;
+select * from Usuario;
 -- ATUAL
 select * from Registro r JOIN Sensor s on s.idSensor = r.fkSensor where fkRestaurante = 1;
 
@@ -766,7 +766,7 @@ SELECT
 
    
 
-    COUNT(reg.idRegistro) AS fluxo_atual_7dias,
+    (COUNT(reg.idRegistro)*2) AS fluxo_atual_7dias,
     
     ROUND(r.quantmesa *2 *3.5*7,0)  AS fluxo_ideal_7dias
 

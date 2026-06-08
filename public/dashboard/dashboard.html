@@ -39,6 +39,13 @@
             Analisar Cadastro
           </a>
         </li>
+
+        <li>
+          <a onclick="limparSessao()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sair
+          </a>
+        </li>
       </ul>
     </nav>
   </aside>
@@ -92,6 +99,10 @@
 <script src="dashboard.js"></script>
 <script>
 
+function limparSessao() {
+    sessionStorage.clear();
+    window.location = "../login.html";
+}
 
 
   async function buscarKpi() {
