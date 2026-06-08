@@ -72,7 +72,16 @@ CREATE TABLE Registro (
     CHECK (tipo_leitura IN ('Mapa', 'Entrada', 'Saída'))
 );
 
--------------------- INSERT RESTAURANTE--------------------
+
+
+-- -----------------------------------------------------------------------------------------------------------
+-- ------------------------------------------ INSERT ---------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------- INSERT RESTAURANTE--------------------
 desc Restaurante;
 
 
@@ -85,7 +94,7 @@ INSERT INTO Restaurante VALUES
 
 
 
------------------------ INSERT ENDERECO ------------
+-------------------------------------------- INSERT ENDERECO ------------
 desc Endereco;
 select * from Endereco;
 INSERT INTO Endereco VALUES
@@ -98,20 +107,20 @@ select * from Endereco;
 
 
 
------------------ INSERT ADMINISTRADORES  --------------
+----------------------------------------- INSERT ADMINISTRADORES  --------------
 desc Usuario;
 
 INSERT INTO Usuario VALUES
 (default, 'Ricardo Cavalcante', 'ricardo.admin@pizzaria.com', 'R3c@rd0_99', 'Administrador', 1, NULL),
 (default, 'Fernanda Montes', 'fernanda.adm@pizzaria.com','F3rn@nd4_#1', 'Administrador', 2, NULL);
 
------------------ Super ADMINISTRADORES  --------------
+-------------------------------------- Super ADMINISTRADORES  --------------
 INSERT INTO Usuario VALUES
 (default, 'Raissa', 'raissamlima4536@gmail.com', 'R3c@rd0_99', 'superAdmin', 1, NULL);
 
 
 
------------------ insert operadores-------------------
+-------------------------------------- insert operadores-------------------
 
 
 INSERT INTO Usuario
@@ -119,7 +128,7 @@ INSERT INTO Usuario
 (default, 'Lucas Gabriel Santos','lucas.oper@pizzaria.com','Lks_8871ab','Operador',1,1);
 
 
--------------------- INSERT BLOCO-------------------
+----------------------------------- INSERT BLOCO-------------------
 
 
 INSERT INTO Bloco VALUES
@@ -223,6 +232,51 @@ INSERT INTO Bloco VALUES
 (1, '98'),
 (1, '99'),
 (1, '100'),
+(1, '101'),
+(1, '102'),
+(1, '103'),
+(1, '104'),
+(1, '105'),
+(1, '106'),
+(1, '107'),
+(1, '108'),
+(1, '109'),
+(1, '110'),
+(1, '111'),
+(1, '112'),
+(1, '113'),
+(1, '114'),
+(1, '115'),
+(1, '116'),
+(1, '117'),
+(1, '118'),
+(1, '119'),
+(1, '120'),
+(1, '121'),
+(1, '122'),
+(1, '123'),
+(1, '124'),
+(1, '125'),
+(1, '126'),
+(1, '127'),
+(1, '128'),
+(1, '129'),
+(1, '130'),
+(1, '131'),
+(1, '132'),
+(1, '133'),
+(1, '134'),
+(1, '135'),
+(1, '136'),
+(1, '137'),
+(1, '138'),
+(1, '139'),
+(1, '140'),
+(1, '141'),
+(1, '142'),
+(1, '143'),
+(1, '144'),
+
 
 (2, '01'),
 (2, '02'),
@@ -241,42 +295,160 @@ INSERT INTO Bloco VALUES
 (5, '03');
 
 
--------------------- INSERT SENSROR-------------------
+-------------------------------------------- INSERT SENSOR-------------------
 desc Sensor;
-INSERT INTO Sensor VALUES
+INSERT INTO Sensor (idSensor, data_instalacao, data_manutencao, status, fkRestaurante, fkBloco) VALUES
 (default, '2021-03-15', '2025-04-08', 'Ativo', 1, '01'),
-(default, '2022-11-28', '2025-01-21', 'Ativo', 1, '02'),
-(default, '2022-11-28', '2023-11-01', 'Ativo', 1, '03'),
-(default, '2022-11-28', '2024-05-12', 'Inativo', 1, '04'),
-(default, '2023-01-10', '2025-07-04', 'Ativo', 2, '02'),
-(default, '2023-01-10', '2025-10-14', 'Inativo', 2, '03'),
-(default, '2020-07-22', '2024-10-17', 'Inativo', 5, '01'),
-(default, '2020-07-22', '2024-08-17', 'Inativo', 5, '02'),
-(default, '2020-07-22', '2024-08-25', 'Inativo', 5, '03'),
-(default, '2024-02-05', '2024-05-30', 'Ativo', 3, '01'),
-(default, '2024-02-05', '2024-03-30', 'Inativo', 3, '02'),
-(default, '2024-02-05', '2025-09-20', 'Ativo', 3, '03'),
-(default, '2019-05-12', '2023-11-20', 'Ativo', 4, '02'),
-(default, '2019-05-12', '2023-11-01', 'Ativo', 4, '01'),
-(default, '2019-10-30', '2023-07-14', 'Inativo', 5, '01'),
-(default, '2019-10-30', '2023-07-14', 'Ativo', 5, '02'),
-(default, '2020-01-15', '2023-03-09', 'Ativo', 4, '01'),
-(default, '2020-01-15', '2023-03-09', 'Inativo', 4, '02'),
-(default, '2020-08-04', '2025-12-25', 'Ativo', 4, '01'),
-(default, '2020-08-04', '2022-12-25', 'Ativo', 4, '02'),
-(default, '2020-08-04', '2024-12-25', 'Ativo', 4, '03'),
-(default, '2021-04-22', '2024-01-05', 'Ativo', 5, '01'),
-(default, '2021-09-11', '2022-02-18', 'Inativo', 5, '01'),
-(default, '2021-09-11', '2021-11-18', 'Ativo', 5, '02'),
-(default, '2021-09-11', '2023-12-18', 'Ativo', 5, '03');
+(default, '2021-03-15', '2025-04-08', 'Ativo', 1, '02'),
+(default, '2021-03-15', '2025-04-08', 'Ativo', 1, '03'),
+(default, '2021-03-15', '2025-04-08', 'Ativo', 1, '04'),
+(default, '2021-03-15', '2025-04-08', 'Ativo', 1, '05'),
+(default, '2022-11-28', '2025-01-21', 'Ativo', 1, '06'),
+(default, '2022-11-28', '2023-11-01', 'Ativo', 1, '07'),
+(default, '2022-11-28', '2024-05-12', 'Ativo', 1, '08'),
+(default, '2023-01-10', '2025-07-04', 'Ativo', 1, '09'),
+(default, '2023-01-10', '2025-10-14', 'Ativo', 1, '10'),
+(default, '2020-07-22', '2024-10-17', 'Ativo', 1, '11'),
+(default, '2020-07-22', '2024-08-17', 'Ativo', 1, '12'),
+(default, '2020-07-22', '2024-08-25', 'Ativo', 1, '13'),
+(default, '2024-02-05', '2024-05-30', 'Ativo', 1, '14'),
+(default, '2024-02-05', '2024-03-30', 'Ativo', 1, '15'),
+(default, '2024-02-05', '2025-09-20', 'Ativo', 1, '16'),
+(default, '2019-05-12', '2023-11-20', 'Ativo', 1, '17'),
+(default, '2019-05-12', '2023-11-01', 'Ativo', 1, '18'),
+(default, '2019-10-30', '2023-07-14', 'Ativo', 1, '19'),
+(default, '2019-10-30', '2023-07-14', 'Ativo', 1, '20'),
+(default, '2020-01-15', '2023-03-09', 'Ativo', 1, '21'),
+(default, '2020-01-15', '2023-03-09', 'Ativo', 1, '22'),
+(default, '2020-08-04', '2025-12-25', 'Ativo', 1, '23'),
+(default, '2020-08-04', '2022-12-25', 'Ativo', 1, '24'),
+(default, '2020-08-04', '2024-12-25', 'Ativo', 1, '25'),
+(default, '2021-04-22', '2024-01-05', 'Ativo', 1, '26'),
+(default, '2021-09-11', '2022-02-18', 'Ativo', 1, '27'),
+(default, '2021-09-11', '2021-11-18', 'Ativo', 1, '28'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '29'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '30'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '31'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '32'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '33'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '34'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '35'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '36'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '37'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '38'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '39'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '40'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '41'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '42'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '43'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '44'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '45'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '46'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '47'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '48'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '49'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '50'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '51'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '52'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '53'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '54'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '55'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '56'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '57'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '58'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '59'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '60'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '61'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '62'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '63'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '64'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '65'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '66'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '67'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '68'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '69'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '70'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '71'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '72'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '73'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '74'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '75'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '76'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '77'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '78'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '79'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '80'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '81'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '82'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '83'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '84'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '85'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '86'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '87'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '88'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '89'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '90'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '91'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '92'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '93'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '94'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '95'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '96'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '97'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '98'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '99'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '100'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '101'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '102'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '103'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '104'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '105'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '106'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '107'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '108'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '109'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '110'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '111'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '112'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '113'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '114'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '115'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '116'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '117'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '118'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '119'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '120'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '121'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '122'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '123'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '124'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '125'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '126'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '127'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '128'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '129'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '130'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '131'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '132'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '133'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '134'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '135'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '136'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '137'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '138'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '139'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '140'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '141'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '142'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '143'),
+(default, '2021-09-11', '2023-12-18', 'Ativo', 1, '144')
+;
 
 
 
+----------------------------------- insert Registro --------------------
 
------------------ insert leitor --------------------
-
------------ Empresa 1
--- sensor 1
+select * from Registro;
 INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura) VALUES
 
 ('2026-05-21 11:15:00', 1, 1, 'Entrada'),
@@ -284,42 +456,221 @@ INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura) VALUES
 
 ('2026-05-22 10:20:00', 1, 1, 'Entrada'),
 ('2026-05-22 13:45:00', 1, 2, 'Entrada'),
-('2026-05-22 18:10:00', 1, 3, 'Entrada'),
 
 ('2026-05-23 09:05:00', 1, 1, 'Entrada'),
 ('2026-05-23 12:40:00', 1, 2, 'Entrada'),
-('2026-05-23 19:25:00', 1, 3, 'Entrada'),
 
 ('2026-05-24 11:50:00', 1, 1, 'Entrada'),
 ('2026-05-24 14:15:00', 1, 2, 'Entrada'),
-('2026-05-24 20:30:00', 1, 3, 'Entrada'),
 
 ('2026-05-25 10:00:00', 1, 1, 'Entrada'),
 ('2026-05-25 12:10:00', 1, 2, 'Entrada'),
-('2026-05-25 18:45:00', 1, 3, 'Entrada'),
 
 ('2026-05-26 09:30:00', 1, 1, 'Entrada'),
 ('2026-05-26 13:00:00', 1, 2, 'Entrada'),
-('2026-05-26 17:40:00', 1, 3, 'Entrada'),
 
 ('2026-05-27 10:45:00', 1, 1, 'Entrada'),
-('2026-05-27 12:35:00', 1, 2, 'Entrada'),
-('2026-05-27 15:50:00', 1, 3, 'Entrada');
+('2026-05-27 12:35:00', 1, 2, 'Entrada')
+;
 
 
------------------ Populando registros no restaurante de forma automatiada------------------------
+-- ATUAL
+select * from Registro r JOIN Sensor s on s.idSensor = r.fkSensor where fkRestaurante = 1;
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura) VALUES
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada'),
+(default, 1, 1, 'Entrada'),
+(default, 1, 2, 'Entrada')
+;
+
+
+desc Registro;
+
+-- ---------------------- populando registros de uma semana de forma automatizada
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW() - INTERVAL FLOOR(RAND() * 604800) SECOND,
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Entrada'
+FROM Sensor,
+	(SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+    UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL
+    SELECT 10) as repeticoes
+WHERE fkRestaurante = 1 AND fkBloco < 03;
+
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW() - INTERVAL FLOOR(RAND() * 604800) SECOND,
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Entrada'
+FROM Sensor,
+	(SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+    UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL
+    SELECT 10) as repeticoes
+WHERE fkRestaurante = 1 AND fkBloco < 03;
+
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW() - INTERVAL FLOOR(RAND() * 604800) SECOND,
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Entrada'
+FROM Sensor,
+	(SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+    UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL
+    SELECT 10) as repeticoes
+WHERE fkRestaurante = 1 AND fkBloco < 03;
+
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW() - INTERVAL FLOOR(RAND() * 604800) SECOND,
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Entrada'
+FROM Sensor,
+	(SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+    UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL
+    SELECT 10) as repeticoes
+WHERE fkRestaurante = 1 AND fkBloco < 03;
+
+
+
+
+
+----------------- Populando registros atuais de forma automatizada------------------------
 
 INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
 SELECT
     NOW(),
-    FLOOR(1 + RAND() * 22),
-    idSensor,
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Mapa'
+FROM Sensor,
+	(SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+    UNION ALL SELECT 6) as repeticoes
+WHERE fkRestaurante = 1 AND fkBloco > 02;
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW(),
+    FLOOR(RAND() * 2),
+    (idSensor),
     'Mapa'
 FROM Sensor
-WHERE fkRestaurante = 1;
+WHERE fkRestaurante = 1 AND fkBloco > 02;
 
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW(),
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Mapa'
+FROM Sensor
+WHERE fkRestaurante = 1 AND fkBloco > 02;
 
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW(),
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Mapa'
+FROM Sensor
+WHERE fkRestaurante = 1 AND fkBloco > 02;
 
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW(),
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Mapa'
+FROM Sensor
+WHERE fkRestaurante = 1 AND fkBloco > 02;
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW(),
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Mapa'
+FROM Sensor
+WHERE fkRestaurante = 1 AND fkBloco > 02;
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW(),
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Mapa'
+FROM Sensor
+WHERE fkRestaurante = 1 AND fkBloco > 02;
+
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
+SELECT
+    NOW(),
+    FLOOR(RAND() * 2),
+    (idSensor),
+    'Mapa'
+FROM Sensor
+WHERE fkRestaurante = 1 AND fkBloco > 02;
 
 
 
@@ -396,7 +747,7 @@ SELECT
         
         SELECT*FROM vw_rotacao_mesa	;
         
-      
+/*      
 	INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
 VALUES
 (NOW(), 1, 1, 'Entrada'),
@@ -405,7 +756,7 @@ VALUES
 (NOW(), 1, 1, 'Entrada'),
 (NOW(), 1, 2, 'Entrada'),
 (NOW(), 1, 3, 'Entrada');
-        
+*/        
 	-- kpi atual/ideal
     
     CREATE VIEW vw_fluxo_7dias AS
@@ -494,33 +845,35 @@ GROUP BY
 -- view do heatmap 
 
 
-CREATE VIEW vw_heatmap_blocos AS
-SELECT
+CREATE or REPLACE VIEW vw_heatmap_blocos AS
+SELECT 
     s.fkRestaurante AS idRestaurante,
     s.fkBloco AS bloco,
-    COUNT(r.idRegistro) AS total_movimentacoes
+    SUM(r.leitura) AS total_movimentacoes
 FROM Sensor s
 JOIN Registro r 
     ON r.fkSensor = s.idSensor
-WHERE r.tipo_leitura = 'Mapa'
+WHERE r.tipo_leitura = 'Mapa' AND data >= current_date
 GROUP BY
     s.fkRestaurante,
     s.fkBloco;
     
-select *from vw_heatmap_blocos;
+SELECT * FROM Registro where fkSensor = 1;
+
+    
+select * from vw_heatmap_blocos;
 
 -- view de quantidade clientes nos ultimos 7 dias 
 
 
 CREATE VIEW vw_clientes_7dias AS
-
 SELECT
     r.idRestaurante,
     r.nome_fantasia,
     DATE(reg.data) as data_dia,
 
      DAYOFWEEK(reg.data) as dia_na_semana_num,
-     COUNT(reg.idRegistro) as total_movimentacao
+     (COUNT(reg.idRegistro) * 2) as total_movimentacao
         FROM Restaurante r 
         JOIN Sensor s ON r.idRestaurante = s.fkRestaurante
 		JOIN Registro reg ON s.idSensor = reg.fkSensor
@@ -543,34 +896,38 @@ CREATE USER IF NOT EXISTS 'usuario_select'@'localhost' IDENTIFIED BY 'Yag_2102';
 
 select * from usuario;
 
-INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura)
-VALUES
-
-('2026-05-30 11:00:00', 1, 1, 'Entrada'),
-('2026-05-30 13:20:00', 1, 2, 'Entrada'),
-
-('2026-05-31 10:15:00', 1, 1, 'Entrada'),
-('2026-05-31 12:40:00', 1, 2, 'Entrada'),
-('2026-05-31 19:10:00', 1, 3, 'Entrada'),
-
-('2026-06-01 09:30:00', 1, 1, 'Entrada'),
-('2026-06-01 14:20:00', 1, 2, 'Entrada'),
-
-('2026-06-02 10:00:00', 1, 1, 'Entrada'),
-('2026-06-02 12:15:00', 1, 2, 'Entrada'),
-('2026-06-02 18:45:00', 1, 3, 'Entrada'),
-('2026-06-02 20:10:00', 1, 1, 'Entrada'),
-
-('2026-06-03 11:25:00', 1, 2, 'Entrada'),
-
-('2026-06-04 09:50:00', 1, 1, 'Entrada'),
-('2026-06-04 13:30:00', 1, 2, 'Entrada'),
-('2026-06-04 21:00:00', 1, 3, 'Entrada'),
-
-('2026-06-05 10:10:00', 1, 1, 'Entrada'),
-('2026-06-05 12:50:00', 1, 2, 'Entrada'),
-('2026-06-05 18:20:00', 1, 3, 'Entrada'),
-('2026-06-05 20:40:00', 1, 1, 'Entrada'),
-('2026-06-05 21:30:00', 1, 2, 'Entrada');
 
 select * from vw_clientes_7dias WHERE idRestaurante = 1 order by dia_na_semana_num ASC;
+
+-- ----------------------------------------
+
+SELECT * FROM Usuario;
+
+SELECT * FROM Usuario u JOIN Restaurante r on r.idRestaurante = u.fkRestaurante;
+
+SELECT * FROM Bloco b JOIN Restaurante r on r.idRestaurante = b.fkRestaurante;
+
+SELECT * FROM Sensor;
+
+SELECT * FROM Restaurante;
+
+
+
+SELECT * FROM Bloco;
+
+desc Sensor;
+
+
+
+
+
+SELECT * FROM Registro r JOIN Sensor s on s.idSensor = r.fkSensor;
+/*
+INSERT INTO Registro (data, leitura, fkSensor, tipo_leitura) VALUES
+
+(default, 1, 1, 'Mapa'),
+(default, 1, , 'Mapa'),
+;*/
+desc Registro;
+SELECT * FROM Sensor;
+SELECT * FROM Registro;
